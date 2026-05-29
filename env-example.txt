@@ -1,0 +1,17 @@
+# .env.local — Variables d'environnement Next.js
+# Copie ce fichier en .env.local et remplis les valeurs
+
+# ─── Stripe ───────────────────────────────────────────────
+STRIPE_SECRET_KEY=sk_live_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+STRIPE_WEBHOOK_SECRET=whsec_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+# ─── URL de ton site ──────────────────────────────────────
+NEXT_PUBLIC_URL=https://ton-domaine.fr
+
+# ─── Zapier Webhook URL ───────────────────────────────────
+ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/XXXXXXX/XXXXXXX/
+
+# ─── Price ID Stripe (créé dans ton dashboard Stripe) ─────
+# Dashboard Stripe → Produits → Crée "Formation Google UAC 67€"
+# Copie le Price ID : price_XXXXXXXXXXXXXXXXXXXXXXXX
