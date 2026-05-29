@@ -1,0 +1,32 @@
+import Link from 'next/link'
+
+export default function MerciPage() {
+  return (
+    <div
+      style={{
+        minHeight: '100vh',
+        background: '#0a0a0a',
+        color: '#fafafa',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontFamily: 'sans-serif',
+        padding: '2rem',
+        textAlign: 'center',
+      }}
+    >
+      <div style={{ fontSize: '64px', marginBottom: '1rem' }}>✓</div>
+      <h1 style={{ fontSize: '32px', fontWeight: 800, marginBottom: '1rem' }}>
+        Paiement confirmé !
+      </h1>
+      <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.6)', maxWidth: '480px', marginBottom: '2rem' }}>
+        Tu vas recevoir un email dans les prochaines minutes avec ton accès à la formation.
+        Vérifie tes spams si tu ne le vois pas.
+      </p>
+      <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.3)' }}>
+        Des questions ? Réponds directement à l'email de confirmation.
+      </p>
+    </div>
+  )
+}
