@@ -95,7 +95,7 @@ export default function LandingClient() {
   }, [])
 
   return (
-    <div style={{ background: '#080810', color: '#e8e8f0', fontFamily: "'Inter', -apple-system, sans-serif", overflowX: 'hidden' }}>
+    <div style={{ background: '#080810', color: '#e8e8f0', fontFamily: 'var(--font-dm), DM Sans, system-ui, sans-serif', overflowX: 'hidden' }}>
 
       {/* ── NAV ── */}
       <nav style={{
@@ -107,11 +107,11 @@ export default function LandingClient() {
         borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : 'none',
         transition: 'all 0.3s ease',
       }}>
-        <span style={{ fontFamily: 'monospace', fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', background: 'linear-gradient(90deg, #a78bfa, #60a5fa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', fontWeight: 600, letterSpacing: '0.1em', background: 'linear-gradient(90deg, #a78bfa, #60a5fa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
           UAC·MÉTHODE
         </span>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', fontFamily: 'monospace' }}>
+          <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', fontFamily: 'var(--font-mono)' }}>
             <span style={{ color: '#4ade80', marginRight: '6px' }}>●</span>Early bird
           </span>
           <button
@@ -153,10 +153,10 @@ export default function LandingClient() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '780px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', borderRadius: '100px', border: '1px solid rgba(124,58,237,0.4)', background: 'rgba(124,58,237,0.1)', marginBottom: '2rem', animation: 'slideUp 0.6s ease both' }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ade80', animation: 'pulse 2s ease infinite', display: 'inline-block' }} />
-            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.7)', fontFamily: 'monospace', letterSpacing: '0.08em' }}>Formation Google UAC · Indie Devs · Early bird 67€</span>
+            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.7)', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>Formation Google UAC · Indie Devs · Early bird 67€</span>
           </div>
 
-          <h1 style={{ fontSize: 'clamp(40px,6vw,72px)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '1.5rem', animation: 'slideUp 0.6s ease 0.1s both' }}>
+          <h1 style={{ fontFamily: 'var(--font-syne), Syne, sans-serif', fontSize: 'clamp(40px,6vw,72px)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '1.5rem', animation: 'slideUp 0.6s ease 0.1s both' }}>
             Obtenez vos installs Android<br />
             <span style={{ background: 'linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite' }}>
               à moins d'1€
@@ -183,8 +183,8 @@ export default function LandingClient() {
                 minWidth: '160px',
               }}>
                 <div style={{ fontSize: '28px', fontWeight: 800, background: 'linear-gradient(135deg, #a78bfa, #60a5fa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{p.val}</div>
-                <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', fontFamily: 'monospace', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px' }}>{p.lbl}</div>
-                <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.25)', fontFamily: 'monospace', textDecoration: 'line-through', marginTop: '2px' }}>{p.sub}</div>
+                <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px' }}>{p.lbl}</div>
+                <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.25)', fontFamily: 'var(--font-mono)', textDecoration: 'line-through', marginTop: '2px' }}>{p.sub}</div>
               </div>
             ))}
           </div>
@@ -210,7 +210,7 @@ export default function LandingClient() {
             >
               Accéder à la formation →
             </button>
-            <div style={{ display: 'flex', gap: '20px', fontSize: '12px', color: 'rgba(255,255,255,0.35)', fontFamily: 'monospace' }}>
+            <div style={{ display: 'flex', gap: '20px', fontSize: '12px', color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-mono)' }}>
               {['✓ Accès à vie', '✓ Garantie 30 jours', '✓ Templates inclus'].map(t => <span key={t}>{t}</span>)}
             </div>
           </div>
@@ -230,7 +230,7 @@ export default function LandingClient() {
               <div style={{ fontSize: '40px', fontWeight: 800, background: 'linear-gradient(135deg, #a78bfa, #60a5fa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                 <Counter target={s.num} suffix={s.suffix} />
               </div>
-              <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', marginTop: '6px', fontFamily: 'monospace' }}>{s.label}</div>
+              <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', marginTop: '6px', fontFamily: 'var(--font-mono)' }}>{s.label}</div>
             </AnimatedSection>
           ))}
         </div>
@@ -239,8 +239,8 @@ export default function LandingClient() {
       {/* ── PROBLEM ── */}
       <section style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
         <AnimatedSection>
-          <div style={{ fontFamily: 'monospace', fontSize: '11px', color: '#a78bfa', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>— Le problème</div>
-          <h2 style={{ fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#a78bfa', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>— Le problème</div>
+          <h2 style={{ fontFamily: 'var(--font-syne), Syne, sans-serif', fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
             Pourquoi ton budget<br />disparaît sans résultats
           </h2>
           <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.45)', marginBottom: '3rem', maxWidth: '500px' }}>
@@ -277,8 +277,8 @@ export default function LandingClient() {
       <section style={{ padding: '7rem 2rem', background: 'rgba(255,255,255,0.015)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
         <div style={{ maxWidth: '780px', margin: '0 auto' }}>
           <AnimatedSection>
-            <div style={{ fontFamily: 'monospace', fontSize: '11px', color: '#a78bfa', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>— La formation</div>
-            <h2 style={{ fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '0.75rem' }}>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#a78bfa', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>— La formation</div>
+            <h2 style={{ fontFamily: 'var(--font-syne), Syne, sans-serif', fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '0.75rem' }}>
               10 leçons. Tout ce qu'il faut.<br />Rien de superflu.
             </h2>
             <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.45)', marginBottom: '3rem' }}>
@@ -299,7 +299,7 @@ export default function LandingClient() {
                   onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.background = 'rgba(124,58,237,0.08)'; (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(124,58,237,0.2)' }}
                   onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.02)'; (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(255,255,255,0.05)' }}
                 >
-                  <span style={{ fontFamily: 'monospace', fontSize: '11px', color: '#a78bfa', fontWeight: 700, minWidth: '28px', marginTop: '2px', opacity: 0.7 }}>{m.num}</span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#a78bfa', fontWeight: 700, minWidth: '28px', marginTop: '2px', opacity: 0.7 }}>{m.num}</span>
                   <div>
                     <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '3px' }}>{m.title}</div>
                     <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', lineHeight: 1.5 }}>{m.desc}</div>
@@ -314,8 +314,8 @@ export default function LandingClient() {
       {/* ── OFFER ── */}
       <section id="acheter" style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
         <AnimatedSection>
-          <div style={{ fontFamily: 'monospace', fontSize: '11px', color: '#a78bfa', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>— L'offre</div>
-          <h2 style={{ fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem' }}>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#a78bfa', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>— L'offre</div>
+          <h2 style={{ fontFamily: 'var(--font-syne), Syne, sans-serif', fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem' }}>
             Ce que tu obtiens aujourd'hui
           </h2>
         </AnimatedSection>
@@ -344,7 +344,7 @@ export default function LandingClient() {
                   <span style={{ fontSize: '22px', color: 'rgba(255,255,255,0.3)', textDecoration: 'line-through' }}>97€</span>
                   <span style={{ fontSize: '11px', fontWeight: 700, color: '#fbbf24', background: 'rgba(251,191,36,0.1)', padding: '3px 10px', borderRadius: '100px', border: '1px solid rgba(251,191,36,0.3)' }}>↓ Early bird</span>
                 </div>
-                <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.25)', fontFamily: 'monospace', marginBottom: '1.5rem' }}>Prix augmente à 97€ au premier palier de ventes.</p>
+                <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.25)', fontFamily: 'var(--font-mono)', marginBottom: '1.5rem' }}>Prix augmente à 97€ au premier palier de ventes.</p>
                 <button
                   onClick={handleCheckout}
                   style={{
@@ -380,8 +380,8 @@ export default function LandingClient() {
       <section style={{ padding: '7rem 2rem', background: 'rgba(255,255,255,0.015)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <div style={{ maxWidth: '680px', margin: '0 auto' }}>
           <AnimatedSection>
-            <div style={{ fontFamily: 'monospace', fontSize: '11px', color: '#a78bfa', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>— FAQ</div>
-            <h2 style={{ fontSize: 'clamp(28px,4vw,42px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '2.5rem' }}>Avant d'acheter</h2>
+            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: '#a78bfa', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>— FAQ</div>
+            <h2 style={{ fontFamily: 'var(--font-syne), Syne, sans-serif', fontSize: 'clamp(28px,4vw,42px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '2.5rem' }}>Avant d'acheter</h2>
           </AnimatedSection>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
             {FAQS.map((f, i) => (
@@ -409,7 +409,7 @@ export default function LandingClient() {
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, rgba(124,58,237,0.15) 0%, transparent 70%)' }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <AnimatedSection>
-            <h2 style={{ fontSize: 'clamp(32px,5vw,56px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-syne), Syne, sans-serif', fontSize: 'clamp(32px,5vw,56px)', fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
               Lance ta première campagne<br />cette semaine.
             </h2>
             <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.45)', marginBottom: '2.5rem' }}>
@@ -432,7 +432,7 @@ export default function LandingClient() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '2rem', textAlign: 'center', fontFamily: 'monospace', fontSize: '11px', color: 'rgba(255,255,255,0.25)' }}>
+      <footer style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '2rem', textAlign: 'center', fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'rgba(255,255,255,0.25)' }}>
         © 2026 · Formation Google UAC · <a href="/mentions-legales" style={{ color: 'inherit' }}>Mentions légales</a> · <a href="/cgv" style={{ color: 'inherit' }}>CGV</a>
       </footer>
 
@@ -445,7 +445,7 @@ export default function LandingClient() {
       }}>
         <div>
           <div style={{ fontSize: '20px', fontWeight: 800 }}>67€ <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through', fontWeight: 400 }}>97€</span></div>
-          <div style={{ fontFamily: 'monospace', fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>Early bird · accès à vie · garanti 30j</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>Early bird · accès à vie · garanti 30j</div>
         </div>
         <button
           onClick={handleCheckout}
