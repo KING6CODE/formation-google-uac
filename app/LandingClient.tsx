@@ -93,7 +93,7 @@ export default function LandingClient() {
   }, [])
 
   return (
-    <div style={{ background: '#080810', color: '#e8e8f0' overflowX: 'hidden' }}>
+    <div style={{ background: '#080810', color: '#e8e8f0', overflowX: 'hidden' }}>
 
       {/* ── NAV ── */}
       <nav style={{
