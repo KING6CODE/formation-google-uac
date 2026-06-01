@@ -128,23 +128,16 @@ export default function LandingClient() {
       {/* ── HERO ── */}
       <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '7rem 2rem 4rem', position: 'relative', overflow: 'hidden' }}>
 
-        {/* Mesh gradient background */}
+        {/* Animated background */}
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', top: '10%', left: '15%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%)', filter: 'blur(40px)', animation: 'float1 8s ease-in-out infinite' }} />
-          <div style={{ position: 'absolute', top: '30%', right: '10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(79,70,229,0.15) 0%, transparent 70%)', filter: 'blur(40px)', animation: 'float2 10s ease-in-out infinite' }} />
-          <div style={{ position: 'absolute', bottom: '20%', left: '30%', width: '350px', height: '350px', background: 'radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%)', filter: 'blur(40px)', animation: 'float3 12s ease-in-out infinite' }} />
-          {/* Grid overlay */}
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+          <div className="grid-bg" />
+          <div className="light light-1" />
+          <div className="light light-2" />
+          <div className="light light-3" />
+          <div className="light light-4" />
         </div>
 
-        <style>{`
-          @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,-30px)} }
-          @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,20px)} }
-          @keyframes float3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,-20px)} }
-          @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
-          @keyframes slideUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-          @keyframes shimmer { 0%{background-position:200% center} 100%{background-position:-200% center} }
-        `}</style>
+
 
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '780px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', borderRadius: '100px', border: '1px solid rgba(124,58,237,0.4)', background: 'rgba(124,58,237,0.1)', marginBottom: '2rem', animation: 'slideUp 0.6s ease both' }}>
