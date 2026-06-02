@@ -32,7 +32,7 @@ html {
 
 @keyframes gridMove {
   0%   { background-position: 0px 0px, 0px 0px; }
-  100% { background-position: 0px 60px, 60px 0px; }
+  100% { background-position: 0px 160px, 160px 0px; }
 }
 
 /* ── Lumières flottantes ── */
