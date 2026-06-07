@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 
-const STRIPE_PRICE_ID = 'price_1TfHBzCIO1w2FVrbk3rmA18Z'
+const STRIPE_PRICE_ID = 'price_1Tfe3rCIO1w2FVrbVgEYGMNZ'
 
 async function handleCheckout() {
   try {
