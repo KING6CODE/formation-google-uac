@@ -1,6 +1,23 @@
-import Link from 'next/link'
+'use client'
+
+import { useEffect } from 'react'
 
 export default function MerciPage() {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'purchase', {
+        currency: 'EUR',
+        value: 67,
+        transaction_id: Date.now().toString(),
+        items: [{
+          item_name: 'Formation Google UAC',
+          price: 67,
+          quantity: 1
+        }]
+      })
+    }
+  }, [])
+
   return (
     <div
       style={{
