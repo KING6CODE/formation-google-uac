@@ -21,7 +21,7 @@ export default function CGV() {
       le droit de rétractation ne s'applique pas aux contenus numériques 
       fournis immédiatement après l'achat. Toutefois, nous offrons 
       une garantie satisfait ou remboursé de 30 jours. 
-      Pour en bénéficier : envoyez un email à ton@email.com.</p>
+      Pour en bénéficier : envoyez un email à alistpassecoutrin@gmail.com.</p>
       <h2 style={{fontSize:'18px',fontWeight:600,marginBottom:'1rem',
         marginTop:'2rem'}}>Article 4 — Livraison</h2>
       <p>L'accès à la formation est transmis par email dans les minutes 
