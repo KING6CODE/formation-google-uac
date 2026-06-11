@@ -8,22 +8,21 @@ export default function MentionsLegales() {
       </h1>
       <h2 style={{fontSize:'18px',fontWeight:600,marginBottom:'1rem',
         marginTop:'2rem'}}>Éditeur du site</h2>
-      <p>Prénom NOM<br/>
-      Adresse complète, Code postal Ville<br/>
-      Email : ton@email.com<br/>
-      SIRET : [TON SIRET si auto-entrepreneur]</p>
+      <p>Patrice Passe-Coutrin<br/>
+      63 Rue du Général Leclerc, 54140 Nancy<br/>
+      Email : alistpassecoutrin@gmail.com</p>
       <h2 style={{fontSize:'18px',fontWeight:600,marginBottom:'1rem',
         marginTop:'2rem'}}>Hébergement</h2>
       <p>Vercel Inc. — 340 Pine Street, San Francisco, CA 94104, USA</p>
       <h2 style={{fontSize:'18px',fontWeight:600,marginBottom:'1rem',
         marginTop:'2rem'}}>Propriété intellectuelle</h2>
-      <p>Le contenu de ce site (textes, vidéos, images) est protégé par 
-      le droit d'auteur. Toute reproduction sans autorisation est interdite.</p>
+      <p>Le contenu de ce site (textes, vidéos, images) est protégé par
+      le droit d&apos;auteur. Toute reproduction sans autorisation est interdite.</p>
       <h2 style={{fontSize:'18px',fontWeight:600,marginBottom:'1rem',
         marginTop:'2rem'}}>Données personnelles</h2>
-      <p>Les données collectées (email, nom) sont utilisées uniquement 
-      pour la livraison de la formation et les communications liées. 
-      Conformément au RGPD, vous pouvez demander leur suppression 
+      <p>Les données collectées (email, nom) sont utilisées uniquement
+      pour la livraison de la formation et les communications liées.
+      Conformément au RGPD, vous pouvez demander leur suppression
       à tout moment par email.</p>
     </div>
   )
