@@ -656,7 +656,7 @@ export default function LandingClient() {
           {[
             { num: 40, suffix: 'x', label: 'Moins cher que la moyenne' },
             { num: 10, suffix: '+%', label: 'CTR moyen obtenu' },
-            { num: 3, suffix: ' camps.', label: 'Campagnes prouvées' },
+            { num: 3, suffix: '+.', label: 'Campagnes prouvées' },
             { num: 30, suffix: 'j', label: 'Garantie remboursement' },
           ].map((s, i) => (
             <AnimatedSection key={i} delay={i * 80}>
