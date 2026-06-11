@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 
-const STRIPE_PRICE_ID = 'price_NOUVEAU_197EUR' // ← remplace par ton nouveau Price ID Stripe
+const STRIPE_PRICE_ID = 'price_1Th5lPCIO1w2FVrbK1c5HM3s'
 
 async function handleCheckout() {
   try {
@@ -67,10 +67,10 @@ function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
 
 const MODULES = [
   { num: '01', title: 'Pourquoi les pubs sans paroles gagnent', desc: 'CTR → Quality Score → CPI. Le mécanisme complet avec mes screenshots réels.' },
-  { num: '02', title: 'Anatomie d\'une vidéo satisfaisante', desc: 'Hook 2s · contexte 3s · résolution 15s · CTA 2s. Structure exacte.' },
-  { num: '03', title: 'Workflow créa complet en moins d\'1h', desc: 'ElevenLabs IA + CapCut. Mes prompts exacts. 3 variantes prêtes.' },
+  { num: '02', title: "Anatomie d'une vidéo satisfaisante", desc: 'Hook 2s · contexte 3s · résolution 15s · CTA 2s. Structure exacte.' },
+  { num: '03', title: "Workflow créa complet en moins d'1h", desc: 'ElevenLabs IA + CapCut. Mes prompts exacts. 3 variantes prêtes.' },
   { num: '04', title: 'Le bon format selon ton business', desc: 'App · Produit physique · Service local · SaaS. Chaque cas détaillé.' },
-  { num: '05', title: 'Stratégie CPI bas — forcer l\'algo', desc: 'Pourquoi commencer agressif. Les 3 phases. Le rythme exact.' },
+  { num: '05', title: "Stratégie CPI bas — forcer l'algo", desc: 'Pourquoi commencer agressif. Les 3 phases. Le rythme exact.' },
   { num: '06', title: 'Modèle économique & ROAS', desc: 'LTV, CPA max viable, autofinancement progressif. Simulation réelle.' },
   { num: '07', title: 'Setup campagne Google Ads clic par clic', desc: 'Interface réelle. Zéro approximation. Tu crées en même temps.' },
   { num: '08', title: 'Lire ses métriques — quand agir', desc: '6 métriques clés. Tableau de diagnostic. 5 situations → 5 actions.' },
@@ -79,18 +79,25 @@ const MODULES = [
 ]
 
 const FAQS = [
-  { q: 'Ça marche si mon app n\'a pas encore d\'utilisateurs ?', a: 'Oui. Ma campagne à 0,07€/install a été lancée sur une app récente avec moins de 100 téléchargements. Google UAC ne nécessite pas une base existante.' },
-  { q: 'Quel budget minimum pour commencer ?', a: '5 à 10€ par jour suffit. Sur 7 jours : 35 à 70€ de budget pub. C\'est le minimum pour que l\'algo apprenne correctement.' },
-  { q: 'La méthode s\'applique à d\'autres types de business ?', a: 'Oui. La leçon 4 couvre apps, produits physiques, services locaux et SaaS. La stratégie budget et les métriques sont universelles.' },
-  { q: 'Zéro expérience Google Ads — c\'est pour moi ?', a: 'Oui. La leçon 7 guide la création de ta première campagne clic par clic dans l\'interface réelle. Tu peux suivre en parallèle.' },
-  { q: 'Combien de temps pour voir des résultats ?', a: 'L\'algo a besoin de 5 à 7 jours pour apprendre. Les premières conversions apparaissent généralement en fin de première semaine.' },
-  { q: 'Puis-je proposer ce service à des clients ?', a: 'Oui. La formation couvre tous les aspects opérationnels d\'une campagne UAC. Plusieurs acheteurs l\'utilisent pour facturer ce service 500 à 1500€/mois à des apps Android. Le tracker inclus est directement présentable à un client.' },
+  { q: "Ça marche si mon app n'a pas encore d'utilisateurs ?", a: "Oui. Ma campagne à 0,07€/install a été lancée sur une app récente avec moins de 100 téléchargements. Google UAC ne nécessite pas une base existante." },
+  { q: 'Quel budget minimum pour commencer ?', a: "5 à 10€ par jour suffit. Sur 7 jours : 35 à 70€ de budget pub. C'est le minimum pour que l'algo apprenne correctement." },
+  { q: "La méthode s'applique à d'autres types de business ?", a: "Oui. La leçon 4 couvre apps, produits physiques, services locaux et SaaS. La stratégie budget et les métriques sont universelles." },
+  { q: 'Zéro expérience Google Ads — c\'est pour moi ?', a: "Oui. La leçon 7 guide la création de ta première campagne clic par clic dans l'interface réelle. Tu peux suivre en parallèle." },
+  { q: 'Combien de temps pour voir des résultats ?', a: "L'algo a besoin de 5 à 7 jours pour apprendre. Les premières conversions apparaissent généralement en fin de première semaine." },
+  { q: 'Puis-je proposer ce service à des clients ?', a: "Oui. La formation couvre tous les aspects opérationnels d'une campagne UAC. Plusieurs acheteurs l'utilisent pour facturer ce service 500 à 1500€/mois à des apps Android. Le tracker inclus est directement présentable à un client." },
 ]
 
-// ── Styles globaux injectés une fois ──
+// Icône chevron style Linear — sobre, sans flèche
+function ChevronRight({ size = 14, color = 'currentColor' }: { size?: number; color?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'inline-block', verticalAlign: 'middle', marginLeft: '6px', opacity: 0.85 }}>
+      <path d="M6 3L11 8L6 13" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
 const GLOBAL_CSS = `
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   /* ── Grille de fond ── */
@@ -104,9 +111,7 @@ const GLOBAL_CSS = `
   }
 
   /* ── Lumières orbitales hero ── */
-  .light {
-    position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none;
-  }
+  .light { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
   .light-1 {
     width: 600px; height: 600px; top: -200px; left: 50%;
     transform: translateX(-50%);
@@ -142,7 +147,6 @@ const GLOBAL_CSS = `
     to   { transform: translateY(-40px); }
   }
 
-  /* ── Shimmer texte ── */
   @keyframes shimmer {
     0%   { background-position: 0% center; }
     100% { background-position: 200% center; }
@@ -156,62 +160,149 @@ const GLOBAL_CSS = `
     50%       { opacity: 0.7; box-shadow: 0 0 0 6px rgba(74,222,128,0); }
   }
 
-  /* ── Bouton principal avec reflet ── */
+  /*
+   * ── BOUTON PRINCIPAL style Linear ──
+   * Forme très arrondie (pill), dégradé violet subtil,
+   * reflet semi-opaque sur la moitié haute, glow diffus
+   */
   .btn-primary {
     position: relative; overflow: hidden;
-    padding: 16px 40px; border-radius: 12px; border: none; cursor: pointer;
-    background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
-    color: #fff; font-size: 16px; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 14px 32px;
+    border-radius: 100px;
+    border: none; cursor: pointer;
+    background: linear-gradient(160deg, #8b5cf6 0%, #6d28d9 60%, #5b21b6 100%);
+    color: #fff; font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
     box-shadow:
-      0 0 40px rgba(124,58,237,0.5),
-      0 0 80px rgba(124,58,237,0.2),
-      inset 0 1px 0 rgba(255,255,255,0.15);
-    transition: all 0.25s ease;
-    letter-spacing: -0.01em;
+      0 0 0 1px rgba(124,58,237,0.5),
+      0 4px 24px rgba(124,58,237,0.45),
+      0 1px 0 rgba(255,255,255,0.04) inset;
+    transition: all 0.22s ease;
   }
+  /* reflet haut — demi-pilule lumineuse */
   .btn-primary::before {
     content: '';
-    position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.5s ease;
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.13) 0%, transparent 100%);
+    border-radius: 100px 100px 0 0;
+    pointer-events: none;
   }
-  .btn-primary:hover::before { left: 160%; }
+  /* shimmer au hover */
+  .btn-primary::after {
+    content: '';
+    position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.55s ease;
+    pointer-events: none;
+  }
+  .btn-primary:hover::after { left: 170%; }
   .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow:
-      0 0 60px rgba(124,58,237,0.7),
-      0 0 120px rgba(124,58,237,0.3),
-      inset 0 1px 0 rgba(255,255,255,0.2);
+      0 0 0 1px rgba(124,58,237,0.7),
+      0 6px 32px rgba(124,58,237,0.6),
+      0 1px 0 rgba(255,255,255,0.06) inset;
   }
+  .btn-primary:active { transform: translateY(0px); }
 
-  /* ── Bouton nav ── */
+  /* ── Bouton nav (plus petit, même style pill) ── */
   .btn-nav {
     position: relative; overflow: hidden;
-    padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;
-    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    padding: 7px 16px;
+    border-radius: 100px; border: none; cursor: pointer;
+    background: linear-gradient(160deg, #8b5cf6 0%, #6d28d9 100%);
     color: #fff; font-size: 13px; font-weight: 600;
     box-shadow:
-      0 0 20px rgba(124,58,237,0.4),
-      inset 0 1px 0 rgba(255,255,255,0.15);
+      0 0 0 1px rgba(124,58,237,0.45),
+      0 2px 14px rgba(124,58,237,0.4),
+      inset 0 1px 0 rgba(255,255,255,0.12);
     transition: all 0.2s;
   }
   .btn-nav::before {
     content: '';
-    position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.5s ease;
+    position: absolute; top: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%);
+    border-radius: 100px 100px 0 0;
+    pointer-events: none;
   }
-  .btn-nav:hover::before { left: 160%; }
+  .btn-nav:hover {
+    box-shadow:
+      0 0 0 1px rgba(124,58,237,0.7),
+      0 4px 20px rgba(124,58,237,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+    transform: translateY(-1px);
+  }
 
-  /* ── Card avec reflet bord haut ── */
+  /* ── Bouton sticky (même pill) ── */
+  .btn-sticky {
+    position: relative; overflow: hidden;
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    padding: 9px 20px;
+    border-radius: 100px; border: none; cursor: pointer;
+    background: linear-gradient(160deg, #8b5cf6 0%, #6d28d9 100%);
+    color: #fff; font-size: 13px; font-weight: 600;
+    box-shadow:
+      0 0 0 1px rgba(124,58,237,0.5),
+      0 2px 16px rgba(124,58,237,0.45),
+      inset 0 1px 0 rgba(255,255,255,0.12);
+    transition: all 0.2s;
+  }
+  .btn-sticky::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 100%);
+    border-radius: 100px 100px 0 0;
+    pointer-events: none;
+  }
+  .btn-sticky:hover {
+    box-shadow:
+      0 0 0 1px rgba(124,58,237,0.7),
+      0 4px 22px rgba(124,58,237,0.6),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+    transform: translateY(-1px);
+  }
+
+  /* ── Titre hero : ombre sur ligne 1 (haut) et ligne 3 (bas), pas sur le gradient ── */
+  .hero-line-top {
+    display: block;
+    text-shadow:
+      0 -8px 40px rgba(124,58,237,0.5),
+      0 -2px 20px rgba(124,58,237,0.25),
+      0 2px 12px rgba(0,0,0,0.7);
+  }
+  .hero-line-bottom {
+    display: block;
+    text-shadow:
+      0 8px 40px rgba(124,58,237,0.4),
+      0 2px 20px rgba(124,58,237,0.2),
+      0 -2px 12px rgba(0,0,0,0.7);
+  }
+  /* Ligne gradient : pas de text-shadow (WebkitTextFillColor la rend invisible autrement) */
+  .hero-line-gradient {
+    display: block;
+    background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shimmer 4s linear infinite;
+    filter: drop-shadow(0 0 18px rgba(167,139,250,0.45));
+  }
+
+  /* Titres de sections */
+  .title-glow-subtle {
+    text-shadow:
+      0 0 40px rgba(124,58,237,0.25),
+      0 2px 16px rgba(0,0,0,0.6);
+  }
+
+  /* ── Card principale offre ── */
   .card-glow {
-    position: relative;
-    border-radius: 16px;
+    position: relative; border-radius: 16px; overflow: hidden;
     background: linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(79,70,229,0.08) 100%);
     border: 1px solid rgba(124,58,237,0.3);
-    overflow: hidden;
   }
   .card-glow::before {
     content: '';
@@ -226,7 +317,7 @@ const GLOBAL_CSS = `
     pointer-events: none;
   }
 
-  /* ── Badge pill reflet ── */
+  /* ── Badge pill hero ── */
   .badge-pill {
     position: relative; overflow: hidden;
     display: inline-flex; align-items: center; gap: 8px;
@@ -237,7 +328,7 @@ const GLOBAL_CSS = `
   .badge-pill::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; height: 50%;
-    background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, transparent 100%);
     border-radius: 100px 100px 0 0;
   }
 
@@ -271,32 +362,6 @@ const GLOBAL_CSS = `
   }
   .metric-card:hover { transform: translateY(-2px); }
 
-  /* ── Titre avec ombre lumineuse ── */
-  .title-glow {
-    text-shadow:
-      0 0 60px rgba(124,58,237,0.35),
-      0 0 120px rgba(124,58,237,0.15),
-      0 2px 20px rgba(0,0,0,0.8);
-  }
-  .title-glow-subtle {
-    text-shadow:
-      0 0 40px rgba(124,58,237,0.25),
-      0 2px 16px rgba(0,0,0,0.6);
-  }
-
-  /* ── Section FAQ item ── */
-  .faq-item {
-    padding: 1.25rem 1.5rem; border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.06);
-    background: rgba(255,255,255,0.02);
-    cursor: pointer; transition: all 0.2s;
-  }
-  .faq-item:hover, .faq-item.open {
-    background: rgba(124,58,237,0.08);
-    border-color: rgba(124,58,237,0.25);
-    box-shadow: inset 0 1px 0 rgba(167,139,250,0.1);
-  }
-
   /* ── Module row ── */
   .module-row {
     display: flex; gap: 1.5rem; padding: 1.25rem 1.5rem;
@@ -321,13 +386,12 @@ const GLOBAL_CSS = `
     background: linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent);
   }
 
-  /* ── Problem card ── */
+  /* ── Problem cards ── */
   .problem-card-bad {
     padding: 1.5rem; border-radius: 12px; height: 100%;
     background: rgba(239,68,68,0.05);
     border: 1px solid rgba(239,68,68,0.15);
     position: relative; overflow: hidden;
-    transition: border-color 0.2s;
   }
   .problem-card-bad::before {
     content: '';
@@ -351,15 +415,33 @@ const GLOBAL_CSS = `
     box-shadow: 0 0 30px rgba(124,58,237,0.1);
   }
 
-  /* ── Sticky bar ── */
-  .sticky-bar {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
-    padding: 12px 2rem;
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(8,8,16,0.95); backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(124,58,237,0.2);
-    box-shadow: 0 -8px 40px rgba(124,58,237,0.08);
+  /* ── FAQ ── */
+  .faq-item {
+    padding: 1.25rem 1.5rem; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    cursor: pointer; transition: all 0.2s;
   }
+  .faq-item:hover, .faq-item.open {
+    background: rgba(124,58,237,0.08);
+    border-color: rgba(124,58,237,0.25);
+    box-shadow: inset 0 1px 0 rgba(167,139,250,0.1);
+  }
+
+  /* ── Stat card ── */
+  .stat-card {
+    text-align: center; padding: 1rem; border-radius: 12px;
+    background: rgba(124,58,237,0.06);
+    border: 1px solid rgba(124,58,237,0.12);
+    position: relative; overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent);
+  }
+  .stat-card:hover { transform: translateY(-3px); }
 
   /* ── Guarantee box ── */
   .guarantee-box {
@@ -375,35 +457,14 @@ const GLOBAL_CSS = `
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
   }
 
-  /* ── Stats section card ── */
-  .stat-card {
-    text-align: center;
-    padding: 1rem;
-    border-radius: 12px;
-    background: rgba(124,58,237,0.06);
-    border: 1px solid rgba(124,58,237,0.12);
-    position: relative; overflow: hidden;
-    transition: transform 0.2s;
-  }
-  .stat-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent);
-  }
-  .stat-card:hover { transform: translateY(-3px); }
-
-  /* ── Btn sticky ── */
-  .btn-sticky {
-    position: relative; overflow: hidden;
-    padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer;
-    background: linear-gradient(135deg, #7c3aed, #4f46e5);
-    color: #fff; font-size: 13px; font-weight: 700;
-    box-shadow: 0 0 20px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
-    transition: all 0.2s;
-  }
-  .btn-sticky:hover {
-    box-shadow: 0 0 30px rgba(124,58,237,0.7), inset 0 1px 0 rgba(255,255,255,0.2);
-    transform: translateY(-1px);
+  /* ── Sticky bar ── */
+  .sticky-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+    padding: 12px 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(8,8,16,0.95); backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(124,58,237,0.2);
+    box-shadow: 0 -8px 40px rgba(124,58,237,0.08);
   }
 `
 
@@ -444,7 +505,9 @@ export default function LandingClient() {
           <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', fontFamily: "'JetBrains Mono', monospace" }}>
             <span style={{ color: '#4ade80', marginRight: '6px' }}>●</span>Early bird
           </span>
-          <button className="btn-nav" onClick={handleCheckout}>197€ →</button>
+          <button className="btn-nav" onClick={handleCheckout}>
+            197€ <ChevronRight size={13} />
+          </button>
         </div>
       </nav>
 
@@ -462,9 +525,9 @@ export default function LandingClient() {
           <div className="light light-4" />
         </div>
 
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '780px' }}>
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '820px' }}>
 
-          {/* Badge pill */}
+          {/* Badge */}
           <div className="badge-pill" style={{ marginBottom: '2rem', animation: 'slideUp 0.6s ease both' }}>
             <span style={{
               width: '6px', height: '6px', borderRadius: '50%',
@@ -478,31 +541,30 @@ export default function LandingClient() {
             </span>
           </div>
 
-          {/* H1 avec ombre lumineuse */}
-          <h1
-            className="title-glow"
-            style={{
-              fontSize: 'clamp(38px,5.5vw,68px)', fontWeight: 800,
-              lineHeight: 1.05, letterSpacing: '-0.03em',
-              marginBottom: '1.5rem', animation: 'slideUp 0.6s ease 0.1s both'
-            }}
-          >
-            Maîtrisez Google UAC —<br />
-            <span style={{
-              background: 'linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-              backgroundSize: '200% auto', animation: 'shimmer 4s linear infinite'
-            }}>
-              la compétence mobile
-            </span>
-            <br />la plus sous-exploitée
+          {/*
+           * H1 sur 3 lignes :
+           * Ligne 1 "Maîtrisez Google UAC" → ombre vers le HAUT (glow au-dessus)
+           * Ligne 2 "la compétence mobile" → gradient animé, filtre drop-shadow
+           * Ligne 3 "la plus sous-exploitée" → ombre vers le BAS (glow en dessous)
+           * Pas de tiret pour garder la symétrie
+           */}
+          <h1 style={{
+            fontSize: 'clamp(38px,5.5vw,68px)', fontWeight: 800,
+            lineHeight: 1.08, letterSpacing: '-0.03em',
+            marginBottom: '1.5rem', animation: 'slideUp 0.6s ease 0.1s both'
+          }}>
+            <span className="hero-line-top">Maîtrisez Google UAC</span>
+            <span className="hero-line-gradient">la compétence mobile</span>
+            <span className="hero-line-bottom">la plus sous-exploitée</span>
           </h1>
 
           <p style={{
             fontSize: '18px', color: 'rgba(255,255,255,0.5)', maxWidth: '580px',
             margin: '0 auto 3rem', lineHeight: 1.7, animation: 'slideUp 0.6s ease 0.2s both'
           }}>
-            Que vous promouviez votre app ou que vous proposiez ce service à vos clients — la méthode exacte issue de vraies campagnes à <strong style={{ color: 'rgba(255,255,255,0.8)' }}>0,07€/install</strong>.
+            Que vous promouviez votre app ou proposiez ce service à vos clients —
+            la méthode exacte issue de vraies campagnes à{' '}
+            <strong style={{ color: 'rgba(255,255,255,0.85)' }}>0,07€/install</strong>.
           </p>
 
           {/* Metric cards */}
@@ -515,21 +577,17 @@ export default function LandingClient() {
               { val: '0,54€', lbl: 'CPI campagne 2', sub: 'moy. secteur 1,80€', featured: false },
               { val: '0,57€', lbl: 'CPI campagne 3', sub: 'moy. secteur 2,30€', featured: false },
             ].map((p, i) => (
-              <div
-                key={i}
-                className="metric-card"
-                style={{
-                  background: p.featured ? 'rgba(124,58,237,0.15)' : 'rgba(255,255,255,0.03)',
-                  border: `1px solid ${p.featured ? 'rgba(124,58,237,0.4)' : 'rgba(255,255,255,0.06)'}`,
-                  borderRadius: i === 0 ? '12px 0 0 12px' : i === 2 ? '0 12px 12px 0' : '0',
-                  boxShadow: p.featured ? '0 0 30px rgba(124,58,237,0.2), inset 0 1px 0 rgba(167,139,250,0.2)' : 'none',
-                }}
-              >
+              <div key={i} className="metric-card" style={{
+                background: p.featured ? 'rgba(124,58,237,0.15)' : 'rgba(255,255,255,0.03)',
+                border: `1px solid ${p.featured ? 'rgba(124,58,237,0.4)' : 'rgba(255,255,255,0.06)'}`,
+                borderRadius: i === 0 ? '12px 0 0 12px' : i === 2 ? '0 12px 12px 0' : '0',
+                boxShadow: p.featured ? '0 0 30px rgba(124,58,237,0.2), inset 0 1px 0 rgba(167,139,250,0.2)' : 'none',
+              }}>
                 <div style={{
                   fontSize: '28px', fontWeight: 800,
                   background: 'linear-gradient(135deg, #a78bfa, #60a5fa)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                  textShadow: 'none', filter: p.featured ? 'drop-shadow(0 0 12px rgba(167,139,250,0.5))' : 'none'
+                  filter: p.featured ? 'drop-shadow(0 0 12px rgba(167,139,250,0.5))' : 'none'
                 }}>
                   {p.val}
                 </div>
@@ -551,25 +609,25 @@ export default function LandingClient() {
             ))}
           </div>
 
-          {/* CTA */}
+          {/* CTA bloc */}
           <div style={{
             display: 'flex', flexDirection: 'column', alignItems: 'center',
-            gap: '12px', animation: 'slideUp 0.6s ease 0.4s both'
+            gap: '14px', animation: 'slideUp 0.6s ease 0.4s both'
           }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '4px' }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '2px' }}>
               <span style={{
                 fontSize: '44px', fontWeight: 800, color: '#fff',
-                textShadow: '0 0 30px rgba(255,255,255,0.2), 0 2px 10px rgba(0,0,0,0.5)'
+                textShadow: '0 0 30px rgba(255,255,255,0.15), 0 2px 10px rgba(0,0,0,0.5)'
               }}>197€</span>
               <span style={{ fontSize: '22px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>297€</span>
               <span className="badge-eb">↓ Early bird</span>
             </div>
             <button className="btn-primary" onClick={handleCheckout}>
-              Accéder à la formation →
+              Accéder à la formation <ChevronRight size={15} />
             </button>
             <div style={{
               display: 'flex', gap: '20px', fontSize: '12px',
-              color: 'rgba(255,255,255,0.35)', fontFamily: "'JetBrains Mono', monospace"
+              color: 'rgba(255,255,255,0.3)', fontFamily: "'JetBrains Mono', monospace"
             }}>
               {['✓ Accès à vie', '✓ Garantie 30 jours', '✓ Templates inclus'].map(t => (
                 <span key={t}>{t}</span>
@@ -629,16 +687,11 @@ export default function LandingClient() {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
             letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+          }}>— Le problème</div>
+          <h2 className="title-glow-subtle" style={{
+            fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+            lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem'
           }}>
-            — Le problème
-          </div>
-          <h2
-            className="title-glow-subtle"
-            style={{
-              fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
-              lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem'
-            }}
-          >
             Pourquoi ton budget<br />disparaît sans résultats
           </h2>
           <p style={{
@@ -648,26 +701,20 @@ export default function LandingClient() {
             La plupart des devs font les mêmes erreurs. Et Google se fait payer pour les laisser faire.
           </p>
         </AnimatedSection>
-
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
           {[
-            { bad: true, t: 'Ce que tu fais probablement', b: 'Pub avec voix qui parle, logo, texte "Découvrez notre app". CTR de 1%. L\'algo te pénalise. CPI de 2 à 3€. Budget épuisé en 3 jours.' },
-            { bad: false, t: 'Ce que cette méthode fait', b: 'Format visuel satisfaisant sans paroles. CTR de 10 à 14%. L\'algo te récompense. CPI qui s\'effondre. Résultats dès le premier lancement.' },
-            { bad: true, t: 'La stratégie classique', b: 'Budget élevé dès le départ. Google le dépense vite sur la mauvaise audience. Tu paies pour l\'éducation de l\'algo.' },
-            { bad: false, t: 'La stratégie CPI cible bas', b: 'CPA cible agressif au départ. L\'algo cherche tes conversions les moins chères. Tu augmentes progressivement.' },
+            { bad: true,  t: 'Ce que tu fais probablement', b: "Pub avec voix qui parle, logo, texte \"Découvrez notre app\". CTR de 1%. L'algo te pénalise. CPI de 2 à 3€. Budget épuisé en 3 jours." },
+            { bad: false, t: 'Ce que cette méthode fait',   b: "Format visuel satisfaisant sans paroles. CTR de 10 à 14%. L'algo te récompense. CPI qui s'effondre. Résultats dès le premier lancement." },
+            { bad: true,  t: 'La stratégie classique',      b: "Budget élevé dès le départ. Google le dépense vite sur la mauvaise audience. Tu paies pour l'éducation de l'algo." },
+            { bad: false, t: 'La stratégie CPI cible bas',  b: "CPA cible agressif au départ. L'algo cherche tes conversions les moins chères. Tu augmentes progressivement." },
           ].map((c, i) => (
             <AnimatedSection key={i} delay={i * 60}>
               <div className={c.bad ? 'problem-card-bad' : 'problem-card-good'}>
-                <div style={{
-                  fontSize: '13px', fontWeight: 700, marginBottom: '8px',
-                  display: 'flex', gap: '8px', alignItems: 'center'
-                }}>
+                <div style={{ fontSize: '13px', fontWeight: 700, marginBottom: '8px', display: 'flex', gap: '8px', alignItems: 'center' }}>
                   <span style={{ color: c.bad ? '#f87171' : '#a78bfa' }}>{c.bad ? '✗' : '✓'}</span>
                   {c.t}
                 </div>
-                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, margin: 0 }}>
-                  {c.b}
-                </p>
+                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, margin: 0 }}>{c.b}</p>
               </div>
             </AnimatedSection>
           ))}
@@ -682,7 +729,6 @@ export default function LandingClient() {
         borderBottom: '1px solid rgba(124,58,237,0.1)',
         position: 'relative', overflow: 'hidden'
       }}>
-        {/* Lumière ambiante section */}
         <div style={{
           position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
           width: '600px', height: '200px',
@@ -694,34 +740,25 @@ export default function LandingClient() {
             <div style={{
               fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
               letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+            }}>— La formation</div>
+            <h2 className="title-glow-subtle" style={{
+              fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+              lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '0.75rem'
             }}>
-              — La formation
-            </div>
-            <h2
-              className="title-glow-subtle"
-              style={{
-                fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
-                lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '0.75rem'
-              }}
-            >
               10 leçons. Tout ce qu'il faut.<br />Rien de superflu.
             </h2>
             <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.4)', marginBottom: '3rem' }}>
               Chaque leçon est un screencast de mon vrai compte Google Ads. Zéro approximation.
             </p>
           </AnimatedSection>
-
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
             {MODULES.map((m, i) => (
               <AnimatedSection key={i} delay={i * 40}>
                 <div className="module-row">
                   <span style={{
                     fontFamily: "'JetBrains Mono', monospace", fontSize: '11px',
-                    color: '#a78bfa', fontWeight: 700, minWidth: '28px',
-                    marginTop: '2px', opacity: 0.7
-                  }}>
-                    {m.num}
-                  </span>
+                    color: '#a78bfa', fontWeight: 700, minWidth: '28px', marginTop: '2px', opacity: 0.7
+                  }}>{m.num}</span>
                   <div>
                     <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '3px' }}>{m.title}</div>
                     <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', lineHeight: 1.5 }}>{m.desc}</div>
@@ -739,16 +776,11 @@ export default function LandingClient() {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
             letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+          }}>— L'offre</div>
+          <h2 className="title-glow-subtle" style={{
+            fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+            lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
           }}>
-            — L'offre
-          </div>
-          <h2
-            className="title-glow-subtle"
-            style={{
-              fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
-              lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
-            }}
-          >
             Ce que tu obtiens aujourd'hui
           </h2>
         </AnimatedSection>
@@ -761,7 +793,7 @@ export default function LandingClient() {
                   '10 leçons screencast — mon vrai compte Google Ads ouvert',
                   'Mes 3 vraies campagnes disséquées — 0,07€ · 0,54€ · 0,57€',
                   'Tracker campagne Google Sheets — tableau de bord hebdo',
-                  'Structure de campagne reproductible pour n\'importe quel client',
+                  "Structure de campagne reproductible pour n'importe quel client",
                   'Plan d\'action 30 jours — semaine par semaine',
                   'Accès à vie + mises à jour incluses',
                 ].map((item, i) => (
@@ -771,7 +803,6 @@ export default function LandingClient() {
                   </div>
                 ))}
               </div>
-
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '2rem' }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
                   <span style={{
@@ -787,26 +818,19 @@ export default function LandingClient() {
                 }}>
                   Prix augmente à 297€ au premier palier de ventes.
                 </p>
-                <button
-                  className="btn-primary"
-                  onClick={handleCheckout}
-                  style={{ width: '100%', padding: '18px', fontSize: '16px' }}
-                >
-                  Accéder maintenant pour 197€ →
+                <button className="btn-primary" onClick={handleCheckout} style={{ width: '100%', padding: '18px 32px', fontSize: '16px', borderRadius: '12px' }}>
+                  Accéder maintenant pour 197€ <ChevronRight size={16} />
                 </button>
               </div>
             </div>
           </div>
         </AnimatedSection>
 
-        {/* Guarantee */}
         <AnimatedSection delay={100}>
           <div className="guarantee-box">
             <span style={{ fontSize: '36px', lineHeight: 1, flexShrink: 0 }}>🛡</span>
             <div>
-              <div style={{ fontSize: '15px', fontWeight: 700, marginBottom: '6px' }}>
-                Garantie 30 jours — satisfait ou remboursé
-              </div>
+              <div style={{ fontSize: '15px', fontWeight: 700, marginBottom: '6px' }}>Garantie 30 jours — satisfait ou remboursé</div>
               <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, margin: 0 }}>
                 Tu appliques la méthode. Si tes résultats ne s'améliorent pas, tu m'envoies un email et je te rembourse intégralement. Sans question. Sans délai. Je prends le risque à ta place.
               </p>
@@ -826,16 +850,11 @@ export default function LandingClient() {
             <div style={{
               fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
               letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+            }}>— FAQ</div>
+            <h2 className="title-glow-subtle" style={{
+              fontSize: 'clamp(28px,4vw,42px)', fontWeight: 800,
+              lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '2.5rem'
             }}>
-              — FAQ
-            </div>
-            <h2
-              className="title-glow-subtle"
-              style={{
-                fontSize: 'clamp(28px,4vw,42px)', fontWeight: 800,
-                lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '2.5rem'
-              }}
-            >
               Avant d'acheter
             </h2>
           </AnimatedSection>
@@ -849,8 +868,10 @@ export default function LandingClient() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
                     <span style={{ fontSize: '14px', fontWeight: 600 }}>{f.q}</span>
                     <span style={{
-                      color: '#a78bfa', fontSize: '20px', transition: 'transform 0.2s',
-                      transform: openFaq === i ? 'rotate(45deg)' : 'rotate(0)', flexShrink: 0,
+                      color: '#a78bfa', fontSize: '20px',
+                      transition: 'transform 0.2s',
+                      transform: openFaq === i ? 'rotate(45deg)' : 'rotate(0)',
+                      flexShrink: 0,
                       filter: 'drop-shadow(0 0 4px rgba(167,139,250,0.5))'
                     }}>+</span>
                   </div>
@@ -858,9 +879,7 @@ export default function LandingClient() {
                     <p style={{
                       fontSize: '13px', color: 'rgba(255,255,255,0.45)',
                       lineHeight: 1.7, marginTop: '12px', marginBottom: 0
-                    }}>
-                      {f.a}
-                    </p>
+                    }}>{f.a}</p>
                   )}
                 </div>
               </AnimatedSection>
@@ -875,7 +894,6 @@ export default function LandingClient() {
           position: 'absolute', inset: 0,
           background: 'radial-gradient(ellipse at center, rgba(124,58,237,0.18) 0%, transparent 70%)'
         }} />
-        {/* Lumière centrale */}
         <div style={{
           position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
           width: '500px', height: '300px',
@@ -884,20 +902,17 @@ export default function LandingClient() {
         }} />
         <div style={{ position: 'relative', zIndex: 1 }}>
           <AnimatedSection>
-            <h2
-              className="title-glow"
-              style={{
-                fontSize: 'clamp(32px,5vw,56px)', fontWeight: 800,
-                lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem'
-              }}
-            >
+            <h2 className="title-glow-subtle" style={{
+              fontSize: 'clamp(32px,5vw,56px)', fontWeight: 800,
+              lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem'
+            }}>
               Une compétence. Un mois.<br />Des missions à 800€ pièce derrière.
             </h2>
             <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.4)', marginBottom: '2.5rem' }}>
               Chaque jour sans cette compétence, quelqu'un d'autre la facture à ta place.
             </p>
             <button className="btn-primary" onClick={handleCheckout} style={{ fontSize: '17px', padding: '18px 52px' }}>
-              Accéder pour 197€ →
+              Accéder pour 197€ <ChevronRight size={16} />
             </button>
           </AnimatedSection>
         </div>
@@ -919,15 +934,15 @@ export default function LandingClient() {
         <div>
           <div style={{ fontSize: '20px', fontWeight: 800 }}>
             197€{' '}
-            <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through', fontWeight: 400 }}>
-              297€
-            </span>
+            <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through', fontWeight: 400 }}>297€</span>
           </div>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>
             Early bird · accès à vie · garanti 30j
           </div>
         </div>
-        <button className="btn-sticky" onClick={handleCheckout}>Accéder →</button>
+        <button className="btn-sticky" onClick={handleCheckout}>
+          Accéder <ChevronRight size={13} />
+        </button>
       </div>
     </div>
   )
