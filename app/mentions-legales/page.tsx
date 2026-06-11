@@ -8,9 +8,10 @@ export default function MentionsLegales() {
       </h1>
       <h2 style={{fontSize:'18px',fontWeight:600,marginBottom:'1rem',
         marginTop:'2rem'}}>Éditeur du site</h2>
-      <p>Patrice PASSE-COUTRIN<br/>
-      63 Rue Général Leclerc 54140<br/>
-      Email : alistpassecoutrin@gmail.com<br/>
+      <p>Prénom NOM<br/>
+      Adresse complète, Code postal Ville<br/>
+      Email : ton@email.com<br/>
+      SIRET : [TON SIRET si auto-entrepreneur]</p>
       <h2 style={{fontSize:'18px',fontWeight:600,marginBottom:'1rem',
         marginTop:'2rem'}}>Hébergement</h2>
       <p>Vercel Inc. — 340 Pine Street, San Francisco, CA 94104, USA</p>
