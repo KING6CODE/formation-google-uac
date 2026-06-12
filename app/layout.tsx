@@ -12,12 +12,7 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Formation Google UAC — Installs Android à moins d'1€",
-  description:
-    "La méthode exacte issue de 3 vraies campagnes : 0,07€ · 0,54€ · 0,57€ par installation. 10 leçons screencast. Accès à vie. Garanti 30 jours.",
-  openGraph: {
-    title: "Formation Google UAC — CPI à 0,07€ prouvé",
-    description: "Obtenez vos installs Android à moins d'1€ dès la première campagne.",
-  },
+  description: "La méthode exacte issue de 3 vraies campagnes : 0,07€ · 0,54€ · 0,57€ par installation. 10 leçons screencast. Accès à vie. Garanti 30 jours.",
 }
 
 export default function RootLayout({
@@ -27,6 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={outfit.variable}>
+      {/* GA4 */}
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-YSQTV7LZZB"
         strategy="afterInteractive"
@@ -37,6 +33,7 @@ export default function RootLayout({
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-YSQTV7LZZB');
+          gtag('config', 'AW-18003821360');
         `}
       </Script>
       <body>{children}</body>
