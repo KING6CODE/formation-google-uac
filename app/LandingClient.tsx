@@ -1,6 +1,23 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { 
+  Code, 
+  Briefcase, 
+  Rocket, 
+  GraduationCap, 
+  Play, 
+  AlertCircle, 
+  BarChart3, 
+  Users, 
+  Video, 
+  TrendingDown, 
+  Sliders, 
+  Download, 
+  DollarSign, 
+  Award, 
+  BookOpen 
+} from 'lucide-react'
 
 // ─── Constantes partagées ─────────────────────────────────────────────────────
 
@@ -649,6 +666,25 @@ const LANDING_CSS = `
   }
 `
 
+import React from 'react'
+import { 
+  Code, 
+  Briefcase, 
+  Rocket, 
+  GraduationCap, 
+  Play, 
+  AlertCircle, 
+  BarChart3, 
+  Users, 
+  Video, 
+  TrendingDown, 
+  Sliders, 
+  Download, 
+  DollarSign, 
+  Award, 
+  BookOpen 
+} from 'lucide-react'
+
 // ─── Quiz : types ─────────────────────────────────────────────────────────────
 
 type Answer = string | null
@@ -661,34 +697,41 @@ interface Answers {
   goal: Answer
 }
 
-// ─── Quiz : données ───────────────────────────────────────────────────────────
+interface QuizOption {
+  id: string
+  icon: React.ComponentType<{ size?: number; className?: string }>
+  label: string
+  sub: string
+}
 
-const PROFILES = [
-  { id: 'dev',       icon: '📱', label: 'Dev / indie hacker',    sub: "J'ai une app sur le Play Store" },
-  { id: 'freelance', icon: '💼', label: 'Freelance / agence',    sub: 'Je veux vendre ce service à des clients' },
-  { id: 'founder',   icon: '🚀', label: 'Fondateur de startup',  sub: "Je gère les pubs de mon produit SaaS ou mobile" },
-  { id: 'curious',   icon: '🎯', label: 'Curieux / débutant',    sub: "Je découvre Google Ads et le marketing mobile" },
+// ─── Quiz : données optimisées ────────────────────────────────────────────────
+
+const PROFILES: QuizOption[] = [
+  { id: 'dev',       icon: Code,          label: 'Développeur / Indie Hacker',    sub: 'J\'ai développé une application mobile ou un SaaS' },
+  { id: 'freelance', icon: Briefcase,     label: 'Freelance / Agence',            sub: 'Je souhaite proposer ce service d\'acquisition à mes clients' },
+  { id: 'founder',   icon: Rocket,        label: 'Fondateur de startup',          sub: 'Je pilote la croissance et le marketing de mon produit' },
+  { id: 'curious',   icon: GraduationCap, label: 'Porteur de projet / Débutant', sub: 'Je souhaite acquérir des compétences d\'expert en pub mobile' },
 ]
 
-const SITUATIONS = [
-  { id: 'never',   icon: '🔰', label: 'Jamais lancé de campagne',              sub: 'Je pars de zéro' },
-  { id: 'tried',   icon: '😤', label: "J'ai essayé, résultats décevants",      sub: 'Budget dépensé, peu de résultats' },
-  { id: 'running', icon: '📊', label: 'Campagne active mais CPI trop élevé',   sub: "Je veux optimiser ce que j'ai déjà" },
-  { id: 'client',  icon: '🤝', label: 'Je gère des campagnes pour des clients', sub: "Je veux améliorer mes résultats client" },
+const SITUATIONS: QuizOption[] = [
+  { id: 'never',   icon: Play,          label: 'Acquisition non lancée',            sub: 'Je pars de zéro sur les canaux payants' },
+  { id: 'tried',   icon: AlertCircle,   label: 'Premiers tests non concluants',     sub: 'Budget investi mais le retour sur investissement est insuffisant' },
+  { id: 'running', icon: BarChart3,     label: 'Campagnes actives à optimiser',     sub: 'Mes campagnes tournent mais les coûts (CPI/CPA) sont trop élevés' },
+  { id: 'client',  icon: Users,         label: 'Gestion pour le compte de tiers',    sub: 'Je gère des budgets clients et je veux maximiser leurs performances' },
 ]
 
-const OBSTACLES = [
-  { id: 'creatives', icon: '🎬', label: "Je ne sais pas créer des pubs qui convertissent", sub: 'Format, style, durée...' },
-  { id: 'budget',    icon: '💸', label: 'Mon budget disparaît sans résultats',              sub: "L'algo mange tout sans convertir" },
-  { id: 'metrics',   icon: '📈', label: "Je ne sais pas lire mes métriques",               sub: 'CTR, CPI, ROAS... trop flou' },
-  { id: 'setup',     icon: '⚙️', label: 'La configuration de campagne me bloque',          sub: 'Interface Google Ads = terrain miné' },
+const OBSTACLES: QuizOption[] = [
+  { id: 'creatives', icon: Video,        label: 'Stratégie créative (Ad Creatives)',  sub: 'Difficulté à concevoir des vidéos ou visuels qui convertissent' },
+  { id: 'budget',   icon: TrendingDown, label: 'Rentabilité et perte de budget',     sub: 'Le budget est dépensé rapidement sans générer de ventes' },
+  { id: 'metrics',   icon: Sliders,      label: 'Analyse des données et KPIs',        sub: 'Difficulté à interpréter les métriques (CTR, CPI, ROAS) pour optimiser' },
+  { id: 'setup',     icon: Sliders,      label: 'Configuration et algorithmes',       sub: 'L\'interface Google Ads et le paramétrage technique me freinent' },
 ]
 
-const GOALS = [
-  { id: 'installs', icon: '⬇️', label: 'Faire exploser mes installations',    sub: 'Volume maximal, CPI minimum' },
-  { id: 'revenue',  icon: '💰', label: 'Générer du revenu avec mon app',       sub: 'IAP, abonnements, monétisation' },
-  { id: 'service',  icon: '🏆', label: 'Facturer ce service 500-1500€/mois',  sub: 'Devenir expert pour mes clients' },
-  { id: 'learn',    icon: '🎓', label: 'Comprendre la pub mobile pour de bon', sub: 'Bases solides, méthode durable' },
+const GOALS: QuizOption[] = [
+  { id: 'installs', icon: Download,   label: 'Volume de téléchargements',      sub: 'Générer un flux massif d\'installations au coût le plus bas' },
+  { id: 'revenue',  icon: DollarSign, label: 'Chiffre d\'affaires et ROAS',     sub: 'Maximiser les achats in-app, les abonnements et la monétisation' },
+  { id: 'service',  icon: Award,      label: 'Développer une offre High-Ticket', sub: 'Facturer cette expertise entre 500€ et 1500€/mois par client' },
+  { id: 'learn',    icon: BookOpen,   label: 'Maîtrise complète de l\'écosystème',sub: 'Acquérir une méthodologie d\'acquisition structurée et pérenne' },
 ]
 
 // ─── Quiz : logique de résultat personnalisé ──────────────────────────────────
@@ -697,24 +740,24 @@ function getResultLines(answers: Answers) {
   const { profile, obstacle, goal } = answers
 
   const profileLine: Record<string, string> = {
-    dev:       "En tant que dev indie, tu as déjà le plus dur : un produit live.",
-    freelance: "En tant que freelance, maîtriser Google UAC te permet de facturer une prestation rare.",
-    founder:   "En tant que fondateur, chaque euro de pub doit travailler. Cette méthode t'y aide.",
-    curious:   "Partir de zéro est un avantage : tu n'as pas de mauvaises habitudes à défaire.",
+    dev:       "En tant que Développeur / Indie Hacker, tu as déjà franchi l'étape la plus complexe : concevoir un produit fonctionnel.",
+    freelance: "En tant que Freelance, maîtriser l'algorithme Google UAC te permet de packager une offre d'acquisition premium et rare sur le marché.",
+    founder:   "En tant que Fondateur, chaque euro investi doit être un levier de croissance. Cette méthode sécurise ton scaling.",
+    curious:   "Partir de zéro est une opportunité idéale : tu adoptes immédiatement les bonnes pratiques sans les biais des anciennes méthodes.",
   }
 
   const obstacleLine: Record<string, string> = {
-    creatives: "La leçon 2 décompose la structure exacte d'une vidéo à CTR élevé — hook 2s, résolution 15s, CTA.",
-    budget:    "La leçon 5 explique pourquoi un CPA cible agressif au départ réduit ton CPI de 70%+ en 7 jours.",
-    metrics:   "La leçon 8 te donne un tableau de diagnostic : 6 métriques, 5 situations, 5 actions exactes.",
-    setup:     "La leçon 7 est un screencast clic par clic dans l'interface réelle. Tu crées ta campagne en parallèle.",
+    creatives: "Le Module 2 décortique la structure exacte d'une vidéo à fort taux de conversion : un hook de 2s, une démonstration de 15s et un call-to-action chirurgical.",
+    budget:    "Le Module 5 détaille la stratégie d'enchères au CPA cible pour stabiliser ton algorithme et réduire tes coûts de 70% dès la première semaine.",
+    metrics:   "Le Module 8 met à ta disposition un tableau de pilotage complet : 6 métriques clés reliées directement à 5 plans d'actions correctifs.",
+    setup:     "Le Module 7 est un screencast complet en conditions réelles. Tu configures tes campagnes étape par étape en parallèle de la vidéo.",
   }
 
   const goalLine: Record<string, string> = {
-    installs: "Objectif installations : mes 3 campagnes montrent 0,07€ – 0,57€ par install. C'est reproductible.",
-    revenue:  "La leçon 6 modélise LTV, CPA max viable et autofinancement. Tu sauras exactement quand scale.",
-    service:  "Le tracker inclus est présentable directement à un client. Plusieurs acheteurs facturent déjà 800€+ par mission.",
-    learn:    "10 leçons, zéro rembourrage. Chaque module a un résultat concret, pas juste de la théorie.",
+    installs: "Objectif Volume : la méthode s'appuie sur des architectures de campagnes réelles ayant généré des coûts par installation optimisés (0,07€ à 0,57€).",
+    revenue:  "Objectif Rentabilité : le Module 6 modélise l'équilibre entre LTV (valeur client) et CPA maximum pour autofinancer ta croissance.",
+    service:  "Objectif Agence : le framework de reporting inclus est directement livrable à tes clients pour justifier tes résultats et valider ton retainer mensuel.",
+    learn:    "Zéro théorie superflue : le programme contient 10 modules ultra-concrets conçus pour délivrer un système d'acquisition immédiatement exploitable.",
   }
 
   return [
