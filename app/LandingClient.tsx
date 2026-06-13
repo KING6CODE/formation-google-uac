@@ -65,6 +65,53 @@ function Counter({ target, suffix = '' }: { target: number; suffix?: string }) {
   return <span ref={ref}>{count}{suffix}</span>
 }
 
+function Countdown({ targetDate }: { targetDate: Date }) {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+
+  useEffect(() => {
+    const update = () => {
+      const diff = targetDate.getTime() - Date.now()
+      if (diff <= 0) return
+      setTimeLeft({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
+      })
+    }
+    update()
+    const timer = setInterval(update, 1000)
+    return () => clearInterval(timer)
+  }, [targetDate])
+
+  return (
+    <div style={{ display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+      {[
+        { val: timeLeft.days, label: 'jours' },
+        { val: timeLeft.hours, label: 'heures' },
+        { val: timeLeft.minutes, label: 'min' },
+        { val: timeLeft.seconds, label: 'sec' },
+      ].map((t, i) => (
+        <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{
+            fontSize: '28px', fontWeight: 800, color: '#fff',
+            background: 'rgba(124,58,237,0.15)', border: '1px solid rgba(124,58,237,0.3)',
+            borderRadius: '8px', padding: '8px 14px', minWidth: '56px', textAlign: 'center',
+            fontFamily: "'JetBrains Mono', monospace",
+            boxShadow: '0 1px 0 rgba(167,139,250,0.15) inset',
+          }}>
+            {String(t.val).padStart(2, '0')}
+          </div>
+          <div style={{
+            fontSize: '10px', color: 'rgba(255,255,255,0.35)',
+            fontFamily: "'JetBrains Mono', monospace", marginTop: '4px', letterSpacing: '0.08em',
+          }}>{t.label}</div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 const MODULES = [
   { num: '01', title: 'Pourquoi les pubs sans paroles gagnent', desc: 'CTR → Quality Score → CPI. Le mécanisme complet avec mes screenshots réels.' },
   { num: '02', title: "Anatomie d'une vidéo satisfaisante", desc: 'Hook 2s · contexte 3s · résolution 15s · CTA 2s. Structure exacte.' },
@@ -621,6 +668,19 @@ export default function LandingClient() {
               }}>197€</span>
               <span style={{ fontSize: '22px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>297€</span>
               <span className="badge-eb">↓ Early bird</span>
+            </div>
+            {/* Compteur urgence */}
+            <div style={{
+              padding: '1rem 1.5rem', borderRadius: '12px', marginBottom: '1rem',
+              background: 'rgba(239,68,68,0.07)', border: '1px solid rgba(239,68,68,0.2)',
+            }}>
+              <div style={{
+                fontSize: '12px', color: '#f87171', fontFamily: "'JetBrains Mono', monospace",
+                marginBottom: '10px', letterSpacing: '0.08em', textTransform: 'uppercase',
+              }}>
+                ⏱ Prix early bird — se termine dans
+              </div>
+              <Countdown targetDate={new Date('2026-06-28T23:59:59')} />
             </div>
             <button className="btn-primary" onClick={handleCheckout}>
               Accéder à la formation <ChevronRight size={15} />
