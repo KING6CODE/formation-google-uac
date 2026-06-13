@@ -1403,13 +1403,21 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
           {/* Lien vers la landing page complète */}
           <p style={{ textAlign: 'center', marginTop: '1.5rem' }}>
             <button 
-              onClick={() => (window as any).handleQuizComplete?.({ 
-                name: "Alistair", // À remplacer par la vraie variable contenant le prénom
-                goal: "générer plus de leads", 
-                level: "intermédiaire" 
-              })}
+              onClick={() => {
+                // On récupère le prénom écrit par l'utilisateur (on voit dans votre image que la variable s'appelle "name")
+                const userName = typeof name !== 'undefined' && name.trim() !== '' ? name : "Alistair";
+                
+                // On affiche la landing page personnalisée au lieu d'ouvrir Stripe
+                (window as any).handleQuizComplete?.({ 
+                  name: userName,
+                  goal: "générer plus de leads", 
+                  level: "intermédiaire" 
+                });
+              }} 
+              className="btn-primary" 
+              style={{ width: '100%', justifyContent: 'center' }}
             >
-              Découvrir ma stratégie personnalisée
+              Découvrir mon plan d'action personnalisé <ChevronRight size={16} />
             </button>
           </p>
         </div>
