@@ -1403,8 +1403,8 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
           {/* Lien vers la landing page complète */}
           <p style={{ textAlign: 'center', marginTop: '1.5rem' }}>
             <button 
-              onClick={() => handleQuizComplete({ 
-                name: "Alistair", // À remplacer par la vraie valeur saisie par l'utilisateur
+              onClick={() => (window as any).handleQuizComplete?.({ 
+                name: "Alistair", // À remplacer par la vraie variable contenant le prénom
                 goal: "générer plus de leads", 
                 level: "intermédiaire" 
               })}
@@ -2167,9 +2167,20 @@ function LandingPageInner() {
 
 export default function LandingClient() {
   const [showLanding, setShowLanding] = useState(false)
-  
   const [quizProfile, setQuizProfile] = useState<{ name?: string; goal?: string; level?: string } | null>(null)
   
+  useEffect(() => {
+    (window as any).handleQuizComplete = (answers: { name: string; goal: string; level: string }) => {
+      setQuizProfile(answers)
+      setShowLanding(true)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+    return () => {
+      if (typeof window !== 'undefined') {
+        delete (window as any).handleQuizComplete
+      }
+    }
+  }, [])
   const handleQuizComplete = (answers: { name: string; goal: string; level: string }) => {
     setQuizProfile(answers)
     setShowLanding(true)
