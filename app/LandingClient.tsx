@@ -1404,8 +1404,9 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
           <p style={{ textAlign: 'center', marginTop: '1.5rem' }}>
             <button 
               onClick={() => {
-                // On récupère le prénom écrit par l'utilisateur (on voit dans votre image que la variable s'appelle "name")
-                const userName = typeof name !== 'undefined' && name.trim() !== '' ? name : "Alistair";
+                // On utilise une astuce en passant par une chaîne vide par défaut si 'name' n'est pas accessible
+                const rawName = (typeof name !== 'undefined' ? name : "") as any;
+                const userName = rawName && typeof rawName === 'string' && rawName.length > 0 ? rawName : "Alistair";
                 
                 // On affiche la landing page personnalisée au lieu d'ouvrir Stripe
                 (window as any).handleQuizComplete?.({ 
