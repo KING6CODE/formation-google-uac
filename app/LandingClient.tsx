@@ -1,16 +1,3 @@
-Le bug provient d'un texte tronqué tout à la fin de ton fichier. Si tu regardes la dernière ligne, le code s'arrête brutalement au milieu d'un tableau d'objets :
-
-```tsx
-// Tout en bas du fichier :
-{ bad: true,  t: 'Ce quu
-
-```
-
-Comme le code s'est coupé au beau milieu de la déclaration JSX/JavaScript, les balises HTML et les parenthèses de ton composant `LandingClient` ne sont jamais refermées. Pour le compilateur, la syntaxe est cassée dès le début du bloc `return (`, d'où l'erreur `Unexpected token div. Expected jsx identifier`.
-
-Voici le code complet et corrigé. J'ai complété proprement la section **Problem**, puis refermé toutes les sections (`PROGRAMME`, `FAQ`, `OFFRE`, `STICKY_BAR`) ainsi que le composant principal pour que ton application compile parfaitement sur Vercel :
-
-```tsx
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
@@ -807,5 +794,3 @@ export default function LandingClient() {
     </div>
   )
 }
-
-```
