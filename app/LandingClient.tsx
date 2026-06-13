@@ -1535,10 +1535,10 @@ function LandingPageInner() {
 
           {/* TITRE PRINCIPAL DE LA LANDING PAGE */}
           <h1>
-            {quizProfile ? (
+            {typeof window !== 'undefined' && (window as any).quizProfile ? (
               <>
-                Analyse terminée pour <span style={{ color: '#a78bfa' }}>{quizProfile.name}</span> : <br />
-                Voici votre plan d'action pour {quizProfile.goal} via Google UAC
+                Analyse terminée pour <span style={{ color: '#a78bfa' }}>{(window as any).quizProfile.name}</span> : <br />
+                Voici votre plan d'action pour {(window as any).quizProfile.goal} via Google UAC
               </>
             ) : (
               "Doublez le ROI de vos campagnes Google UAC"
@@ -1546,8 +1546,10 @@ function LandingPageInner() {
           </h1>
           
           <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginTop: '1rem' }}>
-            {quizProfile?.level === 'débutant' && "Ce guide a été spécialement optimisé pour les profils débutants (aucune compétence technique requise)."}
-            {quizProfile?.level === 'intermédiaire' && "Ce plan d'action contient des stratégies avancées pour débloquer votre palier actuel."}
+            {typeof window !== 'undefined' && (window as any).quizProfile?.level === 'débutant' && 
+              "Ce guide a été spécialement optimisé pour les profils débutants (aucune compétence technique requise)."}
+            {typeof window !== 'undefined' && (window as any).quizProfile?.level === 'intermédiaire' && 
+              "Ce plan d'action contient des stratégies avancées pour débloquer votre palier actuel."}
           </p>
 
           {/* Metric cards */}
@@ -2167,17 +2169,20 @@ function LandingPageInner() {
 
 export default function LandingClient() {
   const [showLanding, setShowLanding] = useState(false)
+  const [, forceUpdate] = useState(0)
   const [quizProfile, setQuizProfile] = useState<{ name?: string; goal?: string; level?: string } | null>(null)
   
   useEffect(() => {
     (window as any).handleQuizComplete = (answers: { name: string; goal: string; level: string }) => {
-      setQuizProfile(answers)
-      setShowLanding(true)
+      (window as any).quizProfile = answers // On stocke globalement pour le titre du haut
+      setShowLanding(true)                  // On affiche la landing page
+      forceUpdate(n => n + 1)               // On force le rafraîchissement
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
     return () => {
       if (typeof window !== 'undefined') {
         delete (window as any).handleQuizComplete
+        delete (window as any).quizProfile
       }
     }
   }, [])
