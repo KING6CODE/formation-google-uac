@@ -919,7 +919,7 @@ function ChoiceCard({
     <button
       onClick={onClick}
       style={{
-        width: '100%', textAlign: 'left', cursor: 'pointer', border: 'none',
+        width: '100%', textAlign: 'left', cursor: 'pointer',
         padding: '1rem 1.25rem', borderRadius: '12px',
         background: selected ? 'rgba(124,58,237,0.18)' : 'rgba(255,255,255,0.03)',
         border: `1.5px solid ${selected ? 'rgba(167,139,250,0.6)' : 'rgba(255,255,255,0.07)'}`,
