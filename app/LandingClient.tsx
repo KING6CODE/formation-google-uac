@@ -1369,7 +1369,7 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
                 }
               }}
               >
-                Accéder maintenant pour 197€ <ChevronRight size={13} />
+                Afficher mon plan d'action <ChevronRight size={13} />
               </button>
             </div>
           </div>
