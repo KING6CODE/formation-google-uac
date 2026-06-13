@@ -1402,11 +1402,14 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
 
           {/* Lien vers la landing page complète */}
           <p style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-            <button
-              className="btn-see-landing"
-              onClick={onShowLanding}
+            <button 
+              onClick={() => handleQuizComplete({ 
+                name: "Alistair", // À remplacer par la vraie valeur saisie par l'utilisateur
+                goal: "générer plus de leads", 
+                level: "intermédiaire" 
+              })}
             >
-              ← Voir la page complète de la formation
+              Découvrir ma stratégie personnalisée
             </button>
           </p>
         </div>
@@ -1530,23 +1533,21 @@ function LandingPageInner() {
             </span>
           </div>
 
-          <h1 className="hero-h1" style={{
-            fontSize: 'clamp(36px,5.5vw,68px)', fontWeight: 800,
-            lineHeight: 1.08, letterSpacing: '-0.03em',
-            marginBottom: '1.5rem', animation: 'slideUp 0.6s ease 0.1s both',
-          }}>
-            <span className="hero-line-top">Maîtrisez Google UAC</span>
-            <span className="hero-line-gradient">la compétence mobile</span>
-            <span className="hero-line-bottom">la plus sous-exploitée</span>
+          {/* TITRE PRINCIPAL DE LA LANDING PAGE */}
+          <h1>
+            {quizProfile ? (
+              <>
+                Analyse terminée pour <span style={{ color: '#a78bfa' }}>{quizProfile.name}</span> : <br />
+                Voici votre plan d'action pour {quizProfile.goal} via Google UAC
+              </>
+            ) : (
+              "Doublez le ROI de vos campagnes Google UAC"
+            )}
           </h1>
-
-          <p className="hero-sub" style={{
-            fontSize: '17px', color: 'rgba(255,255,255,0.5)', maxWidth: '560px',
-            margin: '0 auto 2.5rem', lineHeight: 1.7, animation: 'slideUp 0.6s ease 0.2s both',
-          }}>
-            Que vous promouviez votre app ou proposiez ce service à vos clients —
-            la méthode exacte issue de vraies campagnes à{' '}
-            <strong style={{ color: 'rgba(255,255,255,0.85)' }}>0,07€/install</strong>.
+          
+          <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginTop: '1rem' }}>
+            {quizProfile?.level === 'débutant' && "Ce guide a été spécialement optimisé pour les profils débutants (aucune compétence technique requise)."}
+            {quizProfile?.level === 'intermédiaire' && "Ce plan d'action contient des stratégies avancées pour débloquer votre palier actuel."}
           </p>
 
           {/* Metric cards */}
@@ -2166,15 +2167,12 @@ function LandingPageInner() {
 
 export default function LandingClient() {
   const [showLanding, setShowLanding] = useState(false)
+  // Stocke le profil ou les réponses du client pour personnaliser la page
+  const [quizProfile, setQuizProfile] = useState<{ name?: string; goal?: string; level?: string } | null>(null)
 
-  const handleShowLanding = () => {
-    setShowLanding(true)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  if (!showLanding) {
-    return <QuizFunnelInner onShowLanding={handleShowLanding} />
-  }
-
-  return <LandingPageInner />
+  // Cette fonction sera appelée à la toute fin du quiz
+  const handleQuizComplete = (answers: { name: string; goal: string; level: string }) => {
+    setQuizProfile(answers) // On sauvegarde ses réponses
+    setShowLanding(true)    // On affiche la Landing Page
+    window.scrollTo({ top: 0, behavior: 'smooth' }) // Retour en haut de page
 }
