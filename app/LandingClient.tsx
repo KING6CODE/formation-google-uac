@@ -1408,24 +1408,6 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
               </p>
             </div>
           </div>
-
-          {/* Lien vers la landing page complète */}
-        <p style={{ textAlign: 'center', marginTop: '1.5rem' }}>
-            <button 
-              onClick={() => {
-                // On active directement la Landing Page SANS appeler handleCheckout (donc PAS de paiement Stripe ici)
-                (window as any).handleQuizComplete?.({ 
-                  name: "Alistair",
-                  goal: "générer plus de leads", 
-                  level: "intermédiaire" 
-                });
-              }} 
-              className="btn-primary" 
-              style={{ width: '100%', justifyContent: 'center' }}
-            >
-              Découvrir mon plan d'action personnalisé <ChevronRight size={16} />
-            </button>
-          </p>
         </div>
       )}
     </div>
