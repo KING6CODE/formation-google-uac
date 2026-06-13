@@ -1401,16 +1401,12 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
           </div>
 
           {/* Lien vers la landing page complète */}
-          <p style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+        <p style={{ textAlign: 'center', marginTop: '1.5rem' }}>
             <button 
               onClick={() => {
-                // On utilise une astuce en passant par une chaîne vide par défaut si 'name' n'est pas accessible
-                const rawName = (typeof name !== 'undefined' ? name : "") as any;
-                const userName = rawName && typeof rawName === 'string' && rawName.length > 0 ? rawName : "Alistair";
-                
-                // On affiche la landing page personnalisée au lieu d'ouvrir Stripe
+                // On active directement la Landing Page SANS appeler handleCheckout (donc PAS de paiement Stripe ici)
                 (window as any).handleQuizComplete?.({ 
-                  name: userName,
+                  name: "Alistair",
                   goal: "générer plus de leads", 
                   level: "intermédiaire" 
                 });
