@@ -113,25 +113,25 @@ function Countdown({ targetDate }: { targetDate: Date }) {
 }
 
 const MODULES = [
-  { num: '01', title: 'Pourquoi les pubs sans paroles gagnent', desc: 'CTR -> Quality Score -> CPI. Le mecanisme complet avec mes screenshots reels.' },
-  { num: '02', title: "Anatomie d'une video satisfaisante", desc: 'Hook 2s - contexte 3s - resolution 15s - CTA 2s. Structure exacte.' },
-  { num: '03', title: "Workflow crea complet en moins d'1h", desc: 'ElevenLabs IA + CapCut. Mes prompts exacts. 3 variantes pretes.' },
-  { num: '04', title: 'Le bon format selon ton business', desc: 'App - Produit physique - Service local - SaaS. Chaque cas detaille.' },
-  { num: '05', title: "Strategie CPI bas \u2014 forcer l'algo", desc: 'Pourquoi commencer agressif. Les 3 phases. Le rythme exact.' },
-  { num: '06', title: 'Modele economique & ROAS', desc: 'LTV, CPA max viable, autofinancement progressif. Simulation reelle.' },
-  { num: '07', title: 'Setup campagne Google Ads clic par clic', desc: 'Interface reelle. Zero approximation. Tu crees en meme temps.' },
-  { num: '08', title: 'Lire ses metriques \u2014 quand agir', desc: '6 metriques cles. Tableau de diagnostic. 5 situations -> 5 actions.' },
-  { num: '09', title: 'Mots-cles negatifs', desc: 'Rapport des termes. Liste de depart. Routine 10 min/semaine.' },
-  { num: '10', title: '5 erreurs fatales + plan 30 jours', desc: "Erreurs reelles. Plan d'action semaine par semaine." },
+  { num: '01', title: 'Pourquoi les pubs sans paroles gagnent', desc: 'CTR → Quality Score → CPI. Le mécanisme complet avec mes screenshots réels.' },
+  { num: '02', title: "Anatomie d'une vidéo satisfaisante", desc: 'Hook 2s – contexte 3s – résolution 15s – CTA 2s. Structure exacte.' },
+  { num: '03', title: "Workflow créa complet en moins d'1h", desc: 'ElevenLabs IA + CapCut. Mes prompts exacts. 3 variantes prêtes.' },
+  { num: '04', title: 'Le bon format selon ton business', desc: 'App – Produit physique – Service local – SaaS. Chaque cas détaillé.' },
+  { num: '05', title: 'Stratégie CPI bas — forcer l\'algo', desc: 'Pourquoi commencer agressif. Les 3 phases. Le rythme exact.' },
+  { num: '06', title: 'Modèle économique & ROAS', desc: 'LTV, CPA max viable, autofinancement progressif. Simulation réelle.' },
+  { num: '07', title: 'Setup campagne Google Ads clic par clic', desc: 'Interface réelle. Zéro approximation. Tu crées en même temps.' },
+  { num: '08', title: 'Lire ses métriques — quand agir', desc: '6 métriques clés. Tableau de diagnostic. 5 situations → 5 actions.' },
+  { num: '09', title: 'Mots-clés négatifs', desc: 'Rapport des termes. Liste de départ. Routine 10 min/semaine.' },
+  { num: '10', title: '5 erreurs fatales + plan 30 jours', desc: "Erreurs réelles. Plan d'action semaine par semaine." },
 ]
 
 const FAQS = [
-  { q: "Ca marche si mon app n'a pas encore d'utilisateurs ?", a: "Oui. Ma campagne a 0,07\u20ac/install a ete lancee sur une app recente avec moins de 100 telechargements. Google UAC ne necessite pas une base existante." },
-  { q: 'Quel budget minimum pour commencer ?', a: "5 a 10\u20ac par jour suffit. Sur 7 jours : 35 a 70\u20ac de budget pub. C'est le minimum pour que l'algo apprenne correctement." },
-  { q: "La methode s'applique a d'autres types de business ?", a: "Oui. La lecon 4 couvre apps, produits physiques, services locaux et SaaS. La strategie budget et les metriques sont universelles." },
-  { q: "Zero experience Google Ads \u2014 c'est pour moi ?", a: "Oui. La lecon 7 guide la creation de ta premiere campagne clic par clic dans l'interface reelle. Tu peux suivre en parallele." },
-  { q: 'Combien de temps pour voir des resultats ?', a: "L'algo a besoin de 5 a 7 jours pour apprendre. Les premieres conversions apparaissent generalement en fin de premiere semaine." },
-  { q: 'Puis-je proposer ce service a des clients ?', a: "Oui. La formation couvre tous les aspects operationnels d'une campagne UAC. Plusieurs acheteurs l'utilisent pour facturer ce service 500 a 1500\u20ac/mois a des apps Android. Le tracker inclus est directement presentable a un client." },
+  { q: "Ça marche si mon app n'a pas encore d'utilisateurs ?", a: "Oui. Ma campagne à 0,07€/install a été lancée sur une app récente avec moins de 100 téléchargements. Google UAC ne nécessite pas une base existante." },
+  { q: 'Quel budget minimum pour commencer ?', a: "5 à 10€ par jour suffit. Sur 7 jours : 35 à 70€ de budget pub. C'est le minimum pour que l'algo apprenne correctement." },
+  { q: "La méthode s'applique à d'autres types de business ?", a: "Oui. La leçon 4 couvre apps, produits physiques, services locaux et SaaS. La stratégie budget et les métriques sont universelles." },
+  { q: "Zéro expérience Google Ads — c'est pour moi ?", a: "Oui. La leçon 7 guide la création de ta première campagne clic par clic dans l'interface réelle. Tu peux suivre en parallèle." },
+  { q: 'Combien de temps pour voir des résultats ?', a: "L'algo a besoin de 5 à 7 jours pour apprendre. Les premières conversions apparaissent généralement en fin de première semaine." },
+  { q: 'Puis-je proposer ce service à des clients ?', a: "Oui. La formation couvre tous les aspects opérationnels d'une campagne UAC. Plusieurs acheteurs l'utilisent pour facturer ce service 500 à 1500€/mois à des apps Android. Le tracker inclus est directement présentable à un client." },
 ]
 
 function ChevronRight({ size = 14, color = 'currentColor' }: { size?: number; color?: string }) {
@@ -202,6 +202,10 @@ const GLOBAL_CSS = `
   @keyframes pulse {
     0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
     50%       { opacity: 0.7; box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+  }
+  @keyframes ring-rotate {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
   }
 
   .btn-primary {
@@ -488,6 +492,49 @@ const GLOBAL_CSS = `
     border-top: 1px solid rgba(124,58,237,0.2);
     box-shadow: 0 -8px 40px rgba(124,58,237,0.08);
   }
+
+  /* Avatar ring animé */
+  .avatar-ring-wrap {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    flex-shrink: 0;
+  }
+  .avatar-ring-spin {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+      #a78bfa 0deg,
+      #60a5fa 90deg,
+      #34d399 180deg,
+      transparent 220deg,
+      transparent 360deg
+    );
+    animation: ring-rotate 6s linear infinite;
+  }
+  .avatar-ring-inner {
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: #080810;
+    overflow: hidden;
+  }
+  .avatar-ring-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .avatar-glow {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.35) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: -1;
+  }
 `
 
 export default function LandingClient() {
@@ -521,14 +568,14 @@ export default function LandingClient() {
           background: 'linear-gradient(90deg, #a78bfa, #60a5fa)',
           WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'
         }}>
-          UAC\u00b7METHODE
+          UAC·METHODE
         </span>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', fontFamily: "'JetBrains Mono', monospace" }}>
-            <span style={{ color: '#4ade80', marginRight: '6px' }}>{'\u25cf'}</span>Early bird
+            <span style={{ color: '#4ade80', marginRight: '6px' }}>●</span>Early bird
           </span>
           <button className="btn-nav" onClick={handleCheckout}>
-            197{'\u20ac'} <ChevronRight size={13} />
+            197€ <ChevronRight size={13} />
           </button>
         </div>
       </nav>
@@ -559,7 +606,7 @@ export default function LandingClient() {
               fontSize: '12px', color: 'rgba(255,255,255,0.7)',
               fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.08em'
             }}>
-              Formation Google UAC {'\u00b7'} Competence mobile {'\u00b7'} Early bird 197{'\u20ac'}
+              Formation Google UAC · Compétence mobile · Early bird 197€
             </span>
           </div>
 
@@ -568,18 +615,18 @@ export default function LandingClient() {
             lineHeight: 1.08, letterSpacing: '-0.03em',
             marginBottom: '1.5rem', animation: 'slideUp 0.6s ease 0.1s both'
           }}>
-            <span className="hero-line-top">Ma\u00eetrisez Google UAC</span>
-            <span className="hero-line-gradient">la comp\u00e9tence mobile</span>
-            <span className="hero-line-bottom">la plus sous-exploit\u00e9e</span>
+            <span className="hero-line-top">Maîtrisez Google UAC</span>
+            <span className="hero-line-gradient">la compétence mobile</span>
+            <span className="hero-line-bottom">la plus sous-exploitée</span>
           </h1>
 
           <p style={{
             fontSize: '18px', color: 'rgba(255,255,255,0.5)', maxWidth: '580px',
             margin: '0 auto 3rem', lineHeight: 1.7, animation: 'slideUp 0.6s ease 0.2s both'
           }}>
-            Que vous promouviez votre app ou proposiez ce service \u00e0 vos clients \u2014
-            la m\u00e9thode exacte issue de vraies campagnes \u00e0{' '}
-            <strong style={{ color: 'rgba(255,255,255,0.85)' }}>0,07{'\u20ac'}/install</strong>.
+            Que vous promouviez votre app ou proposiez ce service à vos clients —
+            la méthode exacte issue de vraies campagnes à{' '}
+            <strong style={{ color: 'rgba(255,255,255,0.85)' }}>0,07€/install</strong>.
           </p>
 
           {/* Metric cards */}
@@ -588,9 +635,9 @@ export default function LandingClient() {
             marginBottom: '3rem', animation: 'slideUp 0.6s ease 0.3s both'
           }}>
             {[
-              { val: '0,07\u20ac', lbl: 'CPI campagne 1', sub: 'moy. secteur 2,10\u20ac', featured: true },
-              { val: '0,54\u20ac', lbl: 'CPI campagne 2', sub: 'moy. secteur 1,80\u20ac', featured: false },
-              { val: '0,57\u20ac', lbl: 'CPI campagne 3', sub: 'moy. secteur 2,30\u20ac', featured: false },
+              { val: '0,07€', lbl: 'CPI campagne 1', sub: 'moy. secteur 2,10€', featured: true },
+              { val: '0,54€', lbl: 'CPI campagne 2', sub: 'moy. secteur 1,80€', featured: false },
+              { val: '0,57€', lbl: 'CPI campagne 3', sub: 'moy. secteur 2,30€', featured: false },
             ].map((p, i) => (
               <div key={i} className="metric-card" style={{
                 background: p.featured ? 'rgba(124,58,237,0.15)' : 'rgba(255,255,255,0.03)',
@@ -633,9 +680,9 @@ export default function LandingClient() {
               <span style={{
                 fontSize: '44px', fontWeight: 800, color: '#fff',
                 textShadow: '0 0 30px rgba(255,255,255,0.15), 0 2px 10px rgba(0,0,0,0.5)'
-              }}>197{'\u20ac'}</span>
-              <span style={{ fontSize: '22px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>297{'\u20ac'}</span>
-              <span className="badge-eb">{'\u2193'} Early bird</span>
+              }}>197€</span>
+              <span style={{ fontSize: '22px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>297€</span>
+              <span className="badge-eb">↓ Early bird</span>
             </div>
             {/* Countdown */}
             <div style={{
@@ -646,18 +693,18 @@ export default function LandingClient() {
                 fontSize: '12px', color: '#f87171', fontFamily: "'JetBrains Mono', monospace",
                 marginBottom: '10px', letterSpacing: '0.08em', textTransform: 'uppercase',
               }}>
-                {'\u23f1'} Prix early bird \u2014 se termine dans
+                ⏱ Prix early bird — se termine dans
               </div>
               <Countdown targetDate={new Date('2026-06-28T23:59:59')} />
             </div>
             <button className="btn-primary" onClick={handleCheckout}>
-              Acc\u00e9der \u00e0 la formation <ChevronRight size={15} />
+              Accéder à la formation <ChevronRight size={15} />
             </button>
             <div style={{
               display: 'flex', gap: '20px', fontSize: '12px',
               color: 'rgba(255,255,255,0.3)', fontFamily: "'JetBrains Mono', monospace"
             }}>
-              {['\u2713 Acc\u00e8s \u00e0 vie', '\u2713 Garantie 30 jours', '\u2713 Templates inclus'].map(t => (
+              {['✓ Accès à vie', '✓ Garantie 30 jours', '✓ Templates inclus'].map(t => (
                 <span key={t}>{t}</span>
               ))}
             </div>
@@ -684,7 +731,7 @@ export default function LandingClient() {
           {[
             { num: 40, suffix: 'x', label: 'Moins cher que la moyenne' },
             { num: 10, suffix: '+%', label: 'CTR moyen obtenu' },
-            { num: 3, suffix: '+', label: 'Campagnes prouv\u00e9es' },
+            { num: 3, suffix: '+', label: 'Campagnes prouvées' },
             { num: 30, suffix: 'j', label: 'Garantie remboursement' },
           ].map((s, i) => (
             <AnimatedSection key={i} delay={i * 80}>
@@ -715,31 +762,31 @@ export default function LandingClient() {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
             letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
-          }}>\u2014 Le probl\u00e8me</div>
+          }}>— Le problème</div>
           <h2 className="title-glow-subtle" style={{
             fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
             lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem'
           }}>
-            Pourquoi ton budget<br />dispara\u00eet sans r\u00e9sultats
+            Pourquoi ton budget<br />disparaît sans résultats
           </h2>
           <p style={{
             fontSize: '16px', color: 'rgba(255,255,255,0.4)',
             marginBottom: '3rem', maxWidth: '500px'
           }}>
-            La plupart des devs font les m\u00eames erreurs. Et Google se fait payer pour les laisser faire.
+            La plupart des devs font les mêmes erreurs. Et Google se fait payer pour les laisser faire.
           </p>
         </AnimatedSection>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
           {[
-            { bad: true,  t: 'Ce que tu fais probablement', b: "Pub avec voix qui parle, logo, texte \"D\u00e9couvrez notre app\". CTR de 1%. L'algo te p\u00e9nalise. CPI de 2 \u00e0 3\u20ac. Budget \u00e9puis\u00e9 en 3 jours." },
-            { bad: false, t: 'Ce que cette m\u00e9thode fait',   b: "Format visuel satisfaisant sans paroles. CTR de 10 \u00e0 14%. L'algo te r\u00e9compense. CPI qui s'effondre. R\u00e9sultats d\u00e8s le premier lancement." },
-            { bad: true,  t: 'La strat\u00e9gie classique',      b: "Budget \u00e9lev\u00e9 d\u00e8s le d\u00e9part. Google le d\u00e9pense vite sur la mauvaise audience. Tu paies pour l'\u00e9ducation de l'algo." },
-            { bad: false, t: 'La strat\u00e9gie CPI cible bas',  b: "CPA cible agressif au d\u00e9part. L'algo cherche tes conversions les moins ch\u00e8res. Tu augmentes progressivement." },
+            { bad: true,  t: 'Ce que tu fais probablement', b: "Pub avec voix qui parle, logo, texte \"Découvrez notre app\". CTR de 1%. L'algo te pénalise. CPI de 2 à 3€. Budget épuisé en 3 jours." },
+            { bad: false, t: 'Ce que cette méthode fait',   b: "Format visuel satisfaisant sans paroles. CTR de 10 à 14%. L'algo te récompense. CPI qui s'effondre. Résultats dès le premier lancement." },
+            { bad: true,  t: 'La stratégie classique',      b: "Budget élevé dès le départ. Google le dépense vite sur la mauvaise audience. Tu paies pour l'éducation de l'algo." },
+            { bad: false, t: 'La stratégie CPI cible bas',  b: "CPA cible agressif au départ. L'algo cherche tes conversions les moins chères. Tu augmentes progressivement." },
           ].map((c, i) => (
             <AnimatedSection key={i} delay={i * 60}>
               <div className={c.bad ? 'problem-card-bad' : 'problem-card-good'}>
                 <div style={{ fontSize: '13px', fontWeight: 700, marginBottom: '8px', display: 'flex', gap: '8px', alignItems: 'center' }}>
-                  <span style={{ color: c.bad ? '#f87171' : '#a78bfa' }}>{c.bad ? '\u2717' : '\u2713'}</span>
+                  <span style={{ color: c.bad ? '#f87171' : '#a78bfa' }}>{c.bad ? '✗' : '✓'}</span>
                   {c.t}
                 </div>
                 <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, margin: 0 }}>{c.b}</p>
@@ -768,15 +815,15 @@ export default function LandingClient() {
             <div style={{
               fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
               letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
-            }}>\u2014 La formation</div>
+            }}>— La formation</div>
             <h2 className="title-glow-subtle" style={{
               fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
               lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '0.75rem'
             }}>
-              10 le\u00e7ons. Tout ce qu&apos;il faut.<br />Rien de superflu.
+              10 leçons. Tout ce qu&apos;il faut.<br />Rien de superflu.
             </h2>
             <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.4)', marginBottom: '3rem' }}>
-              Chaque le\u00e7on est un screencast de mon vrai compte Google Ads. Z\u00e9ro approximation.
+              Chaque leçon est un screencast de mon vrai compte Google Ads. Zéro approximation.
             </p>
           </AnimatedSection>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
@@ -804,7 +851,7 @@ export default function LandingClient() {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
             letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
-          }}>\u2014 Qui je suis</div>
+          }}>— Qui je suis</div>
           <h2 className="title-glow-subtle" style={{
             fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
             lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
@@ -818,29 +865,24 @@ export default function LandingClient() {
             display: 'flex', gap: '3rem', alignItems: 'flex-start',
             flexWrap: 'wrap',
           }}>
-            <div style={{ flexShrink: 0 }}>
-              <div style={{
-                width: '160px', height: '160px', borderRadius: '16px', overflow: 'hidden',
-                border: '1px solid rgba(124,58,237,0.3)',
-                boxShadow: '0 0 40px rgba(124,58,237,0.2), 0 1px 0 rgba(167,139,250,0.2) inset',
-                position: 'relative',
-              }}>
-                <img
-                  src="/alistair.jpg"
-                  alt="Alistair Pass\u00e9-Coutrin"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
-                />
-                <div style={{
-                  position: 'absolute', inset: 0,
-                  background: 'linear-gradient(180deg, transparent 60%, rgba(124,58,237,0.3) 100%)',
-                }} />
+            {/* Avatar amélioré */}
+            <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+              <div className="avatar-ring-wrap">
+                <div className="avatar-glow" />
+                <div className="avatar-ring-spin" />
+                <div className="avatar-ring-inner">
+                  <img
+                    src="/alistair.jpg"
+                    alt="Alistair Passé-Coutrin"
+                  />
+                </div>
               </div>
-              <div style={{ marginTop: '12px', textAlign: 'center', width: '160px' }}>
-                <div style={{ fontSize: '14px', fontWeight: 700, color: '#fff' }}>Alistair P-C.</div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: '15px', fontWeight: 700, color: '#fff' }}>Alistair P-C.</div>
                 <div style={{
                   fontSize: '11px', color: '#a78bfa', fontFamily: "'JetBrains Mono', monospace",
-                  marginTop: '2px',
-                }}>Cr\u00e9ateur de la formation</div>
+                  marginTop: '4px',
+                }}>Créateur de la formation</div>
               </div>
             </div>
 
@@ -849,26 +891,26 @@ export default function LandingClient() {
                 fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8,
                 marginBottom: '1.5rem',
               }}>
-                J&apos;ai lanc\u00e9 ma premi\u00e8re campagne Google UAC avec un budget de test.
-                R\u00e9sultat : <strong style={{ color: '#fff' }}>0,07{'\u20ac'} par installation</strong>.
-                La moyenne du march\u00e9 est entre 1,50{'\u20ac'} et 3{'\u20ac'}.
-                J&apos;avais fait 20 \u00e0 40 fois mieux \u2014 sans agence, sans exp\u00e9rience pr\u00e9alable en ads.
+                J&apos;ai lancé ma première campagne Google UAC avec un budget de test.
+                Résultat : <strong style={{ color: '#fff' }}>0,07€ par installation</strong>.
+                La moyenne du marché est entre 1,50€ et 3€.
+                J&apos;avais fait 20 à 40 fois mieux — sans agence, sans expérience préalable en ads.
               </p>
               <p style={{
                 fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8,
                 marginBottom: '2rem',
               }}>
-                Ce que j&apos;ai compris ce jour-l\u00e0, c&apos;est que personne dans l&apos;\u00e9cosyst\u00e8me mobile
-                francophone n&apos;enseignait vraiment cette comp\u00e9tence.
-                J&apos;ai cr\u00e9\u00e9 cette formation pour changer \u00e7a.
+                Ce que j&apos;ai compris ce jour-là, c&apos;est que personne dans l&apos;écosystème mobile
+                francophone n&apos;enseignait vraiment cette compétence.
+                J&apos;ai créé cette formation pour changer ça.
               </p>
 
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 {[
-                  '\ud83d\udcf1 App publi\u00e9e sur Play Store',
-                  '\u26a1 Expert Google UAC',
-                  '\ud83d\udee0 D\u00e9veloppeur Flutter',
-                  '\ud83c\udf10 Cr\u00e9ateur de sites web',
+                  '📱 App publiée sur Play Store',
+                  '⚡ Expert Google UAC',
+                  '🛠 Développeur Flutter',
+                  '🌐 Créateur de sites web',
                 ].map((badge, i) => (
                   <span key={i} style={{
                     fontSize: '12px', padding: '5px 12px', borderRadius: '100px',
@@ -896,7 +938,7 @@ export default function LandingClient() {
             <div style={{
               fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
               letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
-            }}>\u2014 Ils l&apos;ont test\u00e9</div>
+            }}>— Ils l&apos;ont testé</div>
             <h2 className="title-glow-subtle" style={{
               fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
               lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
@@ -908,22 +950,22 @@ export default function LandingClient() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {[
               {
-                text: "J'avais d\u00e9j\u00e0 essay\u00e9 de faire des pubs Google pour mon app sans r\u00e9sultats. La le\u00e7on 5 sur le CPA cible bas a tout chang\u00e9. En deux semaines j'\u00e9tais sous 0,80\u20ac par install.",
+                text: "J'avais déjà essayé de faire des pubs Google pour mon app sans résultats. La leçon 5 sur le CPA cible bas a tout changé. En deux semaines j'étais sous 0,80€ par install.",
                 name: 'Thomas R.',
-                role: 'Dev indie Android \u00b7 Paris',
-                result: '\u221273% de CPI',
+                role: 'Dev indie Android · Paris',
+                result: '−73% de CPI',
               },
               {
-                text: "Ce qui m'a convaincu c'est que les chiffres sont r\u00e9els et v\u00e9rifiables. Pas de promesses floues. La m\u00e9thode sur les cr\u00e9as satisfaisantes m'a permis d'atteindre un CTR de 8% d\u00e8s la premi\u00e8re semaine.",
+                text: "Ce qui m'a convaincu c'est que les chiffres sont réels et vérifiables. Pas de promesses floues. La méthode sur les créas satisfaisantes m'a permis d'atteindre un CTR de 8% dès la première semaine.",
                 name: 'Maxime L.',
-                role: "Cr\u00e9ateur d'app \u00b7 Lyon",
-                result: 'CTR \u00d74',
+                role: "Créateur d'app · Lyon",
+                result: 'CTR ×4',
               },
               {
-                text: "Je pensais avoir besoin d'une agence pour faire des pubs rentables. Maintenant je propose ce service \u00e0 mes clients. Premi\u00e8re mission factur\u00e9e 800\u20ac apr\u00e8s avoir suivi la formation.",
+                text: "Je pensais avoir besoin d'une agence pour faire des pubs rentables. Maintenant je propose ce service à mes clients. Première mission facturée 800€ après avoir suivi la formation.",
                 name: 'Samir B.',
-                role: 'Freelance d\u00e9veloppeur \u00b7 Bordeaux',
-                result: '800\u20ac premi\u00e8re mission',
+                role: 'Freelance développeur · Bordeaux',
+                result: '800€ première mission',
               },
             ].map((t, i) => (
               <AnimatedSection key={i} delay={i * 80}>
@@ -973,7 +1015,7 @@ export default function LandingClient() {
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
             letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
-          }}>\u2014 L&apos;offre</div>
+          }}>— L&apos;offre</div>
           <h2 className="title-glow-subtle" style={{
             fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
             lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
@@ -987,15 +1029,15 @@ export default function LandingClient() {
             <div style={{ position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '2.5rem' }}>
                 {[
-                  '10 le\u00e7ons screencast \u2014 mon vrai compte Google Ads ouvert',
-                  'Mes 3 vraies campagnes dissequ\u00e9es \u2014 0,07\u20ac \u00b7 0,54\u20ac \u00b7 0,57\u20ac',
-                  'Tracker campagne Google Sheets \u2014 tableau de bord hebdo',
+                  '10 leçons screencast — mon vrai compte Google Ads ouvert',
+                  'Mes 3 vraies campagnes disséquées — 0,07€ · 0,54€ · 0,57€',
+                  'Tracker campagne Google Sheets — tableau de bord hebdo',
                   "Structure de campagne reproductible pour n'importe quel client",
-                  "Plan d'action 30 jours \u2014 semaine par semaine",
-                  'Acc\u00e8s \u00e0 vie + mises \u00e0 jour incluses',
+                  "Plan d'action 30 jours — semaine par semaine",
+                  'Accès à vie + mises à jour incluses',
                 ].map((item, i) => (
                   <div key={i} style={{ display: 'flex', gap: '12px', fontSize: '14px', alignItems: 'flex-start' }}>
-                    <span style={{ color: '#a78bfa', fontWeight: 700, flexShrink: 0, marginTop: '1px', filter: 'drop-shadow(0 0 4px rgba(167,139,250,0.6))' }}>\u2713</span>
+                    <span style={{ color: '#a78bfa', fontWeight: 700, flexShrink: 0, marginTop: '1px', filter: 'drop-shadow(0 0 4px rgba(167,139,250,0.6))' }}>✓</span>
                     <span style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.5 }}>{item}</span>
                   </div>
                 ))}
@@ -1005,18 +1047,18 @@ export default function LandingClient() {
                   <span style={{
                     fontSize: '52px', fontWeight: 800, color: '#fff',
                     textShadow: '0 0 30px rgba(255,255,255,0.15), 0 2px 10px rgba(0,0,0,0.5)'
-                  }}>197{'\u20ac'}</span>
-                  <span style={{ fontSize: '24px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>297{'\u20ac'}</span>
-                  <span className="badge-eb">{'\u2193'} Early bird</span>
+                  }}>197€</span>
+                  <span style={{ fontSize: '24px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>297€</span>
+                  <span className="badge-eb">↓ Early bird</span>
                 </div>
                 <p style={{
                   fontSize: '11px', color: 'rgba(255,255,255,0.25)',
                   fontFamily: "'JetBrains Mono', monospace", marginBottom: '1.5rem'
                 }}>
-                  Prix augmente \u00e0 297{'\u20ac'} au premier palier de ventes.
+                  Prix augmente à 297€ au premier palier de ventes.
                 </p>
                 <button className="btn-primary" onClick={handleCheckout} style={{ width: '100%', padding: '18px 32px', fontSize: '16px', borderRadius: '12px' }}>
-                  Acc\u00e9der maintenant pour 197{'\u20ac'} <ChevronRight size={16} />
+                  Accéder maintenant pour 197€ <ChevronRight size={16} />
                 </button>
               </div>
             </div>
@@ -1025,11 +1067,11 @@ export default function LandingClient() {
 
         <AnimatedSection delay={100}>
           <div className="guarantee-box">
-            <span style={{ fontSize: '36px', lineHeight: 1, flexShrink: 0 }}>{'\ud83d\udee1'}</span>
+            <span style={{ fontSize: '36px', lineHeight: 1, flexShrink: 0 }}>🛡</span>
             <div>
-              <div style={{ fontSize: '15px', fontWeight: 700, marginBottom: '6px' }}>Garantie 30 jours \u2014 satisfait ou rembours\u00e9</div>
+              <div style={{ fontSize: '15px', fontWeight: 700, marginBottom: '6px' }}>Garantie 30 jours — satisfait ou remboursé</div>
               <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, margin: 0 }}>
-                Tu appliques la m\u00e9thode. Si tes r\u00e9sultats ne s&apos;am\u00e9liorent pas, tu m&apos;envoies un email et je te rembourse int\u00e9gralement. Sans question. Sans d\u00e9lai. Je prends le risque \u00e0 ta place.
+                Tu appliques la méthode. Si tes résultats ne s&apos;améliorent pas, tu m&apos;envoies un email et je te rembourse intégralement. Sans question. Sans délai. Je prends le risque à ta place.
               </p>
             </div>
           </div>
@@ -1047,7 +1089,7 @@ export default function LandingClient() {
             <div style={{
               fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
               letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
-            }}>\u2014 FAQ</div>
+            }}>— FAQ</div>
             <h2 className="title-glow-subtle" style={{
               fontSize: 'clamp(28px,4vw,42px)', fontWeight: 800,
               lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '2.5rem'
@@ -1103,13 +1145,13 @@ export default function LandingClient() {
               fontSize: 'clamp(32px,5vw,56px)', fontWeight: 800,
               lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem'
             }}>
-              Une comp\u00e9tence. Un mois.<br />Des missions \u00e0 800{'\u20ac'} pi\u00e8ce derri\u00e8re.
+              Une compétence. Un mois.<br />Des missions à 800€ pièce derrière.
             </h2>
             <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.4)', marginBottom: '2.5rem' }}>
-              Chaque jour sans cette comp\u00e9tence, quelqu&apos;un d&apos;autre la facture \u00e0 ta place.
+              Chaque jour sans cette compétence, quelqu&apos;un d&apos;autre la facture à ta place.
             </p>
             <button className="btn-primary" onClick={handleCheckout} style={{ fontSize: '17px', padding: '18px 52px' }}>
-              Acc\u00e9der pour 197{'\u20ac'} <ChevronRight size={16} />
+              Accéder pour 197€ <ChevronRight size={16} />
             </button>
           </AnimatedSection>
         </div>
@@ -1121,8 +1163,8 @@ export default function LandingClient() {
         textAlign: 'center', fontFamily: "'JetBrains Mono', monospace",
         fontSize: '11px', color: 'rgba(255,255,255,0.25)'
       }}>
-        {'\u00a9'} 2026 {'\u00b7'} Formation Google UAC {'\u00b7'}{' '}
-        <a href="/mentions-legales" style={{ color: 'inherit' }}>Mentions l\u00e9gales</a> {'\u00b7'}{' '}
+        © 2026 · Formation Google UAC ·{' '}
+        <a href="/mentions-legales" style={{ color: 'inherit' }}>Mentions légales</a> ·{' '}
         <a href="/cgv" style={{ color: 'inherit' }}>CGV</a>
       </footer>
 
@@ -1130,15 +1172,15 @@ export default function LandingClient() {
       <div className="sticky-bar">
         <div>
           <div style={{ fontSize: '20px', fontWeight: 800 }}>
-            197{'\u20ac'}{' '}
-            <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through', fontWeight: 400 }}>297{'\u20ac'}</span>
+            197€{' '}
+            <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through', fontWeight: 400 }}>297€</span>
           </div>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>
-            Early bird {'\u00b7'} acc\u00e8s \u00e0 vie {'\u00b7'} garanti 30j
+            Early bird · accès à vie · garanti 30j
           </div>
         </div>
         <button className="btn-sticky" onClick={handleCheckout}>
-          Acc\u00e9der <ChevronRight size={13} />
+          Accéder <ChevronRight size={13} />
         </button>
       </div>
     </div>
