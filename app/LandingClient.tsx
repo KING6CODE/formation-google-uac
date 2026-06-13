@@ -2167,12 +2167,23 @@ function LandingPageInner() {
 
 export default function LandingClient() {
   const [showLanding, setShowLanding] = useState(false)
-  // Stocke le profil ou les réponses du client pour personnaliser la page
+  
   const [quizProfile, setQuizProfile] = useState<{ name?: string; goal?: string; level?: string } | null>(null)
-
-  // Cette fonction sera appelée à la toute fin du quiz
+  
   const handleQuizComplete = (answers: { name: string; goal: string; level: string }) => {
-    setQuizProfile(answers) // On sauvegarde ses réponses
-    setShowLanding(true)    // On affiche la Landing Page
-    window.scrollTo({ top: 0, behavior: 'smooth' }) // Retour en haut de page
+    setQuizProfile(answers)
+    setShowLanding(true)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+  
+  const handleShowLanding = () => {
+    setShowLanding(true)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  if (!showLanding) {
+    return <QuizFunnelInner onShowLanding={handleShowLanding} />
+  }
+
+  return <LandingPageInner />
 }
