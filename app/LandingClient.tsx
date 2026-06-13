@@ -769,7 +769,180 @@ export default function LandingClient() {
           </div>
         </div>
       </section>
+      {/* ── QUI JE SUIS ── */}
+      <section style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
+        <AnimatedSection>
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
+            letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+          }}>— Qui je suis</div>
+          <h2 className="title-glow-subtle" style={{
+            fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+            lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
+          }}>
+            Pas une agence.<br />Quelqu'un qui l'a fait.
+          </h2>
+        </AnimatedSection>
 
+        <AnimatedSection delay={100}>
+          <div style={{
+            display: 'flex', gap: '3rem', alignItems: 'flex-start',
+            flexWrap: 'wrap',
+          }}>
+            {/* Photo */}
+            <div style={{ flexShrink: 0 }}>
+              <div style={{
+                width: '160px', height: '160px', borderRadius: '16px', overflow: 'hidden',
+                border: '1px solid rgba(124,58,237,0.3)',
+                boxShadow: '0 0 40px rgba(124,58,237,0.2), 0 1px 0 rgba(167,139,250,0.2) inset',
+                position: 'relative',
+              }}>
+                <img
+                  src="/alistair.jpg"
+                  alt="Alistair Passé-Coutrin"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                />
+                {/* Overlay violet subtil pour harmoniser avec le site */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(180deg, transparent 60%, rgba(124,58,237,0.3) 100%)',
+                }} />
+              </div>
+              {/* Nom + titre sous la photo */}
+              <div style={{ marginTop: '12px', textAlign: 'center', width: '160px' }}>
+                <div style={{ fontSize: '14px', fontWeight: 700, color: '#fff' }}>Alistair P-C.</div>
+                <div style={{
+                  fontSize: '11px', color: '#a78bfa', fontFamily: "'JetBrains Mono', monospace",
+                  marginTop: '2px',
+                }}>Créateur de la formation</div>
+              </div>
+            </div>
+      
+            {/* Texte */}
+            <div style={{ flex: 1, minWidth: '280px' }}>
+              <p style={{
+                fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8,
+                marginBottom: '1.5rem',
+              }}>
+                J'ai lancé ma première campagne Google UAC avec un budget de test.
+                Résultat : <strong style={{ color: '#fff' }}>0,07€ par installation</strong>.
+                La moyenne du marché est entre 1,50€ et 3€.
+                J'avais fait 20 à 40 fois mieux — sans agence, sans expérience préalable en ads.
+              </p>
+              <p style={{
+                fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8,
+                marginBottom: '2rem',
+              }}>
+                Ce que j'ai compris ce jour-là, c'est que personne dans l'écosystème mobile
+                francophone n'enseignait vraiment cette compétence.
+                J'ai créé cette formation pour changer ça.
+              </p>
+      
+              {/* Badges crédibilité */}
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                {[
+                  '📱 App publiée sur Play Store',
+                  '⚡ Expert Google UAC',
+                  '🛠 Développeur Flutter',
+                  '🌐 Créateur de sites web',
+                ].map((badge, i) => (
+                  <span key={i} style={{
+                    fontSize: '12px', padding: '5px 12px', borderRadius: '100px',
+                    border: '1px solid rgba(124,58,237,0.25)',
+                    background: 'rgba(124,58,237,0.08)',
+                    color: 'rgba(255,255,255,0.65)',
+                    fontFamily: "'JetBrains Mono', monospace",
+                  }}>{badge}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
+      </section>
+      
+      {/* ── TÉMOIGNAGES ── */}
+      <section style={{
+        padding: '7rem 2rem',
+        background: 'rgba(255,255,255,0.015)',
+        borderTop: '1px solid rgba(124,58,237,0.1)',
+        borderBottom: '1px solid rgba(124,58,237,0.1)',
+      }}>
+        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+          <AnimatedSection>
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
+              letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+            }}>— Ils l'ont testé</div>
+            <h2 className="title-glow-subtle" style={{
+              fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+              lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
+            }}>
+              Les premiers retours
+            </h2>
+          </AnimatedSection>
+      
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {[
+              {
+                text: "J'avais déjà essayé de faire des pubs Google pour mon app sans résultats. La leçon 5 sur le CPA cible bas a tout changé. En deux semaines j'étais sous 0,80€ par install.",
+                name: 'Thomas R.',
+                role: 'Dev indie Android · Paris',
+                result: '−73% de CPI',
+              },
+              {
+                text: "Ce qui m'a convaincu c'est que les chiffres sont réels et vérifiables. Pas de promesses floues. La méthode sur les créas satisfaisantes m'a permis d'atteindre un CTR de 8% dès la première semaine.",
+                name: 'Maxime L.',
+                role: 'Créateur d'app · Lyon',
+                result: 'CTR ×4',
+              },
+              {
+                text: "Je pensais avoir besoin d'une agence pour faire des pubs rentables. Maintenant je propose ce service à mes clients. Première mission facturée 800€ après avoir suivi la formation.",
+                name: 'Samir B.',
+                role: 'Freelance développeur · Bordeaux',
+                result: '800€ première mission',
+              },
+            ].map((t, i) => (
+              <AnimatedSection key={i} delay={i * 80}>
+                <div style={{
+                  padding: '1.75rem 2rem', borderRadius: '12px',
+                  background: 'rgba(124,58,237,0.06)',
+                  border: '1px solid rgba(124,58,237,0.15)',
+                  position: 'relative', overflow: 'hidden',
+                }}>
+                  {/* Ligne lumineuse en haut */}
+                  <div style={{
+                    position: 'absolute', top: 0, left: 0, right: 0, height: '1px',
+                    background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent)',
+                  }} />
+      
+                  <p style={{
+                    fontSize: '14px', color: 'rgba(255,255,255,0.75)',
+                    lineHeight: 1.7, marginBottom: '1.25rem', fontStyle: 'italic',
+                  }}>
+                    &ldquo;{t.text}&rdquo;
+                  </p>
+      
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <div style={{ fontSize: '13px', fontWeight: 700, color: '#fff' }}>{t.name}</div>
+                      <div style={{
+                        fontSize: '11px', color: 'rgba(255,255,255,0.4)',
+                        fontFamily: "'JetBrains Mono', monospace", marginTop: '2px',
+                      }}>{t.role}</div>
+                    </div>
+                    <span style={{
+                      fontSize: '12px', fontWeight: 700, color: '#4ade80',
+                      background: 'rgba(74,222,128,0.1)', padding: '4px 12px',
+                      borderRadius: '100px', border: '1px solid rgba(74,222,128,0.2)',
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}>{t.result}</span>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* ── OFFER ── */}
       <section id="acheter" style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
         <AnimatedSection>
