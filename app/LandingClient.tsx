@@ -134,6 +134,7 @@ const FAQS = [
   { q: 'Puis-je proposer ce service à des clients ?', a: "Oui. La formation couvre tous les aspects opérationnels d'une campagne UAC. Plusieurs acheteurs l'utilisent pour facturer ce service 500 à 1500€/mois à des apps Android. Le tracker inclus est directement présentable à un client." },
 ]
 
+// Icône chevron style Linear — sobre, sans flèche
 function ChevronRight({ size = 14, color = 'currentColor' }: { size?: number; color?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'inline-block', verticalAlign: 'middle', marginLeft: '6px', opacity: 0.85 }}>
@@ -146,6 +147,7 @@ const GLOBAL_CSS = `
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* ── Grille de fond ── */
   .grid-bg {
     position: absolute; inset: 0;
     background-image:
@@ -155,6 +157,7 @@ const GLOBAL_CSS = `
     mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
   }
 
+  /* ── Lumières orbitales hero ── */
   .light { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
   .light-1 {
     width: 600px; height: 600px; top: -200px; left: 50%;
@@ -204,6 +207,11 @@ const GLOBAL_CSS = `
     50%       { opacity: 0.7; box-shadow: 0 0 0 6px rgba(74,222,128,0); }
   }
 
+  /*
+   * ── BOUTON PRINCIPAL style Linear ──
+   * Forme très arrondie (pill), dégradé violet subtil,
+   * reflet semi-opaque sur la moitié haute, glow diffus
+   */
   .btn-primary {
     position: relative; overflow: hidden;
     display: inline-flex; align-items: center; justify-content: center; gap: 6px;
@@ -218,6 +226,7 @@ const GLOBAL_CSS = `
       0 1px 0 rgba(255,255,255,0.04) inset;
     transition: all 0.22s ease;
   }
+  /* reflet haut — demi-pilule lumineuse */
   .btn-primary::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0;
@@ -226,6 +235,7 @@ const GLOBAL_CSS = `
     border-radius: 100px 100px 0 0;
     pointer-events: none;
   }
+  /* shimmer au hover */
   .btn-primary::after {
     content: '';
     position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
@@ -244,6 +254,7 @@ const GLOBAL_CSS = `
   }
   .btn-primary:active { transform: translateY(0px); }
 
+  /* ── Bouton nav (plus petit, même style pill) ── */
   .btn-nav {
     position: relative; overflow: hidden;
     display: inline-flex; align-items: center; justify-content: center; gap: 4px;
@@ -272,6 +283,7 @@ const GLOBAL_CSS = `
     transform: translateY(-1px);
   }
 
+  /* ── Bouton sticky (même pill) ── */
   .btn-sticky {
     position: relative; overflow: hidden;
     display: inline-flex; align-items: center; justify-content: center; gap: 4px;
@@ -300,6 +312,7 @@ const GLOBAL_CSS = `
     transform: translateY(-1px);
   }
 
+  /* ── Titre hero : ombre sur ligne 1 (haut) et ligne 3 (bas), pas sur le gradient ── */
   .hero-line-top {
     display: block;
     text-shadow:
@@ -314,6 +327,7 @@ const GLOBAL_CSS = `
       0 2px 20px rgba(124,58,237,0.2),
       0 -2px 12px rgba(0,0,0,0.7);
   }
+  /* Ligne gradient : pas de text-shadow (WebkitTextFillColor la rend invisible autrement) */
   .hero-line-gradient {
     display: block;
     background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%);
@@ -324,12 +338,14 @@ const GLOBAL_CSS = `
     filter: drop-shadow(0 0 18px rgba(167,139,250,0.45));
   }
 
+  /* Titres de sections */
   .title-glow-subtle {
     text-shadow:
       0 0 40px rgba(124,58,237,0.25),
       0 2px 16px rgba(0,0,0,0.6);
   }
 
+  /* ── Card principale offre ── */
   .card-glow {
     position: relative; border-radius: 16px; overflow: hidden;
     background: linear-gradient(135deg, rgba(124,58,237,0.12) 0%, rgba(79,70,229,0.08) 100%);
@@ -348,6 +364,7 @@ const GLOBAL_CSS = `
     pointer-events: none;
   }
 
+  /* ── Badge pill hero ── */
   .badge-pill {
     position: relative; overflow: hidden;
     display: inline-flex; align-items: center; gap: 8px;
@@ -362,6 +379,7 @@ const GLOBAL_CSS = `
     border-radius: 100px 100px 0 0;
   }
 
+  /* ── Badge early bird ── */
   .badge-eb {
     position: relative; overflow: hidden;
     display: inline-flex; align-items: center;
@@ -378,6 +396,7 @@ const GLOBAL_CSS = `
     border-radius: 100px 100px 0 0;
   }
 
+  /* ── Metric card ── */
   .metric-card {
     position: relative; overflow: hidden;
     padding: 1.25rem 2rem; min-width: 160px;
@@ -390,6 +409,7 @@ const GLOBAL_CSS = `
   }
   .metric-card:hover { transform: translateY(-2px); }
 
+  /* ── Module row ── */
   .module-row {
     display: flex; gap: 1.5rem; padding: 1.25rem 1.5rem;
     border-radius: 10px; align-items: flex-start;
@@ -413,6 +433,7 @@ const GLOBAL_CSS = `
     background: linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent);
   }
 
+  /* ── Problem cards ── */
   .problem-card-bad {
     padding: 1.5rem; border-radius: 12px; height: 100%;
     background: rgba(239,68,68,0.05);
@@ -441,6 +462,7 @@ const GLOBAL_CSS = `
     box-shadow: 0 0 30px rgba(124,58,237,0.1);
   }
 
+  /* ── FAQ ── */
   .faq-item {
     padding: 1.25rem 1.5rem; border-radius: 10px;
     border: 1px solid rgba(255,255,255,0.06);
@@ -453,6 +475,7 @@ const GLOBAL_CSS = `
     box-shadow: inset 0 1px 0 rgba(167,139,250,0.1);
   }
 
+  /* ── Stat card ── */
   .stat-card {
     text-align: center; padding: 1rem; border-radius: 12px;
     background: rgba(124,58,237,0.06);
@@ -467,6 +490,7 @@ const GLOBAL_CSS = `
   }
   .stat-card:hover { transform: translateY(-3px); }
 
+  /* ── Guarantee box ── */
   .guarantee-box {
     padding: 1.5rem 2rem; border-radius: 12px;
     background: rgba(255,255,255,0.03);
@@ -480,6 +504,7 @@ const GLOBAL_CSS = `
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
   }
 
+  /* ── Sticky bar ── */
   .sticky-bar {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
     padding: 12px 2rem;
@@ -563,6 +588,13 @@ export default function LandingClient() {
             </span>
           </div>
 
+          {/*
+           * H1 sur 3 lignes :
+           * Ligne 1 "Maîtrisez Google UAC" → ombre vers le HAUT (glow au-dessus)
+           * Ligne 2 "la compétence mobile" → gradient animé, filtre drop-shadow
+           * Ligne 3 "la plus sous-exploitée" → ombre vers le BAS (glow en dessous)
+           * Pas de tiret pour garder la symétrie
+           */}
           <h1 style={{
             fontSize: 'clamp(38px,5.5vw,68px)', fontWeight: 800,
             lineHeight: 1.08, letterSpacing: '-0.03em',
@@ -730,67 +762,421 @@ export default function LandingClient() {
           </p>
         </AnimatedSection>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-          <div className="problem-card-bad">
-            <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#f87171', marginBottom: '1rem' }}>L'erreur classique</h3>
-            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
-              Laisser Google UAC gérer vos assets textuels et créatifs sans structure claire. L'algorithme tourne en boucle, dépense votre budget sur des placements inefficaces et fait exploser votre coût par installation (CPI).
-            </p>
-          </div>
-          <div className="problem-card-good">
-            <h3 style={{ fontSize: '16px', fontWeight: 700, color: '#4ade80', marginBottom: '1rem' }}>La Méthode UAC</h3>
-            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>
-              Forcer l'apprentissage de l'algorithme avec une structure créative ultra-déterminée (Hook, contexte, CTA) combinée à un timing de scaling précis pour verrouiller un CPI bas dès la première semaine.
-            </p>
-          </div>
+          {[
+            { bad: true,  t: 'Ce que tu fais probablement', b: "Pub avec voix qui parle, logo, texte \"Découvrez notre app\". CTR de 1%. L'algo te pénalise. CPI de 2 à 3€. Budget épuisé en 3 jours." },
+            { bad: false, t: 'Ce que cette méthode fait',   b: "Format visuel satisfaisant sans paroles. CTR de 10 à 14%. L'algo te récompense. CPI qui s'effondre. Résultats dès le premier lancement." },
+            { bad: true,  t: 'La stratégie classique',      b: "Budget élevé dès le départ. Google le dépense vite sur la mauvaise audience. Tu paies pour l'éducation de l'algo." },
+            { bad: false, t: 'La stratégie CPI cible bas',  b: "CPA cible agressif au départ. L'algo cherche tes conversions les moins chères. Tu augmentes progressivement." },
+          ].map((c, i) => (
+            <AnimatedSection key={i} delay={i * 60}>
+              <div className={c.bad ? 'problem-card-bad' : 'problem-card-good'}>
+                <div style={{ fontSize: '13px', fontWeight: 700, marginBottom: '8px', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <span style={{ color: c.bad ? '#f87171' : '#a78bfa' }}>{c.bad ? '✗' : '✓'}</span>
+                  {c.t}
+                </div>
+                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, margin: 0 }}>{c.b}</p>
+              </div>
+            </AnimatedSection>
+          ))}
         </div>
       </section>
 
-      {/* ── PROGRAMME ── */}
-      <section style={{ padding: '4rem 2rem 7rem', maxWidth: '780px', margin: '0 auto' }}>
-        <h2 className="title-glow-subtle" style={{ fontSize: '32px', fontWeight: 800, marginBottom: '2.5rem' }}>Au programme de la formation</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {MODULES.map((m, i) => (
-            <div key={i} className="module-row">
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '14px', fontWeight: 700, color: '#a78bfa' }}>{m.num}</span>
-              <div>
-                <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#fff', marginBottom: '4px' }}>{m.title}</h3>
-                <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.5 }}>{m.desc}</p>
+      {/* ── MODULES ── */}
+      <section style={{
+        padding: '7rem 2rem',
+        background: 'rgba(255,255,255,0.015)',
+        borderTop: '1px solid rgba(124,58,237,0.1)',
+        borderBottom: '1px solid rgba(124,58,237,0.1)',
+        position: 'relative', overflow: 'hidden'
+      }}>
+        <div style={{
+          position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
+          width: '600px', height: '200px',
+          background: 'radial-gradient(ellipse at top, rgba(124,58,237,0.1) 0%, transparent 70%)',
+          pointerEvents: 'none'
+        }} />
+        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+          <AnimatedSection>
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
+              letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+            }}>— La formation</div>
+            <h2 className="title-glow-subtle" style={{
+              fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+              lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '0.75rem'
+            }}>
+              10 leçons. Tout ce qu'il faut.<br />Rien de superflu.
+            </h2>
+            <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.4)', marginBottom: '3rem' }}>
+              Chaque leçon est un screencast de mon vrai compte Google Ads. Zéro approximation.
+            </p>
+          </AnimatedSection>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+            {MODULES.map((m, i) => (
+              <AnimatedSection key={i} delay={i * 40}>
+                <div className="module-row">
+                  <span style={{
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: '11px',
+                    color: '#a78bfa', fontWeight: 700, minWidth: '28px', marginTop: '2px', opacity: 0.7
+                  }}>{m.num}</span>
+                  <div>
+                    <div style={{ fontSize: '14px', fontWeight: 600, marginBottom: '3px' }}>{m.title}</div>
+                    <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', lineHeight: 1.5 }}>{m.desc}</div>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* ── QUI JE SUIS ── */}
+      <section style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
+        <AnimatedSection>
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
+            letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+          }}>— Qui je suis</div>
+          <h2 className="title-glow-subtle" style={{
+            fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+            lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
+          }}>
+            Pas une agence.<br />Quelqu'un qui l'a fait.
+          </h2>
+        </AnimatedSection>
+
+        <AnimatedSection delay={100}>
+          <div style={{
+            display: 'flex', gap: '3rem', alignItems: 'flex-start',
+            flexWrap: 'wrap',
+          }}>
+            {/* Photo */}
+            <div style={{ flexShrink: 0 }}>
+              <div style={{
+                width: '160px', height: '160px', borderRadius: '16px', overflow: 'hidden',
+                border: '1px solid rgba(124,58,237,0.3)',
+                boxShadow: '0 0 40px rgba(124,58,237,0.2), 0 1px 0 rgba(167,139,250,0.2) inset',
+                position: 'relative',
+              }}>
+                <img
+                  src="/alistair.jpg"
+                  alt="Alistair Passé-Coutrin"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+                />
+                {/* Overlay violet subtil pour harmoniser avec le site */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(180deg, transparent 60%, rgba(124,58,237,0.3) 100%)',
+                }} />
+              </div>
+              {/* Nom + titre sous la photo */}
+              <div style={{ marginTop: '12px', textAlign: 'center', width: '160px' }}>
+                <div style={{ fontSize: '14px', fontWeight: 700, color: '#fff' }}>Alistair P-C.</div>
+                <div style={{
+                  fontSize: '11px', color: '#a78bfa', fontFamily: "'JetBrains Mono', monospace",
+                  marginTop: '2px',
+                }}>Créateur de la formation</div>
               </div>
             </div>
-          ))}
+      
+            {/* Texte */}
+            <div style={{ flex: 1, minWidth: '280px' }}>
+              <p style={{
+                fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8,
+                marginBottom: '1.5rem',
+              }}>
+                J'ai lancé ma première campagne Google UAC avec un budget de test.
+                Résultat : <strong style={{ color: '#fff' }}>0,07€ par installation</strong>.
+                La moyenne du marché est entre 1,50€ et 3€.
+                J'avais fait 20 à 40 fois mieux — sans agence, sans expérience préalable en ads.
+              </p>
+              <p style={{
+                fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8,
+                marginBottom: '2rem',
+              }}>
+                Ce que j'ai compris ce jour-là, c'est que personne dans l'écosystème mobile
+                francophone n'enseignait vraiment cette compétence.
+                J'ai créé cette formation pour changer ça.
+              </p>
+      
+              {/* Badges crédibilité */}
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                {[
+                  '📱 App publiée sur Play Store',
+                  '⚡ Expert Google UAC',
+                  '🛠 Développeur Flutter',
+                  '🌐 Créateur de sites web',
+                ].map((badge, i) => (
+                  <span key={i} style={{
+                    fontSize: '12px', padding: '5px 12px', borderRadius: '100px',
+                    border: '1px solid rgba(124,58,237,0.25)',
+                    background: 'rgba(124,58,237,0.08)',
+                    color: 'rgba(255,255,255,0.65)',
+                    fontFamily: "'JetBrains Mono', monospace",
+                  }}>{badge}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
+      </section>
+      
+      {/* ── TÉMOIGNAGES ── */}
+      <section style={{
+        padding: '7rem 2rem',
+        background: 'rgba(255,255,255,0.015)',
+        borderTop: '1px solid rgba(124,58,237,0.1)',
+        borderBottom: '1px solid rgba(124,58,237,0.1)',
+      }}>
+        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+          <AnimatedSection>
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
+              letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+            }}>— Ils l'ont testé</div>
+            <h2 className="title-glow-subtle" style={{
+              fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+              lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
+            }}>
+              Les premiers retours
+            </h2>
+          </AnimatedSection>
+      
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {[
+              {
+                text: "J'avais déjà essayé de faire des pubs Google pour mon app sans résultats. La leçon 5 sur le CPA cible bas a tout changé. En deux semaines j'étais sous 0,80€ par install.",
+                name: 'Thomas R.',
+                role: 'Dev indie Android · Paris',
+                result: '−73% de CPI',
+              },
+              {
+                text: "Ce qui m'a convaincu c'est que les chiffres sont réels et vérifiables. Pas de promesses floues. La méthode sur les créas satisfaisantes m'a permis d'atteindre un CTR de 8% dès la première semaine.",
+                name: 'Maxime L.',
+                role: 'Créateur d'app · Lyon',
+                result: 'CTR ×4',
+              },
+              {
+                text: "Je pensais avoir besoin d'une agence pour faire des pubs rentables. Maintenant je propose ce service à mes clients. Première mission facturée 800€ après avoir suivi la formation.",
+                name: 'Samir B.',
+                role: 'Freelance développeur · Bordeaux',
+                result: '800€ première mission',
+              },
+            ].map((t, i) => (
+              <AnimatedSection key={i} delay={i * 80}>
+                <div style={{
+                  padding: '1.75rem 2rem', borderRadius: '12px',
+                  background: 'rgba(124,58,237,0.06)',
+                  border: '1px solid rgba(124,58,237,0.15)',
+                  position: 'relative', overflow: 'hidden',
+                }}>
+                  {/* Ligne lumineuse en haut */}
+                  <div style={{
+                    position: 'absolute', top: 0, left: 0, right: 0, height: '1px',
+                    background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent)',
+                  }} />
+      
+                  <p style={{
+                    fontSize: '14px', color: 'rgba(255,255,255,0.75)',
+                    lineHeight: 1.7, marginBottom: '1.25rem', fontStyle: 'italic',
+                  }}>
+                    &ldquo;{t.text}&rdquo;
+                  </p>
+      
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <div style={{ fontSize: '13px', fontWeight: 700, color: '#fff' }}>{t.name}</div>
+                      <div style={{
+                        fontSize: '11px', color: 'rgba(255,255,255,0.4)',
+                        fontFamily: "'JetBrains Mono', monospace", marginTop: '2px',
+                      }}>{t.role}</div>
+                    </div>
+                    <span style={{
+                      fontSize: '12px', fontWeight: 700, color: '#4ade80',
+                      background: 'rgba(74,222,128,0.1)', padding: '4px 12px',
+                      borderRadius: '100px', border: '1px solid rgba(74,222,128,0.2)',
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}>{t.result}</span>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
+      </section>
+      {/* ── OFFER ── */}
+      <section id="acheter" style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
+        <AnimatedSection>
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
+            letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+          }}>— L'offre</div>
+          <h2 className="title-glow-subtle" style={{
+            fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+            lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
+          }}>
+            Ce que tu obtiens aujourd'hui
+          </h2>
+        </AnimatedSection>
+
+        <AnimatedSection>
+          <div className="card-glow" style={{ padding: '2.5rem', marginBottom: '16px' }}>
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '2.5rem' }}>
+                {[
+                  '10 leçons screencast — mon vrai compte Google Ads ouvert',
+                  'Mes 3 vraies campagnes disséquées — 0,07€ · 0,54€ · 0,57€',
+                  'Tracker campagne Google Sheets — tableau de bord hebdo',
+                  "Structure de campagne reproductible pour n'importe quel client",
+                  'Plan d\'action 30 jours — semaine par semaine',
+                  'Accès à vie + mises à jour incluses',
+                ].map((item, i) => (
+                  <div key={i} style={{ display: 'flex', gap: '12px', fontSize: '14px', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#a78bfa', fontWeight: 700, flexShrink: 0, marginTop: '1px', filter: 'drop-shadow(0 0 4px rgba(167,139,250,0.6))' }}>✓</span>
+                    <span style={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.5 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
+                  <span style={{
+                    fontSize: '52px', fontWeight: 800, color: '#fff',
+                    textShadow: '0 0 30px rgba(255,255,255,0.15), 0 2px 10px rgba(0,0,0,0.5)'
+                  }}>197€</span>
+                  <span style={{ fontSize: '24px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>297€</span>
+                  <span className="badge-eb">↓ Early bird</span>
+                </div>
+                <p style={{
+                  fontSize: '11px', color: 'rgba(255,255,255,0.25)',
+                  fontFamily: "'JetBrains Mono', monospace", marginBottom: '1.5rem'
+                }}>
+                  Prix augmente à 297€ au premier palier de ventes.
+                </p>
+                <button className="btn-primary" onClick={handleCheckout} style={{ width: '100%', padding: '18px 32px', fontSize: '16px', borderRadius: '12px' }}>
+                  Accéder maintenant pour 197€ <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        <AnimatedSection delay={100}>
+          <div className="guarantee-box">
+            <span style={{ fontSize: '36px', lineHeight: 1, flexShrink: 0 }}>🛡</span>
+            <div>
+              <div style={{ fontSize: '15px', fontWeight: 700, marginBottom: '6px' }}>Garantie 30 jours — satisfait ou remboursé</div>
+              <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, margin: 0 }}>
+                Tu appliques la méthode. Si tes résultats ne s'améliorent pas, tu m'envoies un email et je te rembourse intégralement. Sans question. Sans délai. Je prends le risque à ta place.
+              </p>
+            </div>
+          </div>
+        </AnimatedSection>
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ padding: '0 2rem 7rem', maxWidth: '780px', margin: '0 auto' }}>
-        <h2 className="title-glow-subtle" style={{ fontSize: '32px', fontWeight: 800, marginBottom: '2.5rem', textAlign: 'center' }}>Questions fréquentes</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {FAQS.map((f, i) => (
-            <div key={i} className={`faq-item ${openFaq === i ? 'open' : ''}`} onClick={() => setOpenFaq(openFaq === i ? null : i)}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#fff' }}>{f.q}</h3>
-                <span style={{ color: '#a78bfa', transform: openFaq === i ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s' }}>➔</span>
-              </div>
-              {openFaq === i && (
-                <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', marginTop: '10px', lineHeight: 1.6 }}>{f.a}</p>
-              )}
-            </div>
-          ))}
+      <section style={{
+        padding: '7rem 2rem',
+        background: 'rgba(255,255,255,0.015)',
+        borderTop: '1px solid rgba(124,58,237,0.1)'
+      }}>
+        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+          <AnimatedSection>
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
+              letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
+            }}>— FAQ</div>
+            <h2 className="title-glow-subtle" style={{
+              fontSize: 'clamp(28px,4vw,42px)', fontWeight: 800,
+              lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '2.5rem'
+            }}>
+              Avant d'acheter
+            </h2>
+          </AnimatedSection>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+            {FAQS.map((f, i) => (
+              <AnimatedSection key={i} delay={i * 50}>
+                <div
+                  className={`faq-item ${openFaq === i ? 'open' : ''}`}
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+                    <span style={{ fontSize: '14px', fontWeight: 600 }}>{f.q}</span>
+                    <span style={{
+                      color: '#a78bfa', fontSize: '20px',
+                      transition: 'transform 0.2s',
+                      transform: openFaq === i ? 'rotate(45deg)' : 'rotate(0)',
+                      flexShrink: 0,
+                      filter: 'drop-shadow(0 0 4px rgba(167,139,250,0.5))'
+                    }}>+</span>
+                  </div>
+                  {openFaq === i && (
+                    <p style={{
+                      fontSize: '13px', color: 'rgba(255,255,255,0.45)',
+                      lineHeight: 1.7, marginTop: '12px', marginBottom: 0
+                    }}>{f.a}</p>
+                  )}
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ── STICKY BAR ── */}
-      {scrolled && (
-        <div className="sticky-bar">
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '11px', fontFamily: "'JetBrains Mono', monospace", color: 'rgba(255,255,255,0.4)' }}>FORMATION GOOGLE UAC</span>
-            <span style={{ fontSize: '15px', fontWeight: 700, color: '#fff' }}>197€ <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)', textDecoration: 'line-through', fontWeight: 400 }}>297€</span></span>
-          </div>
-          <button className="btn-sticky" onClick={handleCheckout}>
-            Rejoindre la formation <ChevronRight size={13} />
-          </button>
+      {/* ── FINAL CTA ── */}
+      <section style={{ padding: '8rem 2rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'radial-gradient(ellipse at center, rgba(124,58,237,0.18) 0%, transparent 70%)'
+        }} />
+        <div style={{
+          position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
+          width: '500px', height: '300px',
+          background: 'radial-gradient(ellipse, rgba(124,58,237,0.15) 0%, transparent 70%)',
+          filter: 'blur(40px)', pointerEvents: 'none'
+        }} />
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <AnimatedSection>
+            <h2 className="title-glow-subtle" style={{
+              fontSize: 'clamp(32px,5vw,56px)', fontWeight: 800,
+              lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem'
+            }}>
+              Une compétence. Un mois.<br />Des missions à 800€ pièce derrière.
+            </h2>
+            <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.4)', marginBottom: '2.5rem' }}>
+              Chaque jour sans cette compétence, quelqu'un d'autre la facture à ta place.
+            </p>
+            <button className="btn-primary" onClick={handleCheckout} style={{ fontSize: '17px', padding: '18px 52px' }}>
+              Accéder pour 197€ <ChevronRight size={16} />
+            </button>
+          </AnimatedSection>
         </div>
-      )}
+      </section>
+
+      {/* ── FOOTER ── */}
+      <footer style={{
+        borderTop: '1px solid rgba(255,255,255,0.06)', padding: '2rem',
+        textAlign: 'center', fontFamily: "'JetBrains Mono', monospace",
+        fontSize: '11px', color: 'rgba(255,255,255,0.25)'
+      }}>
+        © 2026 · Formation Google UAC ·{' '}
+        <a href="/mentions-legales" style={{ color: 'inherit' }}>Mentions légales</a> ·{' '}
+        <a href="/cgv" style={{ color: 'inherit' }}>CGV</a>
+      </footer>
+
+      {/* ── STICKY BAR ── */}
+      <div className="sticky-bar">
+        <div>
+          <div style={{ fontSize: '20px', fontWeight: 800 }}>
+            197€{' '}
+            <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through', fontWeight: 400 }}>297€</span>
+          </div>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>
+            Early bird · accès à vie · garanti 30j
+          </div>
+        </div>
+        <button className="btn-sticky" onClick={handleCheckout}>
+          Accéder <ChevronRight size={13} />
+        </button>
+      </div>
     </div>
   )
 }
