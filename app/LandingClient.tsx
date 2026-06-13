@@ -671,7 +671,7 @@ const PROFILES = [
 ]
 
 const SITUATIONS = [
-  { id: 'never',   icon: '🔰', label: 'Jamais lancé de campagne',              sub: 'Je pars de zéro' },
+  { id: 'never',   icon: '🌱', label: 'Jamais lancé de campagne',              sub: 'Je pars de zéro' },
   { id: 'tried',   icon: '😤', label: "J'ai essayé, résultats décevants",      sub: 'Budget dépensé, peu de résultats' },
   { id: 'running', icon: '📊', label: 'Campagne active mais CPI trop élevé',   sub: "Je veux optimiser ce que j'ai déjà" },
   { id: 'client',  icon: '🤝', label: 'Je gère des campagnes pour des clients', sub: "Je veux améliorer mes résultats client" },
@@ -680,12 +680,12 @@ const SITUATIONS = [
 const OBSTACLES = [
   { id: 'creatives', icon: '🎬', label: "Je ne sais pas créer des pubs qui convertissent", sub: 'Format, style, durée...' },
   { id: 'budget',    icon: '💸', label: 'Mon budget disparaît sans résultats',              sub: "L'algo mange tout sans convertir" },
-  { id: 'metrics',   icon: '📈', label: "Je ne sais pas lire mes métriques",               sub: 'CTR, CPI, ROAS... trop flou' },
+  { id: 'metrics',   icon: '🔍', label: "Je ne sais pas lire mes métriques",               sub: 'CTR, CPI, ROAS... trop flou' },
   { id: 'setup',     icon: '⚙️', label: 'La configuration de campagne me bloque',          sub: 'Interface Google Ads = terrain miné' },
 ]
 
 const GOALS = [
-  { id: 'installs', icon: '⬇️', label: 'Faire exploser mes installations',    sub: 'Volume maximal, CPI minimum' },
+  { id: 'installs', icon: '📲', label: 'Faire exploser mes installations',    sub: 'Volume maximal, CPI minimum' },
   { id: 'revenue',  icon: '💰', label: 'Générer du revenu avec mon app',       sub: 'IAP, abonnements, monétisation' },
   { id: 'service',  icon: '🏆', label: 'Facturer ce service 500-1500€/mois',  sub: 'Devenir expert pour mes clients' },
   { id: 'learn',    icon: '🎓', label: 'Comprendre la pub mobile pour de bon', sub: 'Bases solides, méthode durable' },
@@ -1069,11 +1069,11 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
           fontSize: 'clamp(26px,5vw,36px)', fontWeight: 800,
           lineHeight: 1.15, marginBottom: '1rem', letterSpacing: '-0.02em',
         }}>
-          On va personnaliser<br />
-          <span className="gradient-text">ta stratégie UAC</span>
+          Découvre ta stratégie<br />
+          <span className="gradient-text">Google UAC sur-mesure</span>
         </h1>
         <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>
-          5 questions. Résultat immédiat.<br />On commence par toi.
+          4 questions. Un plan personnalisé.<br />On commence par ton prénom.
         </p>
       </div>
 
@@ -1116,15 +1116,47 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
           next()
         }}
       >
-        Commencer →
+        Voir mon plan personnalisé →
       </button>
     </div>
   )
 
-  // ── Étape 1 : Profil ────────────────────────────────────────────────────────
-  const StepProfile = (
+  // ── Étape 1 : Objectif (en premier pour créer l'aspiration) ─────────────────
+  const StepGoal = (
     <div className="qf-card" key={`step-${animKey}`}>
       <ProgressBar step={1} total={TOTAL_STEPS} />
+      <h2 style={{
+        fontSize: 'clamp(20px,4vw,26px)', fontWeight: 800,
+        marginBottom: '0.5rem', letterSpacing: '-0.02em',
+      }}>
+        {firstName}, dans 30 jours tu veux…
+      </h2>
+      <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', marginBottom: '1.5rem' }}>
+        Ton objectif définit tout — choisis celui qui te parle vraiment.
+      </p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        {GOALS.map(g => (
+          <ChoiceCard
+            key={g.id} icon={g.icon} label={g.label} sub={g.sub}
+            selected={answers.goal === g.id}
+            onClick={() => setChoice('goal', g.id)}
+          />
+        ))}
+      </div>
+      <button
+        className="btn-next"
+        disabled={!answers.goal}
+        onClick={next}
+      >
+        Définir mon profil →
+      </button>
+    </div>
+  )
+
+  // ── Étape 2 : Profil ─────────────────────────────────────────────────────────
+  const StepProfile = (
+    <div className="qf-card" key={`step-${animKey}`}>
+      <ProgressBar step={2} total={TOTAL_STEPS} />
       <h2 style={{
         fontSize: 'clamp(20px,4vw,26px)', fontWeight: 800,
         marginBottom: '0.5rem', letterSpacing: '-0.02em',
@@ -1144,15 +1176,15 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
         ))}
       </div>
       <button className="btn-next" disabled={!answers.profile} onClick={next}>
-        Continuer →
+        Situer mon niveau →
       </button>
     </div>
   )
 
-  // ── Étape 2 : Situation ─────────────────────────────────────────────────────
+  // ── Étape 3 : Situation ──────────────────────────────────────────────────────
   const StepSituation = (
     <div className="qf-card" key={`step-${animKey}`}>
-      <ProgressBar step={2} total={TOTAL_STEPS} />
+      <ProgressBar step={3} total={TOTAL_STEPS} />
       <h2 style={{
         fontSize: 'clamp(20px,4vw,26px)', fontWeight: 800,
         marginBottom: '0.5rem', letterSpacing: '-0.02em',
@@ -1172,23 +1204,23 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
         ))}
       </div>
       <button className="btn-next" disabled={!answers.situation} onClick={next}>
-        Continuer →
+        Identifier mon blocage →
       </button>
     </div>
   )
 
-  // ── Étape 3 : Obstacle ──────────────────────────────────────────────────────
+  // ── Étape 4 : Obstacle ───────────────────────────────────────────────────────
   const StepObstacle = (
     <div className="qf-card" key={`step-${animKey}`}>
-      <ProgressBar step={3} total={TOTAL_STEPS} />
+      <ProgressBar step={4} total={TOTAL_STEPS} />
       <h2 style={{
         fontSize: 'clamp(20px,4vw,26px)', fontWeight: 800,
         marginBottom: '0.5rem', letterSpacing: '-0.02em',
       }}>
-        Ton plus gros blocage en ce moment ?
+        Ton principal frein en ce moment ?
       </h2>
       <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', marginBottom: '1.5rem' }}>
-        Ce qu&apos;on va résoudre en priorité.
+        On cible ce qu&apos;on va résoudre en priorité.
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         {OBSTACLES.map(o => (
@@ -1199,43 +1231,15 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
           />
         ))}
       </div>
-      <button className="btn-next" disabled={!answers.obstacle} onClick={next}>
-        Continuer →
-      </button>
-    </div>
-  )
-
-  // ── Étape 4 : Objectif ──────────────────────────────────────────────────────
-  const StepGoal = (
-    <div className="qf-card" key={`step-${animKey}`}>
-      <ProgressBar step={4} total={TOTAL_STEPS} />
-      <h2 style={{
-        fontSize: 'clamp(20px,4vw,26px)', fontWeight: 800,
-        marginBottom: '0.5rem', letterSpacing: '-0.02em',
-      }}>
-        Dans 30 jours, tu veux surtout…
-      </h2>
-      <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', marginBottom: '1.5rem' }}>
-        Ça définit la trajectoire de ton plan d&apos;action.
-      </p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-        {GOALS.map(g => (
-          <ChoiceCard
-            key={g.id} icon={g.icon} label={g.label} sub={g.sub}
-            selected={answers.goal === g.id}
-            onClick={() => setChoice('goal', g.id)}
-          />
-        ))}
-      </div>
       <button
         className="btn-next"
-        disabled={!answers.goal}
+        disabled={!answers.obstacle}
         onClick={() => {
           setAnswers(a => ({ ...a }))
           next()
         }}
       >
-        Voir mon résultat →
+        Voir mon résultat personnalisé →
       </button>
     </div>
   )
@@ -1361,15 +1365,14 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
 
               <button className="btn-cta-result" onClick={() => {
                 if (typeof window !== 'undefined' && (window as any).handleQuizComplete) {
-                  (window as any).handleQuizComplete({ 
-                    name: "Alistair", // Change par la variable du prénom si elle est disponible dans ce composant
-                    goal: "générer du revenu", 
-                    level: "intermédiaire" 
-                  });
+                  (window as any).handleQuizComplete({
+                    name: answers.name || firstName,
+                    goal: answers.goal || 'installs',
+                    level: answers.situation === 'never' ? 'débutant' : 'intermédiaire',
+                  })
                 }
-              }}
-              >
-                Afficher mon plan d'action <ChevronRight size={13} />
+              }}>
+                Accéder à ma formation — 197€ <ChevronRight size={14} />
               </button>
             </div>
           </div>
@@ -1413,7 +1416,8 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
     </div>
   )
 
-  const steps = [StepName, StepProfile, StepSituation, StepObstacle, StepGoal, StepResult]
+  // Nouvel ordre : objectif en premier pour créer l'aspiration avant de parler des blocages
+  const steps = [StepName, StepGoal, StepProfile, StepSituation, StepObstacle, StepResult]
 
   return (
     <div className="qf-wrap">
