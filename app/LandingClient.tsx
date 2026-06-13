@@ -1359,8 +1359,17 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
                 Garantie 30 jours — satisfait ou remboursé, sans question.
               </p>
 
-              <button className="btn-cta-result" onClick={handleCheckout}>
-                Accéder maintenant pour 197€ →
+              <button className="btn-cta-result" onClick={() => {
+                if (typeof window !== 'undefined' && (window as any).handleQuizComplete) {
+                  (window as any).handleQuizComplete({ 
+                    name: "Alistair", // Change par la variable du prénom si elle est disponible dans ce composant
+                    goal: "générer du revenu", 
+                    level: "intermédiaire" 
+                  });
+                }
+              }}
+              >
+                Accéder maintenant pour 197€ <ChevronRight size={13} />
               </button>
             </div>
           </div>
