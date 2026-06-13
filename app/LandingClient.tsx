@@ -112,6 +112,19 @@ function Countdown({ targetDate }: { targetDate: Date }) {
   )
 }
 
+// 5-star component
+function StarRating() {
+  return (
+    <div style={{ display: 'flex', gap: '3px', marginBottom: '10px' }}>
+      {[1,2,3,4,5].map(i => (
+        <svg key={i} width="16" height="16" viewBox="0 0 16 16" fill="#FBBF24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 1l1.854 3.756 4.146.603-3 2.923.708 4.128L8 10.25l-3.708 1.16.708-4.128-3-2.923 4.146-.603L8 1z"/>
+        </svg>
+      ))}
+    </div>
+  )
+}
+
 const MODULES = [
   { num: '01', title: 'Pourquoi les pubs sans paroles gagnent', desc: 'CTR → Quality Score → CPI. Le mécanisme complet avec mes screenshots réels.' },
   { num: '02', title: "Anatomie d'une vidéo satisfaisante", desc: 'Hook 2s – contexte 3s – résolution 15s – CTA 2s. Structure exacte.' },
@@ -382,9 +395,17 @@ const GLOBAL_CSS = `
     border-radius: 100px 100px 0 0;
   }
 
+  .badge-discount {
+    display: inline-flex; align-items: center;
+    font-size: 12px; font-weight: 700; color: #4ade80;
+    background: rgba(74,222,128,0.1);
+    padding: 3px 10px; border-radius: 100px;
+    border: 1px solid rgba(74,222,128,0.3);
+  }
+
   .metric-card {
     position: relative; overflow: hidden;
-    padding: 1.25rem 2rem; min-width: 160px;
+    padding: 1.25rem 1.5rem; min-width: 120px;
     transition: transform 0.2s;
   }
   .metric-card::after {
@@ -486,7 +507,7 @@ const GLOBAL_CSS = `
 
   .sticky-bar {
     position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
-    padding: 12px 2rem;
+    padding: 12px 1.5rem;
     display: flex; justify-content: space-between; align-items: center;
     background: rgba(8,8,16,0.95); backdrop-filter: blur(20px);
     border-top: 1px solid rgba(124,58,237,0.2);
@@ -496,8 +517,8 @@ const GLOBAL_CSS = `
   /* Avatar ring animé */
   .avatar-ring-wrap {
     position: relative;
-    width: 210px;
-    height: 210px;
+    width: 160px;
+    height: 160px;
     flex-shrink: 0;
   }
   .avatar-ring-spin {
@@ -535,6 +556,105 @@ const GLOBAL_CSS = `
     pointer-events: none;
     z-index: -1;
   }
+
+  /* Testimonial card */
+  .testimonial-card {
+    padding: 1.5rem; border-radius: 14px;
+    background: rgba(15,10,30,0.8);
+    border: 1px solid rgba(124,58,237,0.18);
+    position: relative; overflow: hidden;
+  }
+  .testimonial-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent);
+  }
+
+  /* Hero anchor CTA */
+  .btn-anchor {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 22px; border-radius: 100px;
+    border: 1px solid rgba(124,58,237,0.4);
+    background: rgba(124,58,237,0.08);
+    color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    text-decoration: none;
+  }
+  .btn-anchor:hover {
+    background: rgba(124,58,237,0.15);
+    border-color: rgba(124,58,237,0.6);
+    color: #fff;
+  }
+
+  /* ── Mobile overrides ── */
+  @media (max-width: 640px) {
+    .hero-section {
+      padding: 6rem 1.25rem 3rem !important;
+    }
+    .hero-h1 {
+      font-size: 36px !important;
+      letter-spacing: -0.02em !important;
+    }
+    .hero-sub {
+      font-size: 15px !important;
+    }
+    .metric-cards-row {
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    .metric-card {
+      border-radius: 10px !important;
+      padding: 1rem 1.25rem !important;
+    }
+    .stats-grid {
+      grid-template-columns: repeat(2,1fr) !important;
+    }
+    .problem-grid {
+      grid-template-columns: 1fr !important;
+    }
+    .who-flex {
+      flex-direction: column !important;
+      gap: 2rem !important;
+      align-items: center !important;
+    }
+    .avatar-ring-wrap {
+      width: 130px !important;
+      height: 130px !important;
+    }
+    .badge-row {
+      gap: 6px !important;
+    }
+    .offer-card-inner {
+      padding: 1.5rem !important;
+    }
+    .guarantee-box {
+      padding: 1.25rem !important;
+      flex-direction: column !important;
+      gap: 0.75rem !important;
+    }
+    .sticky-bar {
+      padding: 10px 1rem !important;
+    }
+    .sticky-price {
+      font-size: 17px !important;
+    }
+    .nav-bar {
+      padding: 0 1rem !important;
+    }
+    .section-pad {
+      padding: 4rem 1.25rem !important;
+    }
+    .final-cta-section {
+      padding: 5rem 1.25rem !important;
+    }
+    .countdown-box {
+      padding: 0.75rem 1rem !important;
+    }
+    .cta-price-row {
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+    }
+  }
 `
 
 export default function LandingClient() {
@@ -547,12 +667,16 @@ export default function LandingClient() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const scrollToOffer = () => {
+    document.getElementById('acheter')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <div style={{ background: '#080810', color: '#e8e8f0', overflowX: 'hidden' }}>
       <style>{GLOBAL_CSS}</style>
 
       {/* NAV */}
-      <nav style={{
+      <nav className="nav-bar" style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: '0 2rem', height: '60px',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -570,21 +694,21 @@ export default function LandingClient() {
         }}>
           UAC·METHODE
         </span>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', fontFamily: "'JetBrains Mono', monospace" }}>
-            <span style={{ color: '#4ade80', marginRight: '6px' }}>●</span>Early bird
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)', fontFamily: "'JetBrains Mono', monospace' " }}>
+            <span style={{ color: '#4ade80', marginRight: '5px' }}>●</span>Early bird
           </span>
-          <button className="btn-nav" onClick={handleCheckout}>
+          <button className="btn-nav" onClick={scrollToOffer}>
             197€ <ChevronRight size={13} />
           </button>
         </div>
       </nav>
 
       {/* HERO */}
-      <section style={{
+      <section className="hero-section" style={{
         minHeight: '100vh', display: 'flex', flexDirection: 'column',
         justifyContent: 'center', alignItems: 'center', textAlign: 'center',
-        padding: '7rem 2rem 4rem', position: 'relative', overflow: 'hidden'
+        padding: '7rem 2rem 5rem', position: 'relative', overflow: 'hidden'
       }}>
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden' }}>
           <div className="grid-bg" />
@@ -594,24 +718,24 @@ export default function LandingClient() {
           <div className="light light-4" />
         </div>
 
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '820px' }}>
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: '820px', width: '100%' }}>
 
           {/* Badge */}
           <div className="badge-pill" style={{ marginBottom: '2rem', animation: 'slideUp 0.6s ease both' }}>
             <span style={{
               width: '6px', height: '6px', borderRadius: '50%',
-              background: '#4ade80', animation: 'pulse 2s ease infinite', display: 'inline-block'
+              background: '#4ade80', animation: 'pulse 2s ease infinite', display: 'inline-block', flexShrink: 0
             }} />
             <span style={{
-              fontSize: '12px', color: 'rgba(255,255,255,0.7)',
-              fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.08em'
+              fontSize: '11px', color: 'rgba(255,255,255,0.7)',
+              fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.06em'
             }}>
-              Formation Google UAC · Compétence mobile · Early bird 197€
+              Formation Google UAC · Early bird −50% · 197€
             </span>
           </div>
 
-          <h1 style={{
-            fontSize: 'clamp(38px,5.5vw,68px)', fontWeight: 800,
+          <h1 className="hero-h1" style={{
+            fontSize: 'clamp(36px,5.5vw,68px)', fontWeight: 800,
             lineHeight: 1.08, letterSpacing: '-0.03em',
             marginBottom: '1.5rem', animation: 'slideUp 0.6s ease 0.1s both'
           }}>
@@ -620,9 +744,9 @@ export default function LandingClient() {
             <span className="hero-line-bottom">la plus sous-exploitée</span>
           </h1>
 
-          <p style={{
-            fontSize: '18px', color: 'rgba(255,255,255,0.5)', maxWidth: '580px',
-            margin: '0 auto 3rem', lineHeight: 1.7, animation: 'slideUp 0.6s ease 0.2s both'
+          <p className="hero-sub" style={{
+            fontSize: '17px', color: 'rgba(255,255,255,0.5)', maxWidth: '560px',
+            margin: '0 auto 2.5rem', lineHeight: 1.7, animation: 'slideUp 0.6s ease 0.2s both'
           }}>
             Que vous promouviez votre app ou proposiez ce service à vos clients —
             la méthode exacte issue de vraies campagnes à{' '}
@@ -630,9 +754,10 @@ export default function LandingClient() {
           </p>
 
           {/* Metric cards */}
-          <div style={{
+          <div className="metric-cards-row" style={{
             display: 'flex', justifyContent: 'center', gap: '1px',
-            marginBottom: '3rem', animation: 'slideUp 0.6s ease 0.3s both'
+            marginBottom: '2.5rem', animation: 'slideUp 0.6s ease 0.3s both',
+            width: '100%',
           }}>
             {[
               { val: '0,07€', lbl: 'CPI campagne 1', sub: 'moy. secteur 2,10€', featured: true },
@@ -640,13 +765,14 @@ export default function LandingClient() {
               { val: '0,57€', lbl: 'CPI campagne 3', sub: 'moy. secteur 2,30€', featured: false },
             ].map((p, i) => (
               <div key={i} className="metric-card" style={{
+                flex: 1,
                 background: p.featured ? 'rgba(124,58,237,0.15)' : 'rgba(255,255,255,0.03)',
                 border: `1px solid ${p.featured ? 'rgba(124,58,237,0.4)' : 'rgba(255,255,255,0.06)'}`,
                 borderRadius: i === 0 ? '12px 0 0 12px' : i === 2 ? '0 12px 12px 0' : '0',
                 boxShadow: p.featured ? '0 0 30px rgba(124,58,237,0.2), inset 0 1px 0 rgba(167,139,250,0.2)' : 'none',
               }}>
                 <div style={{
-                  fontSize: '28px', fontWeight: 800,
+                  fontSize: 'clamp(22px,4vw,28px)', fontWeight: 800,
                   background: 'linear-gradient(135deg, #a78bfa, #60a5fa)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                   filter: p.featured ? 'drop-shadow(0 0 12px rgba(167,139,250,0.5))' : 'none'
@@ -654,9 +780,9 @@ export default function LandingClient() {
                   {p.val}
                 </div>
                 <div style={{
-                  fontSize: '11px', color: 'rgba(255,255,255,0.5)',
+                  fontSize: '10px', color: 'rgba(255,255,255,0.5)',
                   fontFamily: "'JetBrains Mono', monospace",
-                  textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: '4px'
+                  textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: '4px'
                 }}>
                   {p.lbl}
                 </div>
@@ -676,32 +802,42 @@ export default function LandingClient() {
             display: 'flex', flexDirection: 'column', alignItems: 'center',
             gap: '14px', animation: 'slideUp 0.6s ease 0.4s both'
           }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '2px' }}>
+            <div className="cta-price-row" style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '2px', flexWrap: 'wrap', justifyContent: 'center' }}>
               <span style={{
-                fontSize: '44px', fontWeight: 800, color: '#fff',
+                fontSize: 'clamp(36px,5vw,44px)', fontWeight: 800, color: '#fff',
                 textShadow: '0 0 30px rgba(255,255,255,0.15), 0 2px 10px rgba(0,0,0,0.5)'
               }}>197€</span>
-              <span style={{ fontSize: '22px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>297€</span>
-              <span className="badge-eb">↓ Early bird</span>
+              {/* FIXED: 394€ barré → vrai -50% cohérent avec les créas */}
+              <span style={{ fontSize: 'clamp(18px,3vw,22px)', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>394€</span>
+              <span className="badge-eb">↓ −50% Early bird</span>
             </div>
+
             {/* Countdown */}
-            <div style={{
-              padding: '1rem 1.5rem', borderRadius: '12px', marginBottom: '1rem',
+            <div className="countdown-box" style={{
+              padding: '1rem 1.5rem', borderRadius: '12px', marginBottom: '0.5rem',
               background: 'rgba(239,68,68,0.07)', border: '1px solid rgba(239,68,68,0.2)',
+              width: '100%', maxWidth: '380px',
             }}>
               <div style={{
-                fontSize: '12px', color: '#f87171', fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '11px', color: '#f87171', fontFamily: "'JetBrains Mono', monospace",
                 marginBottom: '10px', letterSpacing: '0.08em', textTransform: 'uppercase',
               }}>
                 ⏱ Prix early bird — se termine dans
               </div>
               <Countdown targetDate={new Date('2026-06-28T23:59:59')} />
             </div>
-            <button className="btn-primary" onClick={handleCheckout}>
+
+            <button className="btn-primary" onClick={handleCheckout} style={{ width: '100%', maxWidth: '360px', padding: '16px 32px' }}>
               Accéder à la formation <ChevronRight size={15} />
             </button>
+
+            {/* Anchor to offer — visible shortcut for mobile scrollers */}
+            <button className="btn-anchor" onClick={scrollToOffer}>
+              Voir ce qui est inclus <ChevronRight size={13} />
+            </button>
+
             <div style={{
-              display: 'flex', gap: '20px', fontSize: '12px',
+              display: 'flex', gap: '16px', fontSize: '11px', flexWrap: 'wrap', justifyContent: 'center',
               color: 'rgba(255,255,255,0.3)', fontFamily: "'JetBrains Mono', monospace"
             }}>
               {['✓ Accès à vie', '✓ Garantie 30 jours', '✓ Templates inclus'].map(t => (
@@ -713,7 +849,7 @@ export default function LandingClient() {
       </section>
 
       {/* STATS */}
-      <section style={{
+      <section className="section-pad" style={{
         padding: '5rem 2rem',
         borderTop: '1px solid rgba(124,58,237,0.12)',
         borderBottom: '1px solid rgba(124,58,237,0.12)',
@@ -724,7 +860,7 @@ export default function LandingClient() {
           background: 'radial-gradient(ellipse 60% 100% at 50% 50%, rgba(124,58,237,0.06) 0%, transparent 70%)',
           pointerEvents: 'none'
         }} />
-        <div style={{
+        <div className="stats-grid" style={{
           maxWidth: '780px', margin: '0 auto',
           display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1rem'
         }}>
@@ -737,7 +873,7 @@ export default function LandingClient() {
             <AnimatedSection key={i} delay={i * 80}>
               <div className="stat-card">
                 <div style={{
-                  fontSize: '40px', fontWeight: 800,
+                  fontSize: 'clamp(28px,4vw,40px)', fontWeight: 800,
                   background: 'linear-gradient(135deg, #a78bfa, #60a5fa)',
                   WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                   filter: 'drop-shadow(0 0 10px rgba(167,139,250,0.4))'
@@ -745,7 +881,7 @@ export default function LandingClient() {
                   <Counter target={s.num} suffix={s.suffix} />
                 </div>
                 <div style={{
-                  fontSize: '12px', color: 'rgba(255,255,255,0.4)', marginTop: '6px',
+                  fontSize: '11px', color: 'rgba(255,255,255,0.4)', marginTop: '6px',
                   fontFamily: "'JetBrains Mono', monospace"
                 }}>
                   {s.label}
@@ -757,14 +893,14 @@ export default function LandingClient() {
       </section>
 
       {/* PROBLEM */}
-      <section style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
+      <section className="section-pad" style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
         <AnimatedSection>
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
             letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
           }}>— Le problème</div>
           <h2 className="title-glow-subtle" style={{
-            fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+            fontSize: 'clamp(26px,4vw,46px)', fontWeight: 800,
             lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem'
           }}>
             Pourquoi ton budget<br />disparaît sans résultats
@@ -776,7 +912,7 @@ export default function LandingClient() {
             La plupart des devs font les mêmes erreurs. Et Google se fait payer pour les laisser faire.
           </p>
         </AnimatedSection>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+        <div className="problem-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
           {[
             { bad: true,  t: 'Ce que tu fais probablement', b: "Pub avec voix qui parle, logo, texte \"Découvrez notre app\". CTR de 1%. L'algo te pénalise. CPI de 2 à 3€. Budget épuisé en 3 jours." },
             { bad: false, t: 'Ce que cette méthode fait',   b: "Format visuel satisfaisant sans paroles. CTR de 10 à 14%. L'algo te récompense. CPI qui s'effondre. Résultats dès le premier lancement." },
@@ -797,7 +933,7 @@ export default function LandingClient() {
       </section>
 
       {/* MODULES */}
-      <section style={{
+      <section className="section-pad" style={{
         padding: '7rem 2rem',
         background: 'rgba(255,255,255,0.015)',
         borderTop: '1px solid rgba(124,58,237,0.1)',
@@ -817,7 +953,7 @@ export default function LandingClient() {
               letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
             }}>— La formation</div>
             <h2 className="title-glow-subtle" style={{
-              fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+              fontSize: 'clamp(26px,4vw,46px)', fontWeight: 800,
               lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '0.75rem'
             }}>
               10 leçons. Tout ce qu&apos;il faut.<br />Rien de superflu.
@@ -846,14 +982,14 @@ export default function LandingClient() {
       </section>
 
       {/* QUI JE SUIS */}
-      <section style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
+      <section className="section-pad" style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
         <AnimatedSection>
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
             letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
           }}>— Qui je suis</div>
           <h2 className="title-glow-subtle" style={{
-            fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+            fontSize: 'clamp(26px,4vw,46px)', fontWeight: 800,
             lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
           }}>
             Pas une agence.<br />Quelqu&apos;un qui l&apos;a fait.
@@ -861,11 +997,11 @@ export default function LandingClient() {
         </AnimatedSection>
 
         <AnimatedSection delay={100}>
-          <div style={{
+          <div className="who-flex" style={{
             display: 'flex', gap: '3rem', alignItems: 'flex-start',
             flexWrap: 'wrap',
           }}>
-            {/* Avatar amélioré */}
+            {/* Avatar */}
             <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
               <div className="avatar-ring-wrap">
                 <div className="avatar-glow" />
@@ -886,7 +1022,7 @@ export default function LandingClient() {
               </div>
             </div>
 
-            <div style={{ flex: 1, minWidth: '280px' }}>
+            <div style={{ flex: 1, minWidth: '260px' }}>
               <p style={{
                 fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8,
                 marginBottom: '1.5rem',
@@ -905,7 +1041,7 @@ export default function LandingClient() {
                 J&apos;ai créé cette formation pour changer ça.
               </p>
 
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <div className="badge-row" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 {[
                   '📱 App publiée sur Play Store',
                   '⚡ Expert Google UAC',
@@ -913,7 +1049,7 @@ export default function LandingClient() {
                   '🌐 Créateur de sites web',
                 ].map((badge, i) => (
                   <span key={i} style={{
-                    fontSize: '12px', padding: '5px 12px', borderRadius: '100px',
+                    fontSize: '11px', padding: '5px 12px', borderRadius: '100px',
                     border: '1px solid rgba(124,58,237,0.25)',
                     background: 'rgba(124,58,237,0.08)',
                     color: 'rgba(255,255,255,0.65)',
@@ -926,8 +1062,8 @@ export default function LandingClient() {
         </AnimatedSection>
       </section>
 
-      {/* TEMOIGNAGES */}
-      <section style={{
+      {/* TEMOIGNAGES — with 5 stars */}
+      <section className="section-pad" style={{
         padding: '7rem 2rem',
         background: 'rgba(255,255,255,0.015)',
         borderTop: '1px solid rgba(124,58,237,0.1)',
@@ -940,7 +1076,7 @@ export default function LandingClient() {
               letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
             }}>— Ils l&apos;ont testé</div>
             <h2 className="title-glow-subtle" style={{
-              fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+              fontSize: 'clamp(26px,4vw,46px)', fontWeight: 800,
               lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
             }}>
               Les premiers retours
@@ -969,25 +1105,18 @@ export default function LandingClient() {
               },
             ].map((t, i) => (
               <AnimatedSection key={i} delay={i * 80}>
-                <div style={{
-                  padding: '1.75rem 2rem', borderRadius: '12px',
-                  background: 'rgba(124,58,237,0.06)',
-                  border: '1px solid rgba(124,58,237,0.15)',
-                  position: 'relative', overflow: 'hidden',
-                }}>
-                  <div style={{
-                    position: 'absolute', top: 0, left: 0, right: 0, height: '1px',
-                    background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.4), transparent)',
-                  }} />
+                <div className="testimonial-card">
+                  {/* 5 stars */}
+                  <StarRating />
 
                   <p style={{
-                    fontSize: '14px', color: 'rgba(255,255,255,0.75)',
+                    fontSize: '14px', color: 'rgba(255,255,255,0.78)',
                     lineHeight: 1.7, marginBottom: '1.25rem', fontStyle: 'italic',
                   }}>
                     &ldquo;{t.text}&rdquo;
                   </p>
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
                     <div>
                       <div style={{ fontSize: '13px', fontWeight: 700, color: '#fff' }}>{t.name}</div>
                       <div style={{
@@ -1010,14 +1139,14 @@ export default function LandingClient() {
       </section>
 
       {/* OFFER */}
-      <section id="acheter" style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
+      <section id="acheter" className="section-pad" style={{ padding: '7rem 2rem', maxWidth: '780px', margin: '0 auto' }}>
         <AnimatedSection>
           <div style={{
             fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#a78bfa',
             letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
           }}>— L&apos;offre</div>
           <h2 className="title-glow-subtle" style={{
-            fontSize: 'clamp(28px,4vw,46px)', fontWeight: 800,
+            fontSize: 'clamp(26px,4vw,46px)', fontWeight: 800,
             lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '3rem'
           }}>
             Ce que tu obtiens aujourd&apos;hui
@@ -1025,8 +1154,8 @@ export default function LandingClient() {
         </AnimatedSection>
 
         <AnimatedSection>
-          <div className="card-glow" style={{ padding: '2.5rem', marginBottom: '16px' }}>
-            <div style={{ position: 'relative', zIndex: 1 }}>
+          <div className="card-glow" style={{ marginBottom: '16px' }}>
+            <div className="offer-card-inner" style={{ padding: '2.5rem', position: 'relative', zIndex: 1 }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '2.5rem' }}>
                 {[
                   '10 leçons screencast — mon vrai compte Google Ads ouvert',
@@ -1043,13 +1172,14 @@ export default function LandingClient() {
                 ))}
               </div>
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '2rem' }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px' }}>
+                <div className="cta-price-row" style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '8px', flexWrap: 'wrap' }}>
                   <span style={{
-                    fontSize: '52px', fontWeight: 800, color: '#fff',
+                    fontSize: 'clamp(40px,6vw,52px)', fontWeight: 800, color: '#fff',
                     textShadow: '0 0 30px rgba(255,255,255,0.15), 0 2px 10px rgba(0,0,0,0.5)'
                   }}>197€</span>
-                  <span style={{ fontSize: '24px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>297€</span>
-                  <span className="badge-eb">↓ Early bird</span>
+                  {/* FIXED: 394€ barré → -50% cohérent */}
+                  <span style={{ fontSize: 'clamp(18px,3vw,24px)', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>394€</span>
+                  <span className="badge-eb">↓ −50% Early bird</span>
                 </div>
                 <p style={{
                   fontSize: '11px', color: 'rgba(255,255,255,0.25)',
@@ -1079,7 +1209,7 @@ export default function LandingClient() {
       </section>
 
       {/* FAQ */}
-      <section style={{
+      <section className="section-pad" style={{
         padding: '7rem 2rem',
         background: 'rgba(255,255,255,0.015)',
         borderTop: '1px solid rgba(124,58,237,0.1)'
@@ -1091,7 +1221,7 @@ export default function LandingClient() {
               letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem'
             }}>— FAQ</div>
             <h2 className="title-glow-subtle" style={{
-              fontSize: 'clamp(28px,4vw,42px)', fontWeight: 800,
+              fontSize: 'clamp(26px,4vw,42px)', fontWeight: 800,
               lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '2.5rem'
             }}>
               Avant d&apos;acheter
@@ -1128,7 +1258,7 @@ export default function LandingClient() {
       </section>
 
       {/* FINAL CTA */}
-      <section style={{ padding: '8rem 2rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section className="final-cta-section" style={{ padding: '8rem 2rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', inset: 0,
           background: 'radial-gradient(ellipse at center, rgba(124,58,237,0.18) 0%, transparent 70%)'
@@ -1142,7 +1272,7 @@ export default function LandingClient() {
         <div style={{ position: 'relative', zIndex: 1 }}>
           <AnimatedSection>
             <h2 className="title-glow-subtle" style={{
-              fontSize: 'clamp(32px,5vw,56px)', fontWeight: 800,
+              fontSize: 'clamp(28px,5vw,56px)', fontWeight: 800,
               lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem'
             }}>
               Une compétence. Un mois.<br />Des missions à 800€ pièce derrière.
@@ -1159,7 +1289,7 @@ export default function LandingClient() {
 
       {/* FOOTER */}
       <footer style={{
-        borderTop: '1px solid rgba(255,255,255,0.06)', padding: '2rem',
+        borderTop: '1px solid rgba(255,255,255,0.06)', padding: '2rem 1.5rem',
         textAlign: 'center', fontFamily: "'JetBrains Mono', monospace",
         fontSize: '11px', color: 'rgba(255,255,255,0.25)'
       }}>
@@ -1171,11 +1301,13 @@ export default function LandingClient() {
       {/* STICKY BAR */}
       <div className="sticky-bar">
         <div>
-          <div style={{ fontSize: '20px', fontWeight: 800 }}>
+          <div className="sticky-price" style={{ fontSize: '19px', fontWeight: 800 }}>
             197€{' '}
-            <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through', fontWeight: 400 }}>297€</span>
+            <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through', fontWeight: 400 }}>394€</span>
+            {' '}
+            <span className="badge-discount">−50%</span>
           </div>
-          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.3)' }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>
             Early bird · accès à vie · garanti 30j
           </div>
         </div>
