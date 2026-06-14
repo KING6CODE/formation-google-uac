@@ -38,6 +38,30 @@ function useInView(threshold = 0.15) {
   return { ref, visible }
 }
 
+// ─── Icônes SVG Professionnelles (Remplacement des Emojis) ────────────────────
+
+const Icons = {
+  Dev: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>,
+  Freelance: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>,
+  Founder: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>,
+  Curious: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>,
+  Never: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c4-4 4-10 0-14-4 4-4 10 0 14z"></path><path d="M12 8c2-2 2-6 0-8-2 2-2 6 0 8z"></path></svg>,
+  Tried: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>,
+  Running: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>,
+  Client: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>,
+  Creatives: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>,
+  Budget: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>,
+  Metrics: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>,
+  Setup: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>,
+  Installs: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>,
+  Revenue: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>,
+  Service: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>,
+  Learn: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>,
+  Clock: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>,
+  Shield: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>,
+  CheckCircle: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>,
+}
+
 // ─── Landing : composants utilitaires ────────────────────────────────────────
 
 function AnimatedSection({
@@ -661,37 +685,41 @@ interface Answers {
   goal: Answer
 }
 
+export interface QuizProfileData {
+  name: string
+  goal: string
+  goalLabel: string
+  level: string
+}
+
 // ─── Quiz : données ───────────────────────────────────────────────────────────
 
-// AMÉLIORATION : icônes plus lisibles et intentions plus claires
 const PROFILES = [
-  { id: 'dev',       icon: '📱', label: 'Dev / indie hacker',    sub: "J'ai une app sur le Play Store" },
-  { id: 'freelance', icon: '💼', label: 'Freelance / agence',    sub: 'Je veux vendre ce service à des clients' },
-  { id: 'founder',   icon: '🚀', label: 'Fondateur de startup',  sub: "Je gère les pubs de mon produit SaaS ou mobile" },
-  { id: 'curious',   icon: '🔭', label: 'Curieux / débutant',    sub: "Je découvre Google Ads et le marketing mobile" },
+  { id: 'dev',       icon: Icons.Dev,       label: 'Dev / indie hacker',    sub: "J'ai une app sur le Play Store" },
+  { id: 'freelance', icon: Icons.Freelance, label: 'Freelance / agence',    sub: 'Je veux vendre ce service à des clients' },
+  { id: 'founder',   icon: Icons.Founder,   label: 'Fondateur de startup',  sub: "Je gère les pubs de mon produit SaaS ou mobile" },
+  { id: 'curious',   icon: Icons.Curious,   label: 'Curieux / débutant',    sub: "Je découvre Google Ads et le marketing mobile" },
 ]
 
-// AMÉLIORATION : 🔰 → 🌱 pour "jamais lancé" (plus positif, croissance)
 const SITUATIONS = [
-  { id: 'never',   icon: '🌱', label: 'Jamais lancé de campagne',              sub: 'Je pars de zéro — et c\'est OK' },
-  { id: 'tried',   icon: '😤', label: "J'ai essayé, résultats décevants",      sub: 'Budget dépensé, peu de résultats' },
-  { id: 'running', icon: '📊', label: 'Campagne active mais CPI trop élevé',   sub: "Je veux optimiser ce que j'ai déjà" },
-  { id: 'client',  icon: '🤝', label: 'Je gère des campagnes pour des clients', sub: "Je veux améliorer mes résultats client" },
+  { id: 'never',   icon: Icons.Never,   label: 'Jamais lancé de campagne',              sub: 'Je pars de zéro — et c\'est OK' },
+  { id: 'tried',   icon: Icons.Tried,   label: "J'ai essayé, résultats décevants",      sub: 'Budget dépensé, peu de résultats' },
+  { id: 'running', icon: Icons.Running, label: 'Campagne active mais CPI trop élevé',   sub: "Je veux optimiser ce que j'ai déjà" },
+  { id: 'client',  icon: Icons.Client,  label: 'Je gère des campagnes pour des clients', sub: "Je veux améliorer mes résultats client" },
 ]
 
 const OBSTACLES = [
-  { id: 'creatives', icon: '🎬', label: "Je ne sais pas créer des pubs qui convertissent", sub: 'Format, style, durée...' },
-  { id: 'budget',    icon: '💸', label: 'Mon budget disparaît sans résultats',              sub: "L'algo mange tout sans convertir" },
-  { id: 'metrics',   icon: '📈', label: "Je ne sais pas lire mes métriques",               sub: 'CTR, CPI, ROAS... trop flou' },
-  { id: 'setup',     icon: '⚙️', label: 'La configuration de campagne me bloque',          sub: 'Interface Google Ads = terrain miné' },
+  { id: 'creatives', icon: Icons.Creatives, label: "Je ne sais pas créer des pubs qui convertissent", sub: 'Format, style, durée...' },
+  { id: 'budget',    icon: Icons.Budget,    label: 'Mon budget disparaît sans résultats',              sub: "L'algo mange tout sans convertir" },
+  { id: 'metrics',   icon: Icons.Metrics,   label: "Je ne sais pas lire mes métriques",               sub: 'CTR, CPI, ROAS... trop flou' },
+  { id: 'setup',     icon: Icons.Setup,     label: 'La configuration de campagne me bloque',          sub: 'Interface Google Ads = terrain miné' },
 ]
 
-// AMÉLIORATION : ⬇️ → 📲 pour installs (plus intuitif), 🏆 → 💎 pour service (valeur)
 const GOALS = [
-  { id: 'installs', icon: '📲', label: 'Faire exploser mes installations',    sub: 'Volume maximal, CPI minimum' },
-  { id: 'revenue',  icon: '💰', label: 'Générer du revenu avec mon app',       sub: 'IAP, abonnements, monétisation' },
-  { id: 'service',  icon: '💎', label: 'Facturer ce service 500-1500€/mois',  sub: 'Devenir expert pour mes clients' },
-  { id: 'learn',    icon: '🎓', label: 'Comprendre la pub mobile pour de bon', sub: 'Bases solides, méthode durable' },
+  { id: 'installs', icon: Icons.Installs, label: 'Faire exploser mes installations',    sub: 'Volume maximal, CPI minimum' },
+  { id: 'revenue',  icon: Icons.Revenue,  label: 'Générer du revenu avec mon app',       sub: 'IAP, abonnements, monétisation' },
+  { id: 'service',  icon: Icons.Service,  label: 'Facturer ce service 500-1500€/mois',  sub: 'Devenir expert pour mes clients' },
+  { id: 'learn',    icon: Icons.Learn,    label: 'Comprendre la pub mobile pour de bon', sub: 'Bases solides, méthode durable' },
 ]
 
 // ─── Quiz : logique de résultat personnalisé ──────────────────────────────────
@@ -791,7 +819,7 @@ const QUIZ_CSS = `
     color: #fff; letter-spacing: -0.01em;
     box-shadow: 0 0 0 1px rgba(124,58,237,0.5), 0 4px 24px rgba(124,58,237,0.45);
     transition: all 0.2s ease; position: relative; overflow: hidden;
-    margin-top: 1.5rem;
+    margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 8px;
     font-family: 'Inter', sans-serif;
   }
   .btn-next::before {
@@ -816,7 +844,7 @@ const QUIZ_CSS = `
     color: #fff;
     box-shadow: 0 0 0 1px rgba(124,58,237,0.5), 0 8px 32px rgba(124,58,237,0.5);
     transition: all 0.2s ease; position: relative; overflow: hidden;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.01em; display: flex; justify-content: center; align-items: center; gap: 8px;
     font-family: 'Inter', sans-serif;
   }
   .btn-cta-result::before {
@@ -916,7 +944,7 @@ function ProgressBar({ step, total }: { step: number; total: number }) {
 function ChoiceCard({
   icon, label, sub, selected, onClick,
 }: {
-  icon: string; label: string; sub: string; selected: boolean; onClick: () => void
+  icon: React.ReactNode; label: string; sub: string; selected: boolean; onClick: () => void
 }) {
   return (
     <button
@@ -939,7 +967,9 @@ function ChoiceCard({
           background: 'linear-gradient(90deg, transparent, rgba(167,139,250,0.8), transparent)',
         }} />
       )}
-      <span style={{ fontSize: '24px', flexShrink: 0, lineHeight: 1 }}>{icon}</span>
+      <div style={{ width: '24px', height: '24px', flexShrink: 0, color: selected ? '#a78bfa' : 'rgba(255,255,255,0.6)' }}>
+        {icon}
+      </div>
       <div style={{ flex: 1 }}>
         <div style={{
           fontSize: '14px', fontWeight: 600,
@@ -993,7 +1023,9 @@ function UrgencyTimer({ minutes }: { minutes: number }) {
       background: 'rgba(239,68,68,0.08)',
       border: `1px solid ${expired ? 'rgba(239,68,68,0.3)' : 'rgba(239,68,68,0.25)'}`,
     }}>
-      <span style={{ fontSize: '13px' }}>⏱</span>
+      <span style={{ color: expired ? '#6b7280' : '#f87171', display: 'flex' }}>
+        {Icons.Clock}
+      </span>
       <span style={{
         fontFamily: "'JetBrains Mono', monospace", fontSize: '13px',
         fontWeight: 700, color: expired ? '#6b7280' : '#f87171',
@@ -1009,7 +1041,7 @@ function UrgencyTimer({ minutes }: { minutes: number }) {
 
 // ─── Composant quiz (interne) ─────────────────────────────────────────────────
 
-function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
+function QuizFunnelInner({ onComplete }: { onComplete: (data: QuizProfileData) => void }) {
   const [step, setStep] = useState(0)
   const [answers, setAnswers] = useState<Answers>({
     name: '', profile: null, situation: null, obstacle: null, goal: null,
@@ -1019,7 +1051,6 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
   const [loading, setLoading] = useState(false)
   const [showResult, setShowResult] = useState(false)
 
-  // ── AMÉLIORATION : auto-avance après sélection d'un choix ───────────────────
   const autoAdvanceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
@@ -1036,11 +1067,6 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  function setChoice(field: keyof Omit<Answers, 'name'>, value: string) {
-    setAnswers(a => ({ ...a, [field]: value }))
-  }
-
-  // ── AMÉLIORATION : sélection + avance automatique après 300ms ───────────────
   function setChoiceAndAdvance(field: keyof Omit<Answers, 'name'>, value: string) {
     setAnswers(a => ({ ...a, [field]: value }))
     if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current)
@@ -1064,7 +1090,6 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
 
   const resultLines = getResultLines(answers)
 
-  // ── Étape 0 : Prénom ────────────────────────────────────────────────────────
   const StepName = (
     <div className="qf-card" key={`step-${animKey}`}>
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
@@ -1137,14 +1162,11 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
           next()
         }}
       >
-        Personnaliser mon plan →
+        Personnaliser mon plan <ChevronRight size={15} />
       </button>
     </div>
   )
 
-  // ── Étape 1 : Objectif (NOUVEAU PREMIER CHOIX — ancrage aspirationnel) ───────
-  // AMÉLIORATION : demander l'objectif en premier crée un engagement positif
-  // avant d'aborder la douleur. L'utilisateur s'identifie à son ambition.
   const StepGoal = (
     <div className="qf-card" key={`step-${animKey}`}>
       <ProgressBar step={1} total={TOTAL_STEPS} />
@@ -1171,12 +1193,11 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
         disabled={!answers.goal}
         onClick={next}
       >
-        Étape suivante →
+        Étape suivante <ChevronRight size={15} />
       </button>
     </div>
   )
 
-  // ── Étape 2 : Profil ────────────────────────────────────────────────────────
   const StepProfile = (
     <div className="qf-card" key={`step-${animKey}`}>
       <ProgressBar step={2} total={TOTAL_STEPS} />
@@ -1199,12 +1220,11 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
         ))}
       </div>
       <button className="btn-next" disabled={!answers.profile} onClick={next}>
-        Étape suivante →
+        Étape suivante <ChevronRight size={15} />
       </button>
     </div>
   )
 
-  // ── Étape 3 : Situation ─────────────────────────────────────────────────────
   const StepSituation = (
     <div className="qf-card" key={`step-${animKey}`}>
       <ProgressBar step={3} total={TOTAL_STEPS} />
@@ -1227,14 +1247,11 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
         ))}
       </div>
       <button className="btn-next" disabled={!answers.situation} onClick={next}>
-        Étape suivante →
+        Étape suivante <ChevronRight size={15} />
       </button>
     </div>
   )
 
-  // ── Étape 4 : Obstacle (DERNIÈRE QUESTION — la douleur, juste avant le résultat) ─
-  // AMÉLIORATION : l'obstacle en dernier crée un effet "soulagement imminent" :
-  // l'utilisateur énonce son problème et reçoit la solution dans la foulée.
   const StepObstacle = (
     <div className="qf-card" key={`step-${animKey}`}>
       <ProgressBar step={4} total={TOTAL_STEPS} />
@@ -1259,16 +1276,13 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
       <button
         className="btn-next"
         disabled={!answers.obstacle}
-        onClick={() => {
-          next()
-        }}
+        onClick={next}
       >
-        Générer mon plan personnalisé →
+        Générer mon plan personnalisé <ChevronRight size={15} />
       </button>
     </div>
   )
 
-  // ── Étape 5 : Résultat ──────────────────────────────────────────────────────
   const StepResult = (
     <div className="qf-card" key={`step-${animKey}`} style={{ maxWidth: '560px' }}>
       {loading ? (
@@ -1291,7 +1305,6 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
         </div>
       ) : (
         <div style={{ animation: 'resultReveal 0.6s cubic-bezier(0.4,0,0.2,1) both' }}>
-          {/* En-tête résultat */}
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: '8px',
@@ -1321,7 +1334,6 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
             </p>
           </div>
 
-          {/* Lignes personnalisées */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '2rem' }}>
             {resultLines.map((line, i) => (
               <div className="result-line" key={i} style={{ animationDelay: `${i * 120}ms` }}>
@@ -1340,12 +1352,10 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
             ))}
           </div>
 
-          {/* Urgence */}
           <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
             <UrgencyTimer minutes={DISCOUNT_MINUTES} />
           </div>
 
-          {/* Bloc offre */}
           <div style={{
             padding: '1.5rem', borderRadius: '16px', marginBottom: '1rem',
             background: 'linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(79,70,229,0.1) 100%)',
@@ -1395,23 +1405,20 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
                 Garantie 30 jours — satisfait ou remboursé, sans question.
               </p>
 
-              {/* CORRECTION BUG : utilisation des vraies réponses du quiz */}
               <button className="btn-cta-result" onClick={() => {
-                if (typeof window !== 'undefined' && (window as any).handleQuizComplete) {
-                  (window as any).handleQuizComplete({
-                    name: answers.name,
-                    goal: answers.goal ?? 'installs',
-                    level: answers.situation === 'never' ? 'débutant' : 'intermédiaire',
-                  });
-                }
-              }}
-              >
-                Voir la formation complète <ChevronRight size={13} />
+                const goalLabel = GOALS.find(g => g.id === answers.goal)?.label || 'Doublez le ROI de vos campagnes Google UAC';
+                onComplete({
+                  name: answers.name,
+                  goal: answers.goal ?? 'installs',
+                  goalLabel,
+                  level: answers.situation === 'never' ? 'débutant' : 'intermédiaire',
+                });
+              }}>
+                Voir la formation complète <ChevronRight size={15} />
               </button>
             </div>
           </div>
 
-          {/* Preuve sociale */}
           <div style={{
             padding: '1rem 1.25rem', borderRadius: '12px',
             background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)',
@@ -1450,8 +1457,6 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
     </div>
   )
 
-  // AMÉLIORATION : nouvel ordre des étapes pour maximiser la conversion
-  // Ordre : Nom → Objectif (aspirationnel) → Profil → Situation → Obstacle → Résultat
   const steps = [StepName, StepGoal, StepProfile, StepSituation, StepObstacle, StepResult]
 
   return (
@@ -1460,7 +1465,6 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
       <div className="qf-bg" />
       <div className="qf-grid" />
 
-      {/* Logo + navigation retour */}
       <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: '520px', marginBottom: '2.5rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span className="logo-mark">UAC·METHODE</span>
@@ -1472,9 +1476,13 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
                 fontSize: '12px', color: 'rgba(255,255,255,0.3)',
                 fontFamily: "'JetBrains Mono', monospace",
                 padding: '4px 8px',
+                display: 'flex', alignItems: 'center', gap: '4px',
               }}
             >
-              ← Retour
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 13L5 8L10 3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Retour
             </button>
           )}
         </div>
@@ -1487,7 +1495,7 @@ function QuizFunnelInner({ onShowLanding }: { onShowLanding: () => void }) {
 
 // ─── Composant landing page (interne) ────────────────────────────────────────
 
-function LandingPageInner() {
+function LandingPageInner({ quizProfile }: { quizProfile: QuizProfileData | null }) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [scrolled, setScrolled] = useState(false)
 
@@ -1553,7 +1561,6 @@ function LandingPageInner() {
 
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '820px', width: '100%' }}>
 
-          {/* Badge live */}
           <div className="badge-pill" style={{ marginBottom: '2rem', animation: 'slideUp 0.6s ease both' }}>
             <span style={{
               width: '6px', height: '6px', borderRadius: '50%',
@@ -1568,23 +1575,29 @@ function LandingPageInner() {
             </span>
           </div>
 
-          {/* TITRE PRINCIPAL DE LA LANDING PAGE */}
-          <h1>
-            {typeof window !== 'undefined' && (window as any).quizProfile ? (
+          <h1 style={{
+            fontSize: 'clamp(32px,5vw,56px)', fontWeight: 800,
+            lineHeight: 1.1, letterSpacing: '-0.02em', marginBottom: '1rem',
+          }}>
+            {quizProfile ? (
               <>
-                Analyse terminée pour <span style={{ color: '#a78bfa' }}>{(window as any).quizProfile.name}</span> : <br />
-                Voici votre plan d'action pour {(window as any).quizProfile.goal} via Google UAC
+                Plan d&apos;action Google UAC pour <span style={{ color: '#a78bfa' }}>{quizProfile.name}</span><br />
+                Objectif : <span className="hero-line-gradient" style={{ display: 'inline-block' }}>{quizProfile.goalLabel.toLowerCase()}</span>
               </>
             ) : (
               "Doublez le ROI de vos campagnes Google UAC"
             )}
           </h1>
           
-          <p style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginTop: '1rem' }}>
-            {typeof window !== 'undefined' && (window as any).quizProfile?.level === 'débutant' && 
-              "Ce guide a été spécialement optimisé pour les profils débutants (aucune compétence technique requise)."}
-            {typeof window !== 'undefined' && (window as any).quizProfile?.level === 'intermédiaire' && 
-              "Ce plan d'action contient des stratégies avancées pour débloquer votre palier actuel."}
+          <p style={{
+            fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)',
+            marginTop: '1rem', marginBottom: '2.5rem', maxWidth: '600px', marginInline: 'auto',
+          }}>
+            {quizProfile?.level === 'débutant'
+              ? "Ce guide a été spécialement optimisé pour ton profil (aucune compétence technique requise)."
+              : quizProfile?.level === 'intermédiaire'
+              ? "Ce plan d'action contient des stratégies avancées pour débloquer ton palier actuel."
+              : "La méthode exacte pour diviser ton CPI par 3."}
           </p>
 
           {/* Metric cards */}
@@ -1660,8 +1673,9 @@ function LandingPageInner() {
               <div style={{
                 fontSize: '11px', color: '#f87171', fontFamily: "'JetBrains Mono', monospace",
                 marginBottom: '10px', letterSpacing: '0.08em', textTransform: 'uppercase',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
               }}>
-                ⏱ Prix early bird — se termine dans
+                <span style={{ display: 'flex', color: '#f87171' }}>{Icons.Clock}</span> Prix early bird — se termine dans
               </div>
               <Countdown targetDate={new Date('2026-06-28T23:59:59')} />
             </div>
@@ -1859,7 +1873,6 @@ function LandingPageInner() {
             display: 'flex', gap: '3rem', alignItems: 'flex-start',
             flexWrap: 'wrap',
           }}>
-            {/* Avatar animé */}
             <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
               <div className="avatar-ring-wrap">
                 <div className="avatar-glow" />
@@ -1901,18 +1914,22 @@ function LandingPageInner() {
 
               <div className="badge-row" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 {[
-                  '📱 App publiée sur Play Store',
-                  '⚡ Expert Google UAC',
-                  '🛠 Développeur Flutter',
-                  '🌐 Créateur de sites web',
+                  'App publiée sur Play Store',
+                  'Expert Google UAC',
+                  'Développeur Flutter',
+                  'Créateur de sites web',
                 ].map((badge, i) => (
                   <span key={i} style={{
+                    display: 'flex', alignItems: 'center', gap: '6px',
                     fontSize: '11px', padding: '5px 12px', borderRadius: '100px',
                     border: '1px solid rgba(124,58,237,0.25)',
                     background: 'rgba(124,58,237,0.08)',
                     color: 'rgba(255,255,255,0.65)',
                     fontFamily: "'JetBrains Mono', monospace",
-                  }}>{badge}</span>
+                  }}>
+                    <span style={{ color: '#a78bfa', display: 'flex' }}>{Icons.CheckCircle}</span>
+                    {badge}
+                  </span>
                 ))}
               </div>
             </div>
@@ -2067,7 +2084,9 @@ function LandingPageInner() {
 
         <AnimatedSection delay={100}>
           <div className="guarantee-box">
-            <span style={{ fontSize: '36px', lineHeight: 1, flexShrink: 0 }}>🛡</span>
+            <span style={{ flexShrink: 0, display: 'flex' }}>
+              {Icons.Shield}
+            </span>
             <div>
               <div style={{ fontSize: '15px', fontWeight: 700, marginBottom: '6px' }}>
                 Garantie 30 jours — satisfait ou remboursé
@@ -2203,38 +2222,16 @@ function LandingPageInner() {
 // ─── Composant principal exporté ──────────────────────────────────────────────
 
 export default function LandingClient() {
-  const [showLanding, setShowLanding] = useState(false)
-  const [, forceUpdate] = useState(0)
-  const [quizProfile, setQuizProfile] = useState<{ name?: string; goal?: string; level?: string } | null>(null)
+  const [quizProfile, setQuizProfile] = useState<QuizProfileData | null>(null)
   
-  useEffect(() => {
-    (window as any).handleQuizComplete = (answers: { name: string; goal: string; level: string }) => {
-      (window as any).quizProfile = answers // On stocke globalement pour le titre du haut
-      setShowLanding(true)                  // On affiche la landing page
-      forceUpdate(n => n + 1)               // On force le rafraîchissement
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-    return () => {
-      if (typeof window !== 'undefined') {
-        delete (window as any).handleQuizComplete
-        delete (window as any).quizProfile
-      }
-    }
-  }, [])
-  const handleQuizComplete = (answers: { name: string; goal: string; level: string }) => {
-    setQuizProfile(answers)
-    setShowLanding(true)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-  
-  const handleShowLanding = () => {
-    setShowLanding(true)
+  const handleQuizComplete = (data: QuizProfileData) => {
+    setQuizProfile(data)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  if (!showLanding) {
-    return <QuizFunnelInner onShowLanding={handleShowLanding} />
+  if (!quizProfile) {
+    return <QuizFunnelInner onComplete={handleQuizComplete} />
   }
 
-  return <LandingPageInner />
+  return <LandingPageInner quizProfile={quizProfile} />
 }
