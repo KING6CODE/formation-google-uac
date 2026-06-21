@@ -499,7 +499,7 @@ const GLOBAL_CSS = `
     position: absolute;
     inset: -20px;
     border-radius: 28px;
-    background: radial-gradient(circle, rgba(124,58,237,0.28) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(124,58,237,0.28) 0%, transparent 5%);
     pointer-events: none;
     z-index: -1;
   }
