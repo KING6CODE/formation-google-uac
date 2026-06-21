@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 
-const STRIPE_PRICE_ID = 'price_1Tfe3rCIO1w2FVrbVgEYGMNZ'
+const STRIPE_PRICE_ID = 'price_1Th5lPCIO1w2FVrbK1c5HM3s'
 
 async function handleCheckout() {
   try {
@@ -211,10 +211,6 @@ const GLOBAL_CSS = `
   @keyframes pulse {
     0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
     50%       { opacity: 0.7; box-shadow: 0 0 0 6px rgba(74,222,128,0); }
-  }
-  @keyframes ring-rotate {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
   }
 
   .btn-primary {
@@ -476,34 +472,23 @@ const GLOBAL_CSS = `
     box-shadow: 0 -8px 40px rgba(124,58,237,0.08);
   }
 
-  /* Avatar ring animé */
-  .avatar-ring-wrap {
+  /* Avatar — grande photo, pas d'anneau animé */
+  .avatar-wrap {
     position: relative;
-    width: 220px;
-    height: 220px;
+    width: 100%;
+    max-width: 340px;
     flex-shrink: 0;
   }
-  .avatar-ring-spin {
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    background: conic-gradient(
-      #a78bfa 0deg,
-      #60a5fa 90deg,
-      #34d399 180deg,
-      transparent 220deg,
-      transparent 360deg
-    );
-    animation: ring-rotate 6s linear infinite;
-  }
-  .avatar-ring-inner {
-    position: absolute;
-    inset: 3px;
-    border-radius: 22px;
-    background: #080810;
+  .avatar-photo-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    border-radius: 20px;
     overflow: hidden;
+    border: 1px solid rgba(124,58,237,0.3);
+    box-shadow: 0 20px 60px rgba(124,58,237,0.18), inset 0 1px 0 rgba(255,255,255,0.05);
   }
-  .avatar-ring-inner img {
+  .avatar-photo-frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -512,21 +497,27 @@ const GLOBAL_CSS = `
   }
   .avatar-glow {
     position: absolute;
-    inset: -12px;
+    inset: -20px;
     border-radius: 28px;
-    background: radial-gradient(circle, rgba(124,58,237,0.35) 0%, transparent 65%);
+    background: radial-gradient(circle, rgba(124,58,237,0.28) 0%, transparent 65%);
     pointer-events: none;
     z-index: -1;
   }
   .avatar-floating-badge {
     position: absolute;
-    padding: 8px 14px;
+    padding: 10px 16px;
     border-radius: 12px;
     background: rgba(8,8,16,0.92);
     border: 1px solid rgba(124,58,237,0.4);
     backdrop-filter: blur(10px);
     font-family: 'JetBrains Mono', monospace;
     box-shadow: 0 8px 24px rgba(124,58,237,0.25), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  .check-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0;
+    background: rgba(74,222,128,0.15);
+    border: 1px solid rgba(74,222,128,0.4);
   }
 
   /* Testimonial card */
@@ -594,9 +585,8 @@ const GLOBAL_CSS = `
     .who-badges {
       justify-content: center !important;
     }
-    .avatar-ring-wrap {
-      width: 170px !important;
-      height: 170px !important;
+    .avatar-wrap {
+      max-width: 260px !important;
     }
     .badge-row {
       gap: 6px !important;
@@ -676,7 +666,7 @@ export default function LandingClient() {
             <span style={{ color: '#4ade80', marginRight: '5px' }}>●</span>Early bird
           </span>
           <button className="btn-nav" onClick={scrollToOffer}>
-            197€ <ChevronRight size={13} />
+            67€ <ChevronRight size={13} />
           </button>
         </div>
       </nav>
@@ -707,7 +697,7 @@ export default function LandingClient() {
               fontSize: '11px', color: 'rgba(255,255,255,0.7)',
               fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.06em'
             }}>
-              Formation Google UAC · Early bird −50% · 197€
+              Formation Google UAC · Early bird −83% · 67€
             </span>
           </div>
 
@@ -737,9 +727,9 @@ export default function LandingClient() {
               <span style={{
                 fontSize: 'clamp(36px,5vw,44px)', fontWeight: 800, color: '#fff',
                 textShadow: '0 0 30px rgba(255,255,255,0.15), 0 2px 10px rgba(0,0,0,0.5)'
-              }}>197€</span>
+              }}>67€</span>
               <span style={{ fontSize: 'clamp(18px,3vw,22px)', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>394€</span>
-              <span className="badge-eb">↓ −50% Early bird</span>
+              <span className="badge-eb">↓ −83% Early bird</span>
             </div>
 
             <button className="btn-primary" onClick={handleCheckout} style={{ width: '100%', maxWidth: '360px', padding: '16px 32px' }}>
@@ -872,26 +862,23 @@ export default function LandingClient() {
       </section>
 
       {/* QUI JE SUIS — version vendeuse, preuve par l'exemple */}
-      <section className="section-pad" style={{ padding: '7rem 2rem', maxWidth: '1000px', margin: '0 auto' }}>
+      <section className="section-pad" style={{ padding: '7rem 2rem', maxWidth: '1100px', margin: '0 auto' }}>
         <AnimatedSection>
           <div className="who-flex" style={{
             display: 'flex', gap: '3.5rem', alignItems: 'center',
             flexWrap: 'wrap',
           }}>
-            {/* Avatar */}
-            <div style={{ flexShrink: 0, position: 'relative' }}>
-              <div className="avatar-ring-wrap">
-                <div className="avatar-glow" />
-                <div className="avatar-ring-spin" />
-                <div className="avatar-ring-inner">
-                  <img
-                    src="/alistair.jpg"
-                    alt="Alistair Passé-Coutrin"
-                  />
-                </div>
+            {/* Avatar — grande photo verticale */}
+            <div className="avatar-wrap">
+              <div className="avatar-glow" />
+              <div className="avatar-photo-frame">
+                <img
+                  src="/alistair.jpg"
+                  alt="Alistair Passé-Coutrin"
+                />
               </div>
-              <div className="avatar-floating-badge" style={{ bottom: '-14px', right: '-20px' }}>
-                <div style={{ fontSize: '16px', fontWeight: 800, color: '#a78bfa' }}>0,07€</div>
+              <div className="avatar-floating-badge" style={{ bottom: '20px', right: '-18px' }}>
+                <div style={{ fontSize: '18px', fontWeight: 800, color: '#a78bfa' }}>0,07€</div>
                 <div style={{ fontSize: '9px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.04em' }}>CPI obtenu</div>
               </div>
             </div>
@@ -912,29 +899,28 @@ export default function LandingClient() {
               </h2>
               <p style={{
                 fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8,
-                marginBottom: '1.5rem',
+                marginBottom: '2rem',
               }}>
                 Sans agence. Sans expérience préalable en ads. J&apos;ai lancé ma première campagne Google UAC
                 avec un simple budget de test, et obtenu <strong style={{ color: '#fff' }}>0,07€ par installation</strong> —
-                là où la moyenne du marché tourne entre 1,50€ et 3€.
-              </p>
-              <p style={{
-                fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.8,
-                marginBottom: '2rem',
-              }}>
-                Aujourd&apos;hui je transmets la méthode exacte, étape par étape, pour que tu puisses
-                reproduire ce résultat sur ta propre app — ou la vendre comme service à tes clients.
+                là où la moyenne du marché tourne entre 1,50€ et 3€. Aujourd&apos;hui je transmets la méthode
+                exacte, étape par étape, pour que tu puisses reproduire ce résultat sur ta propre app — ou la
+                vendre comme service à tes clients.
               </p>
 
-              <div className="who-badges" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div className="who-badges" style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 {[
-                  { icon: '✅', label: 'Indépendance totale', sub: 'lance et pilote tes campagnes seul, sans dépendre d\'une agence' },
-                  { icon: '✅', label: 'Méthode reproductible', sub: 'la même structure appliquée sur 3 campagnes différentes' },
-                  { icon: '✅', label: 'Aucune compétence requise', sub: 'zéro code, zéro expérience en publicité au départ' },
-                  { icon: '✅', label: 'Résultats rapides', sub: 'premières données fiables en 5 à 7 jours' },
+                  { label: 'Indépendance totale', sub: 'lance et pilote tes campagnes seul, sans dépendre d\'une agence' },
+                  { label: 'Méthode reproductible', sub: 'la même structure appliquée sur 3 campagnes différentes' },
+                  { label: 'Aucune compétence requise', sub: 'zéro code, zéro expérience en publicité au départ' },
+                  { label: 'Résultats rapides', sub: 'premières données fiables en 5 à 7 jours' },
                 ].map((b, i) => (
                   <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                    <span style={{ fontSize: '15px', flexShrink: 0, marginTop: '1px' }}>{b.icon}</span>
+                    <span className="check-icon" style={{ marginTop: '1px' }}>
+                      <svg width="11" height="11" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 8.5L6.2 11.7L13 4.5" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
                     <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.5 }}>
                       <strong style={{ color: '#fff' }}>{b.label}</strong> — {b.sub}
                     </span>
@@ -1075,9 +1061,9 @@ export default function LandingClient() {
                   <span style={{
                     fontSize: 'clamp(40px,6vw,52px)', fontWeight: 800, color: '#fff',
                     textShadow: '0 0 30px rgba(255,255,255,0.15), 0 2px 10px rgba(0,0,0,0.5)'
-                  }}>197€</span>
+                  }}>67€</span>
                   <span style={{ fontSize: 'clamp(18px,3vw,24px)', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through' }}>394€</span>
-                  <span className="badge-eb">↓ −50% Early bird</span>
+                  <span className="badge-eb">↓ −83% Early bird</span>
                 </div>
                 <p style={{
                   fontSize: '11px', color: 'rgba(255,255,255,0.25)',
@@ -1086,7 +1072,7 @@ export default function LandingClient() {
                   Prix augmente à 297€ au premier palier de ventes.
                 </p>
                 <button className="btn-primary" onClick={handleCheckout} style={{ width: '100%', padding: '18px 32px', fontSize: '16px', borderRadius: '12px' }}>
-                  Accéder maintenant pour 197€ <ChevronRight size={16} />
+                  Accéder maintenant pour 67€ <ChevronRight size={16} />
                 </button>
               </div>
             </div>
@@ -1179,7 +1165,7 @@ export default function LandingClient() {
               Chaque jour sans cette compétence, quelqu&apos;un d&apos;autre la facture à ta place.
             </p>
             <button className="btn-primary" onClick={handleCheckout} style={{ fontSize: '17px', padding: '18px 52px' }}>
-              Accéder pour 197€ <ChevronRight size={16} />
+              Accéder pour 67€ <ChevronRight size={16} />
             </button>
           </AnimatedSection>
         </div>
@@ -1200,10 +1186,10 @@ export default function LandingClient() {
       <div className="sticky-bar">
         <div>
           <div className="sticky-price" style={{ fontSize: '19px', fontWeight: 800 }}>
-            197€{' '}
+            67€{' '}
             <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.25)', textDecoration: 'line-through', fontWeight: 400 }}>394€</span>
             {' '}
-            <span className="badge-discount">−50%</span>
+            <span className="badge-discount">−83%</span>
           </div>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>
             Early bird · accès à vie · garanti 30j
