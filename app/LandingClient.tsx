@@ -877,10 +877,6 @@ export default function LandingClient() {
                   alt="Alistair Passé-Coutrin"
                 />
               </div>
-              <div className="avatar-floating-badge" style={{ bottom: '20px', right: '-18px' }}>
-                <div style={{ fontSize: '18px', fontWeight: 800, color: '#a78bfa' }}>0,07€</div>
-                <div style={{ fontSize: '9px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.04em' }}>CPI obtenu</div>
-              </div>
             </div>
 
             <div style={{ flex: 1, minWidth: '300px' }}>
